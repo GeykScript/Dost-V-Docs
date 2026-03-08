@@ -3,7 +3,7 @@
     <div class="flex flex-col px-6 md:px-12">
         <div class="flex justify-center items-center mt-10">
             <div class="flex">
-                <img src="{{ asset ('logo/docs_logov2.png')}}" alt="DOCS Logo" class="w-auto h-16 md:h-20">
+                <img src="{{ asset ('logo/docs_logo.png')}}" alt="DOCS Logo" class="w-auto h-16 md:h-20">
                 <div class="flex flex-col justify-center ">
                     <h1 class="text-2xl text-brand-blue font-black italic leading-tight tracking-tight"> <span class="text-brand-dark-blue">D</span>OCS</h1>
                     <h3 class="font-semibold text-gray-800 text-[9px] md:text-sm"><span class="text-brand-dark-blue font-semibold">DOCUMENT</span> OPERATION COMMUNICATION SYSTEM</h3>
@@ -62,6 +62,6 @@
         </div>
     </form>
     </div>
-
+    
 
 </x-guest-layout>
