@@ -33,7 +33,10 @@ Create a two new database named:
 ```
 Use the docs_db first in the env
 
-### 3. Configure Environment
+### 3. Import Database
+-Once you have created the database(s), import the SQL file into the new database
+
+### 4. Configure Environment
 
 Update your .env file with your database name:
 
@@ -44,13 +47,10 @@ DB_PORT=3306
 DB_DATABASE=docs_db
 ```
 
-### 4. Generate Application Key
+### 5. Generate Application Key
 ```bash
 php artisan key:generate
 ```
-
-### 5. Run Migrations (Temporary)
-php artisan migrate
 
 ### 6. Check Installed Packages (Optional)
 Check if it exists if not install it
