@@ -1,30 +1,74 @@
 <nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="flex justify-end h-16">
+        <div class="flex justify-between sm:justify-end h-16">
+             <!-- Hamburger -->
+            <div class="-me-2 flex items-center sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md  focus:outline-none text-white transition duration-150 ease-in-out">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
            
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex gap-10  sm:items-center sm:ms-6">
+            <div class="flex sm:gap-10  items-center ">
                     <!-- datetime -->
                     <div id="formattedDate" 
-                        data-date="{{ now() }}"  class="text-md text-white justify-end items-end flex flex-col leading-none ">
+                        data-date="{{ now() }}"  class="hidden sm:flex text-md text-white justify-end items-end  flex-col leading-none ">
                     </div>
                     <!-- notification bar -->
-                    <div class="relative inline-block">
-                        <!-- Bell icon -->
-                        <x-heroicon-s-bell class="w-7 h-7 text-white" />
-                        <!-- Notification number -->
-                        <span class="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-1 text-[9px] font-bold leading-none text-white bg-red-600 rounded-full">
-                            10
-                        </span>
-                    </div>
+                   
+
+                    <!-- Notification Dropdown -->
+                    <x-dropdown align="default" width="60">
+                        <x-slot name="trigger">
+                            <button class="relative inline-flex items-center p-2 text-white focus:outline-none">
+                                <x-heroicon-s-bell class="w-7 h-7" />
+                                <span class="absolute top-1 right-1 inline-flex items-center justify-center px-1.5 py-1 text-[9px] font-bold leading-none text-white bg-red-600 rounded-full">
+                                    10
+                                </span>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <div class="w-[15rem] sm:w-[35rem] max-h-auto overflow-y-auto overflow-hidden p-3">
+                                <h2 class="text-lg font-bold px-4 py-2  text-brand-blue">Notifications</h2>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="px-4 py-2 gap-1 bg-sky-100 cursor-pointer rounded-md">
+                                            <div class="flex justify-between">
+                                                <p class="text-sm font-semibold text-gray-700">Document Received</p>
+                                                <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                                            </div>
+                                            <p class="text-xs text-gray-500">The document Memorandum of agreement has received by Adorable Baby. Document has been routed to Gusion Montefalco.</p>
+                                            <p class="text-xs text-gray-500 italic text-right mt-1">Just now</p>
+                                        </div>
+
+                                        <div class="px-4 py-2 border-t border-gray-200 gap-1 bg-white cursor-pointer rounded-md">
+                                            <p class="text-sm  font-semibold text-gray-700">Document Received</p>
+                                            <p class="text-xs text-gray-500">The document Memorandum of agreement has received by Adorable Baby. Document has been routed to Gusion Montefalco.</p>
+                                            <p class="text-xs text-gray-500 italic text-right mt-1">2 mins ago</p>
+                                        </div>
+                                    </div>
+                                  
+
+                                <div class="p-2 flex justify-end">
+                                    <a href="#" class="text-brand-blue  text-xs hover:underline">
+                                        View All
+                                    </a>
+                                </div>
+                            </div>
+                        </x-slot>
+                    </x-dropdown>
+                    
 
                     <!-- Profile -->
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex gap-2 items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white   focus:outline-none transition ease-in-out duration-150">
                                 <x-heroicon-s-user-circle class="w-8 h-8 " />
-                                <div class="flex flex-col items-start justify-start">
+                                <div class="flex-col items-start justify-start hidden sm:flex">
                                     <div class="flex ">
                                         <h1 class="text-md font-semibold">
                                             {{ Auth::user()->full_name }}
@@ -60,46 +104,9 @@
                     </x-dropdown>
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md  focus:outline-none text-white transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+        
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-white">
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4 ">
-                <x-responsive-nav-link :href="route('profile.edit')" class="bg-sky-100 rounded-md flex gap-2">
-                    <x-heroicon-s-user-circle class="w-8 h-8 text-brand-blue" />
-                    <div class="flex flex-col">
-                        <div class="text-base text-brand-blue font-bold">{{ Auth::user()->full_name }}</div>
-                        <!-- update this -->
-                        <div class="font-medium text-xs text-brand-blue leading-none">MIS Unit</div>
-                    </div>
-                </x-responsive-nav-link>
-            </div>
 
-            <div class="px-4 mt-2">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')" class="flex items-center justify-center gap-1  bg-gray-900 text-white rounded-md text-center text-xs"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                    <x-heroicon-s-arrow-right-on-rectangle class="w-4 h-4 transform -scale-x-100" />
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-
-        </div>
-    </div>
 </nav>
