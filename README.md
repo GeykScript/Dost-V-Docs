@@ -9,6 +9,7 @@ This is a web-based system designed for the **Department of Science and Technolo
 ## Features
 
 - Manage documents
+- Manage documents 
 - Track document timelines and actions
 - Assign users to units and positions
 - Secure authentication and role management
