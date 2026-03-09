@@ -8,6 +8,7 @@ This is a web-based system designed for the **Department of Science and Technolo
 
 ## Features
 
+- Manage documents
 - Manage documents 
 - Track document timelines and actions
 - Assign users to units and positions
@@ -58,6 +59,15 @@ Check if it exists if not install it
 npm list @fontsource/poppins
 npm list tailwindcss
 composer show livewire/livewire
+```
+
+If you have already installed Composer and Npm skip the two installer command
+
+```bash
+composer install
+npm install
+npm install tailwindcss @tailwindcss/vite
+npm install @fontsource/poppins
 ```
 
 ### 7. Serve Application
