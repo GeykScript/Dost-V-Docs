@@ -15,7 +15,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/unit-management', function () {
+Route::get('/units', function () {
     return view('unit-management');
 })->middleware(['auth', 'verified'])->name('unit.management');
 
@@ -23,6 +23,10 @@ Route::get('/unit-management', function () {
 Route::get('/accounts', function () {
     return view('accounts-management');
 })->middleware(['auth', 'verified'])->name('accounts');
+
+Route::get('/create-document', function () {
+    return view('create-document');
+})->middleware(['auth', 'verified'])->name('create.document');
 
 
 Route::middleware('auth')->group(function () {
