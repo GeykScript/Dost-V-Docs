@@ -1,6 +1,6 @@
 <section>
     <header class="flex gap-2 items-center ">
-        <x-heroicon-o-adjustments-horizontal class="w-5 h-5 text-gray-700" />
+        <x-heroicon-o-adjustments-horizontal class="w-5 h-5 text-gray-800" />
 
         <h2 class="text-lg font-semibold text-gray-700">
             {{ __('Account Settings') }}
@@ -12,11 +12,7 @@
         @csrf
         @method('put')
 
-        <div>
-            <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" name="username" type="text" value="AdorableDeck" class="mt-1 block w-full" autocomplete="username" />
-            <x-input-error :messages="$errors->updatePassword->get('username')" class="mt-2" />
-        </div>
+      
 
         <div>
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />
@@ -37,7 +33,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button class="capitalize">{{ __('Save Changes') }}</x-primary-button>
+            <x-primary-button class="capitalize">{{ __('Update Password') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
