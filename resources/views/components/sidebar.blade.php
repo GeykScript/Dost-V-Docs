@@ -123,7 +123,7 @@
                 <p class="text-xs mt-2 mb-2 ml-3 font-500">Users & Groups</p>
                 
                 <li class="flex items-center group">
-                    <a href="#"
+                    <a href="{{ route('accounts') }}"
                         class="flex items-center w-full py-3 pl-4 hover:bg-white/10 transition-colors"
                         :class="{
                             'bg-nav_active text-f7 font-semibold': activeItem === 'residents',
