@@ -8,6 +8,18 @@
         </h2>
     </header>
 
+      <!-- session status  -->
+        @if (session('status') === 'password-updated')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 3000)"
+                    class="text-sm text-green-500 bg-green-100 p-3 rounded-lg mt-2">
+                    {{ __('Password Updated Successfully.') }}
+                </p>
+        @endif
+
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
@@ -34,16 +46,6 @@
 
         <div class="flex items-center gap-4">
             <x-primary-button class="capitalize">{{ __('Update Password') }}</x-primary-button>
-
-            @if (session('status') === 'password-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
-            @endif
         </div>
     </form>
 </section>

@@ -1,9 +1,9 @@
 
 
 <!-- Navigation Bar  -->
-<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100  ">
     <!-- Primary Navigation Menu -->
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 shadow-2xl">
         <div class="flex justify-between sm:justify-end h-16">
             <!-- Mobile Hamburger Menu  -->
             <div class="-me-2 flex items-center sm:hidden">
