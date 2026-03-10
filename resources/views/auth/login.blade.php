@@ -23,20 +23,20 @@
         <!-- Email Address -->
      <div>
     <!-- ACCOUNT ID -->
-    <x-input-label for="account_id" :value="__('Account ID')" class="text-gray-800" />
+    <x-input-label for="username" :value="__('Username')" class="text-gray-800" />
 
     <x-text-input 
-        id="account_id" 
+        id="username" 
         class="block mt-1 w-full h-10 md:h-12"
         type="text"
-        name="account_id"
-        :value="old('account_id')"
+        name="username"
+        :value="old('username')"
         required
         autofocus
         autocomplete="username"
     />
 
-    <x-input-error :messages="$errors->get('account_id')" class="mt-2" />
+    <x-input-error :messages="$errors->get('username')" class="mt-2" />
 </div>
 
         <!-- Password -->

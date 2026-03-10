@@ -1,10 +1,12 @@
-<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100">
+
+
+<!-- Navigation Bar  -->
+<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100  ">
     <!-- Primary Navigation Menu -->
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12 shadow-2xl">
         <div class="flex justify-between sm:justify-end h-16">
-           
-           
-            <div class="-me-2 flex items-center xl:hidden">
+            <!-- Mobile Hamburger Menu  -->
+            <div class="-me-2 flex items-center sm:hidden">
                 <button @click="$store.sidebar.toggle()" class="inline-flex items-center justify-center p-2 rounded-md text-white  focus:outline-none  transition duration-150 ease-in-out">
                     <svg class="size-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': $store.sidebar.open, 'inline-flex': !$store.sidebar.open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -18,8 +20,6 @@
                         data-date="{{ now() }}"  class="hidden sm:flex text-md text-white justify-end items-end  flex-col leading-none ">
                     </div>
                     <!-- notification bar -->
-                   
-
                     <!-- Notification Dropdown -->
                     <x-dropdown align="default" width="60">
                         <x-slot name="trigger">
@@ -30,7 +30,7 @@
                                 </span>
                             </button>
                         </x-slot>
-
+                        <!-- Dropdown content  -->
                         <x-slot name="content">
                             <div class="w-[15rem] sm:w-[35rem] max-h-auto overflow-y-auto overflow-hidden p-3">
                                 <h2 class="text-lg font-bold px-4 py-2  text-brand-blue">Notifications</h2>
@@ -51,7 +51,6 @@
                                         </div>
                                     </div>
                                   
-
                                 <div class="p-2 flex justify-end">
                                     <a href="#" class="text-brand-blue  text-xs hover:underline">
                                         View All
@@ -102,10 +101,6 @@
                         </x-slot>
                     </x-dropdown>
             </div>
-
-        
         </div>
     </div>
-
-
 </nav>
