@@ -1,15 +1,6 @@
+<x-app-layout>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit Management</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#cecece] h-screen w-full">
+<div class="h-screen w-full">
     <div class="m-10">
         <div class="bg-[#FFFFFF] rounded-xl p-10">
             <div class="flex">
@@ -20,5 +11,5 @@
             <livewire:unit-table/>
         </div>
     </div>
-</body>
-</html>
+</div>
+</x-app-layout>

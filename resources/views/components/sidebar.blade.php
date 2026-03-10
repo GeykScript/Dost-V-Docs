@@ -141,7 +141,7 @@
                 </li>
 
                 <li class="flex items-center group">
-                    <a href="#"
+                    <a href="{{ route('unit.management') }}"
                         class="flex items-center w-full py-3 pl-4 hover:bg-white/10 transition-colors"
                         :class="{
                             'bg-nav_active text-f7 font-semibold': activeItem === 'residents',
