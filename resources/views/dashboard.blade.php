@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('page-id', 'dashboard')
     @vite(['resources/js/components/line-graph.js'])
     @section('title', 'Dashboard')
     <div class="p-6">
