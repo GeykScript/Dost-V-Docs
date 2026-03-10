@@ -7,7 +7,7 @@
             <div class="bg-white shadow sm:rounded-lg">
                 <!-- Banner -->
                 <img src="{{ asset('logo/dost_banner1.png') }}" alt="DOST Banner" class="shadow-md rounded-t-lg ">
-                <!-- Avatar -->
+                <!-- Profile Details -->
             <div class="relative flex">
                 <div class="bg-white rounded-full  absolute flex -top-5 md:-top-10 left-6 p-0 m-0">
                     <x-heroicon-s-user-circle class="w-24 h-24 md:w-40 md:h-40 rounded-full border border-white text-brand-blue" />
