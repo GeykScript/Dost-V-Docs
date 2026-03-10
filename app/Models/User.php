@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'first_name',
-        'middle_name',
         'last_name',
         'suffix',
         'email',
@@ -63,4 +62,9 @@ class User extends Authenticatable
     public function assignedPositions(){
         return $this->hasMany(AssignedPosition::class, 'user_id');
     }
+
+    public function unit()
+{
+    return $this->belongsTo(Unit::class);
+}
 }
