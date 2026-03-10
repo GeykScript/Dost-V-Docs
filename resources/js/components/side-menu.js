@@ -2,13 +2,8 @@ export default () => ({
     activeItem: 'dashboard',
 
     init() {
-        // Load active item
-        const cachedActive = localStorage.getItem('activeSidebarItem');
-        if (cachedActive) {
-            this.activeItem = cachedActive;
-        } else {
-            this.determineActiveItemFromUrl();
-        }
+        // No more localStorage check; just check the URL immediately
+        this.determineActiveItemFromUrl();
 
         window.addEventListener('popstate', () => {
             this.determineActiveItemFromUrl();
@@ -18,15 +13,18 @@ export default () => ({
     determineActiveItemFromUrl() {
         const path = window.location.pathname;
         
-        // Simplified mapping
-        const items = ['dashboard', 'residents', 'health-programs', 'medicines', 'reports', 'schedules', 'bhws', 'logs', 'faqs', 'barangays', 'midwife'];
+        const items = [
+            'dashboard', 'need-responses', 'create-document', 
+            'my-documents', 'all-documents', 'account', 
+            'units', 'action', 'type'
+        ];
+
+        // Find the item based on the current URL
         this.activeItem = items.find(item => path.includes(`/${item}`)) || 'dashboard';
-        
-        localStorage.setItem('activeSidebarItem', this.activeItem);
     },
 
     setActive(item) {
+        console.log(item);
         this.activeItem = item;
-        localStorage.setItem('activeSidebarItem', item);
     }
 });
