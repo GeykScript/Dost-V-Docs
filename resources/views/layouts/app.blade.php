@@ -12,26 +12,22 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Livewire Styles -->
         @livewireStyles
-    </head>
+    </head>    
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        <div class="min-h-screen bg-gray-100 h-screen flex">
+            
+            @include('components.sidebar')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+            <div class="flex flex-col flex-1 overflow-hidden">
+                
+                @include('layouts.navigation')
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <main class="flex-1 overflow-y-auto bg-gray-100">
+                    {{ $slot }}
+                </main>
+            </div>
+            
         </div>
-        <!-- Livewire Scripts -->
         @livewireScripts
     </body>
 </html>
