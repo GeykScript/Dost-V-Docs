@@ -12,6 +12,31 @@ const options = {
     type: "area",
     fontFamily: "Inter, sans-serif",
     toolbar: { show: false },
+    zoom: { enabled: false },
+    selection: { enabled: false },
+    animations: { enabled: false }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      opacityFrom: 0.55,
+      opacityTo: 0,
+      shade: brandColor,
+      gradientToColors: [brandColor],
+    },
+  },
+
+  tooltip: {
+    enabled: false
+  },
+
+  states: {
+    hover: { filter: { type: "none" } },
+    active: { filter: { type: "none" } }
+  },
+
+  markers: {
+    size: 0
   },
   dataLabels: {
     enabled: false
@@ -22,32 +47,31 @@ const options = {
   },
   series: [
     {
-      name: "New users",
-      data: [6500, 6418, 6456, 6526, 6356, 6456, 6700],
-      color: brandColor,
-    },
-  ],
+        name: "Documents",
+        data: [34, 42, 38, 51, 47, 29, 36],
+        color: brandColor
+    }
+    ],
+    tooltip: { enabled: false },
+    zoom: { enabled: false },
+    selection: { enabled: false },
+    animations: { enabled: false },
   xaxis: {
-    // 1. Change type to 'category'
     type: 'category',
-    // 2. Move your dates here
     categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
     labels: {
-      show: true,
-      style: { colors: '#6B7280' }
+        show: true,
+        style: { colors: '#6B7280' }
     },
     axisBorder: { show: false },
     axisTicks: { show: false },
-  },
-  yaxis: {
-    // 3. Remove categories from here; let it handle the numbers (6500, etc.)
-    labels: {
-      show: true, 
-      style: { colors: '#6B7280' },
-      // Optional: formats 6500 to "6.5k"
-      formatter: (value) => { return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : value },
     },
-  },
+    yaxis: {
+        labels: {
+            show: true,
+            style: { colors: '#6B7280' }
+        }
+    },
   grid: {
     show: true,
     borderColor: '#F3F4F6',
