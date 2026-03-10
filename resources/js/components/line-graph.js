@@ -8,7 +8,7 @@ const brandColor = getBrandColor();
 
 const options = {
   chart: {
-    height: "80%",
+    height: "90%",
     type: "area",
     fontFamily: "Inter, sans-serif",
     toolbar: { show: false },

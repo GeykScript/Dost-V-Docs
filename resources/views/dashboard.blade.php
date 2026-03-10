@@ -49,12 +49,10 @@
                     </div>
                 </div>
                 <div class="row-span-3 bg-white rounded-lg">
-                    @include('components.dashboard-linegraph')
+                    @include('components.dashboard.dashboard-linegraph')
                 </div>
             </div>
-            <div class="col-span-1 lg:col-span-2 bg-white rounded-lg">
-
-            </div>
+            @include('components.dashboard.progress-overview')
         </div>
     </div>
     <!-- dashboard layout  -->
