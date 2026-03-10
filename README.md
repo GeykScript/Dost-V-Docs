@@ -58,6 +58,8 @@ Check if it exists if not install it
 ```bash
 npm list @fontsource/poppins
 npm list tailwindcss
+npm list flowbite
+npm list apexcharts
 composer show livewire/livewire
 ```
 
@@ -65,9 +67,12 @@ If you have already installed Composer and Npm skip the two installer command
 
 ```bash
 composer install
+composer require blade-ui-kit/blade-heroicons
 npm install
 npm install tailwindcss @tailwindcss/vite
 npm install @fontsource/poppins
+npm install apexcharts@3.46.0 --save
+npm install flowbite --save
 ```
 
 ### 7. Serve Application
