@@ -1,5 +1,12 @@
-<section class="p-4 sm:p-8">
-   
+<section>
+    <header class="flex gap-2 items-center ">
+        <x-heroicon-o-identification class="w-5 h-5 text-gray-700" />
+
+        <h2 class="text-lg font-semibold text-gray-700">
+            {{ __('Profile Information') }}
+
+        </h2>
+    </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
