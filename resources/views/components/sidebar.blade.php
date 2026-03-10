@@ -16,18 +16,15 @@
     <!-- Sidebar -->
     <div         
         :class="$store.sidebar.open ? 'translate-x-0' : '-translate-x-full' "
-        class="fixed xl:relative xl:translate-x-0 inset-y-0 left-0 z-50 xl:z-0 w-60 border-r border-gray-200 bg-sidebar-bg text-white flex flex-col pt-4 min-h-screen transform transition-transform duration-300 ease-in-out lg:flex">        
+        class="fixed xl:relative xl:translate-x-0 inset-y-0 left-0 z-50 xl:z-0 w-60   bg-sidebar-bg text-white flex flex-col pt-2 min-h-screen transform transition-transform duration-300 ease-in-out lg:flex">        
 
-        <div class="flex items-center justify-between px-4 pb-3">
+        <div class="flex items-center justify-center ">
         
-            <div class="flex flex-col items-start gap-1"> 
-                <h1 class="font-bold italic text-xl lg:text-3xl leading-none text-brand-dark-blue whitespace-nowrap transition-transform duration-300">
-                    D<span class="text-white whitespace-nowrap transition-transform duration-300">OCS
-                    </span>
-                </h1>
-                <p class="text-[9px] text-white font-medium">Document Operations Communication System</p>
-            </div>
-
+            <div class="flex flex-col justify-center ">
+                    <h1 class="text-3xl text-white font-black italic leading-tight tracking-tight"> <span class="text-brand-dark-blue">D</span>OCS</h1>
+                    <h3 class="font-medium text-white text-[9px]  leading-none tracking-tight"><span class="text-brand-dark-blue ">Document</span> Operation Communication System</h3>
+                </div>
+            <!-- Close button on mobile  -->
             <button @click="$store.sidebar.close()" class="text-gray-400 hover:text-gray-500 focus:outline-none lg:hidden">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -40,9 +37,9 @@
             <!-- Dashboard -->
             <li class="flex items-start group">
                 <a href="#"
-                    class="flex items-center w-full py-3 pl-4 hover:bg-white/10 transition-colors"
+                    class="flex items-center w-full py-3 pl-4  transition-colors"
                     :class="{
-                        'bg-brand-blue/30 text-f7 font-semibold': activeItem === 'dashboard',
+                        'bg-brand-blue/20 text-f7 font-semibold': activeItem === 'dashboard',
                         'text-brand-blue': activeItem !== 'dashboard'
                     }"
                     @click="setActive('dashboard'); if (window.innerWidth < 1280) $store.sidebar.close()">
