@@ -25,7 +25,7 @@ new class extends Component
         return <<<'blade'
         <div>
 
-            <div class="mt-6 mb-5 flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
+            <div class=" mb-5 flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
 
                 <div class="flex items-center gap-2">
                     <select class="border border-[#cecece] py-2 px-3 rounded-md w-20">
