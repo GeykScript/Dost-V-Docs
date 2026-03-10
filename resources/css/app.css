@@ -11,6 +11,10 @@
 @import "@fontsource/poppins/800.css";
 /* black / ultra-bold */
 @import "@fontsource/poppins/900.css";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
+
 
 /* Tailwind directives */
 @tailwind base;
