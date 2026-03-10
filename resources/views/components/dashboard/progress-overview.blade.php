@@ -1,4 +1,3 @@
-<!--Progress Overview Card-->
 <div class="col-span-1 lg:col-span-2 bg-white rounded-lg p-6">
     <div class="flex items-center gap-2">
         <div class="bg-gray-200 p-2 rounded-lg">
@@ -73,12 +72,9 @@
                          <div class=" mt-2 w-full flex flex-col">
                             <p class="text-xs font-medium text-gray-600">Source: MIS - Juan De La Cruz</p>
                             <p class="text-xs font-medium text-gray-600">Routed to: Giannis Antetokounmpo</p>
-
                         </div>
-                        <p class="font-medium italic text-xs text-gray-600 max-w-16 w-full text-end">5 mins</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
