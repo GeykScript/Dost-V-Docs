@@ -1,23 +1,23 @@
 
 
 <!-- Navigation Bar  -->
-<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-brand-blue border-b border-gray-100  ">
     <!-- Primary Navigation Menu -->
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="flex justify-between sm:justify-end h-16">
-            <!-- Mobile Hamburger Menu  -->
-            <div class="-me-2 flex items-center sm:hidden">
+    <div class="w-full mx-auto flex justify-between xl:justify-end px-4 sm:px-6 lg:px-12 shadow-2xl">
+              <!-- Mobile Hamburger Menu  -->
+            <div class="xl:hidden -me-2 flex items-center ">
                 <button @click="$store.sidebar.toggle()" class="inline-flex items-center justify-center p-2 rounded-md text-white  focus:outline-none  transition duration-150 ease-in-out">
                     <svg class="size-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': $store.sidebar.open, 'inline-flex': !$store.sidebar.open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
+        <div class="flex justify-between sm:justify-end h-16"> 
             <!-- Settings Dropdown -->
             <div class="flex sm:gap-10  items-center ">
                     <!-- datetime -->
                     <div id="formattedDate" 
-                        data-date="{{ now() }}"  class="hidden sm:flex text-md text-white justify-end items-end  flex-col leading-none ">
+                        data-date="{{ now() }}"  class="flex text-md text-white justify-end items-end  flex-col leading-none ">
                     </div>
                     <!-- notification bar -->
                     <!-- Notification Dropdown -->

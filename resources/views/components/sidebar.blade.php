@@ -25,8 +25,8 @@
                     <h3 class="font-medium text-white text-[9px]  leading-none tracking-tight"><span class="text-brand-dark-blue ">Document</span> Operation Communication System</h3>
                 </div>
             <!-- Close button on mobile  -->
-            <button @click="$store.sidebar.close()" class="text-gray-400 hover:text-gray-500 focus:outline-none lg:hidden">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button @click="$store.sidebar.close()" class="text-gray-400 hover:text-gray-500 focus:outline-none xl:hidden">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
