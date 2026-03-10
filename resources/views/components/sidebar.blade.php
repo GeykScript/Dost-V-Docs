@@ -118,6 +118,24 @@
                     </span>
                 </a>
             </li>
+
+            <li class="flex items-center group">
+                <a href="#"
+                    class="flex items-center w-full py-3 pl-4 hover:bg-white/10 transition-colors"
+                    :class="{
+                        'bg-nav_active text-f7 font-semibold': activeItem === 'residents',
+                        'text-mainblue': activeItem !== 'residents'
+                    }"
+                    @click="setActive('residents'); if (window.innerWidth < 1280) $store.sidebar.close()">
+                    <x-heroicon-o-clipboard-document-list class="w-4 h-4" />
+                    <span class="ml-3 whitespace-nowrap transition-all duration-200 text-main_font text-sm"
+                        :class="{
+                            'font-semibold text-mainblue': activeItem === 'residents'
+                        }">
+                        All Documents
+                    </span>
+                </a>
+            </li>
             <!-- Users and Groups -->
             <div>
                 <p class="text-xs mt-2 mb-2 ml-3 font-500">Users & Groups</p>
