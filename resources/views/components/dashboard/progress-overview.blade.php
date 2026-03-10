@@ -1,3 +1,4 @@
+<!--Progress Overview Card-->
 <div class="col-span-1 lg:col-span-2 bg-white rounded-lg p-6">
     <div class="flex items-center gap-2">
         <div class="bg-gray-200 p-2 rounded-lg">
