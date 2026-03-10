@@ -19,6 +19,9 @@ Route::get('/unit-management', function () {
     return view('unit-management');
 })->middleware(['auth', 'verified'])->name('unit.management');
 
+Route::get('/document/need-responses', function(){
+    return view('need-response');
+})->middleware(['auth', 'verified'])->name('need-response');
 
 Route::get('/accounts', function () {
     return view('accounts-management');

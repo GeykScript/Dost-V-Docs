@@ -31,10 +31,10 @@
             </p>
 
             @include('components.sidebar-item', [
-                'id' => 'need-responses',
+                'id' => 'need-response',
                 'label' => 'Need Response',
                 'icon' => 's-tag',
-                'route' => 'dashboard'
+                'route' => 'need-response'
             ])
 
             @include('components.sidebar-item', [

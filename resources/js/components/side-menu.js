@@ -14,7 +14,7 @@ export default (initialItem) => ({
     determineActiveItemFromUrl() {
         const path = window.location.pathname;
         const items = [
-            'dashboard', 'need-responses', 'create-document', 
+            'dashboard', 'need-response', 'create-document', 
             'my-documents', 'all-documents', 'account', 
             'units', 'action', 'type'
         ];
