@@ -56,11 +56,8 @@ new class extends Component
         // FIX: Pass the variable explicitly to the view
         return view('components.need-responses.need-response-table', [
             'documents' => $documents
-        ]);// layout(null) prevents it from wrapping in another layout if used as a component
+        ]);
     }
-
-    // Since we called view('livewire.need-response-table'), 
-    // we move the blade string to its own section or use the format below:
 };
 ?>
 

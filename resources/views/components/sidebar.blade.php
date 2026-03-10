@@ -67,7 +67,7 @@
                 'id' => 'account',
                 'label' => 'Accounts',
                 'icon' => 's-user-group',
-                'route' => 'dashboard'
+                'route' => 'account'
             ])
 
             @include('components.sidebar-item', [

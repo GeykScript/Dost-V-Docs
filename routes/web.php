@@ -25,7 +25,7 @@ Route::get('/document/need-responses', function(){
 
 Route::get('/accounts', function () {
     return view('accounts-management');
-})->middleware(['auth', 'verified'])->name('accounts');
+})->middleware(['auth', 'verified'])->name('account');
 
 
 Route::middleware('auth')->group(function () {
