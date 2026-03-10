@@ -58,4 +58,8 @@
             </div> -->
         </div>
     </div>
+
+    <footer class="text-xs text-gray-600  text-center p-4">
+        © 2026 All rights reserved | Developed by Department of Science and Technology - Regional Office V - Management Information Services Unit
+    </footer>
 </x-app-layout>

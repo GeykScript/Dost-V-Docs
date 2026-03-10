@@ -62,6 +62,7 @@
             @include('components.dashboard.documents-table')
         </div>
     </div>
+    
    
     <!-- dashboard layout  -->
     
