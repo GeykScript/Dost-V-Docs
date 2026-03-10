@@ -65,6 +65,7 @@ If you have already installed Composer and Npm skip the two installer command
 
 ```bash
 composer install
+composer require blade-ui-kit/blade-heroicons
 npm install
 npm install tailwindcss @tailwindcss/vite
 npm install @fontsource/poppins
