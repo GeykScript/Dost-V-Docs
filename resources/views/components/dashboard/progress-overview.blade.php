@@ -7,6 +7,7 @@
     </div>
     
     <hr class="border-b border-gray-200 mt-4 w-full">
+    <!--progress items-->
     <div class="w-full">
         <div class="w-full border-b border-gray-200">
             <div class="flex items-start justify-between py-3 w-full">
