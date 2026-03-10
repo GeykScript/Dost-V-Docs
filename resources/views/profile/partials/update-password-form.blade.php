@@ -1,17 +1,22 @@
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Update Password') }}
-        </h2>
+    <header class="flex gap-2 items-center ">
+        <x-heroicon-o-adjustments-horizontal class="w-5 h-5 text-gray-700" />
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
-        </p>
+        <h2 class="text-lg font-semibold text-gray-700">
+            {{ __('Account Settings') }}
+
+        </h2>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
+
+        <div>
+            <x-input-label for="username" :value="__('Username')" />
+            <x-text-input id="username" name="username" type="text" value="AdorableDeck" class="mt-1 block w-full" autocomplete="username" />
+            <x-input-error :messages="$errors->updatePassword->get('username')" class="mt-2" />
+        </div>
 
         <div>
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />
@@ -32,7 +37,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="capitalize">{{ __('Save Changes') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
