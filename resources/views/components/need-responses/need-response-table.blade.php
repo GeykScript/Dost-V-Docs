@@ -63,38 +63,59 @@ new class extends Component
 
 {{-- Everything below the PHP tag is the Blade template --}}
 <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-    <div class="p-6 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
+    <div class="p-6">
+        <div class="flex items-center gap-3 mb-2">
             <div class="bg-gray-100 p-2 rounded-lg">
-                <x-heroicon-s-document-text class="w-4 h-4 text-gray-600" />
+                <x-heroicon-s-document-text class="w-5 h-5 text-gray-500" />
             </div>
-            <div class="flex flex-col leading-none">
-                <h1 class="text-gray-700 font-semibold text-lg">Need Responses</h1>
-                <p class="text-gray-600 font-medium text-xs">Documents routed to the user</p>
+            <div>
+                <h1 class="text-xl font-bold text-gray-700">Need Response</h1>
+                <p class="text-xs text-gray-400 font-medium">Documents Routed to the User</p>
             </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-            <div class="relative flex-grow sm:flex-grow-0">
-                <x-heroicon-o-magnifying-glass class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <input 
-                    type="text"
-                    wire:model.live="search"
-                    placeholder="Search document..."
-                    class="w-full sm:w-64 pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all"
-                >
+        <div class="flex flex-col lg:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <select wire:model.live="perPage" class="bg-gray-50 border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2">
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                    </select>
+                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400 -ml-8 pointer-events-none" />
+                </div>
+                <p class="text-xs text-gray-600">entries per page</p>
             </div>
             
-            <button class="flex items-center justify-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
-                <x-heroicon-o-funnel class="w-4 h-4" />
-                <span>Filter</span>
-            </button>
+
+            <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-bold text-gray-500 ml-1">Search</label>
+                    <input type="text" wire:model.live="search" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full lg:w-96 p-2 focus:outline-none">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-bold text-gray-500 ml-1">Filter by Year</label>
+                    <select wire:model.live="sort" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
+                        <option value="">Select Sort</option>
+                        <option value="newest">Newest First</option>
+                        <option value="deadline">By Deadline</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-bold text-gray-500 ml-1">Filter by Status</label>
+                    <select wire:model.live="sort" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
+                        <option value="">Select Sort</option>
+                        <option value="newest">Newest First</option>
+                        <option value="deadline">By Deadline</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-50 text-gray-500 uppercase text-xs font-semibold">
+            <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-3">ref no.</th>
                     <th class="px-6 py-3">document name</th>
