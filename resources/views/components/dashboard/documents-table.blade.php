@@ -1,6 +1,12 @@
 <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
     <div class="p-6 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <h3 class="font-semibold text-gray-800 text-lg">Document List</h3>
+        
+    <div class="flex items-center gap-2">
+        <div class="bg-gray-200 p-2 rounded-lg">
+            <x-heroicon-s-document-text class="w-4 h-4 text-gray-600" />
+        </div>
+        <h1 class="text-gray-700 font-semibold text-lg">Documents List</h1>
+    </div>
     </div>
 
     <div class="overflow-x-auto">
