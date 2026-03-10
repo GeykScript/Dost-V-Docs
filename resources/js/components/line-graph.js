@@ -9,7 +9,6 @@ const options = {
   chart: {
     height: "90%",
     type: "area",
-    fontFamily: "Inter, sans-serif",
     toolbar: { show: false },
   },
 
@@ -25,7 +24,7 @@ const options = {
   series: [
     {
       name: "Documents",
-      data: [20, 45, 12, 5, 32, 31, 13],
+      data: [20, 45, 12, 5, 27, 33, 40],
       color: brandColor,
     },
   ],
