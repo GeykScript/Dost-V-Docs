@@ -16,7 +16,9 @@ export default {
             },
             colors: {
                 'brand-blue': '#00AEEF',
+                'nav-active': '#DFEEFF',
                 'brand-dark-blue': '#0088C0',
+                'sidebar-bg': '#242424'
             },
         },
     },
