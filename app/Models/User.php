@@ -58,6 +58,15 @@ class User extends Authenticatable
         . ($this->suffix ? ' ' . $this->suffix : '');
 }
 
+    public function scopeSearch($query, $searchTerm)
+    {
+        return $query->where(function ($query) use ($searchTerm) {
+            $query->where('first_name', 'like', "%{$searchTerm}%")
+                ->orWhere('last_name', 'like', "%{$searchTerm}%")
+                ->orWhere('username', 'like', "%{$searchTerm}%");
+        });
+    }
+
 
     public function assignedPositions(){
         return $this->hasMany(AssignedPosition::class, 'user_id');

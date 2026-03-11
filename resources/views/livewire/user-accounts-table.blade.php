@@ -51,7 +51,7 @@
             </div>  
             <!-- Add Unit Button -->
             <div class="col-span-2 md:col-span-2 flex items-center justify-center">
-                <button class="bg-brand-blue text-white  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add Unit</button>
+                <button class="bg-brand-blue text-white  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add User</button>
             </div>     
         </div>
     </div>
@@ -62,27 +62,30 @@
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-3">#</th>
-                    <th class="px-6 py-3">Name</th>
-                    <th class="px-6 py-3">Abbreviation</th>
-                    <th class="px-6 py-3">Description</th>
+                    <th class="px-6 py-3">Username</th>
+                    <th class="px-6 py-3">First Name</th>
+                    <th class="px-6 py-3">Last Name</th>
+                    <th class="px-6 py-3">Email</th>
                     <th class="px-6 py-3">Created At</th>
+                    
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @forelse($units as $unit)
-                    <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
-                        <td class="px-6 py-4 font-medium text-gray-800">{{ $unit->id }}</td>
-                        <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
-                        <td class="px-6 py-4 text-gray-600 font-medium">
-                            {{ $unit->created_at->format('F j, Y, g:i A') }}
-                        </td>                
+                @forelse($users as $user)
+                     <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
+                        <td class="px-6 py-4 font-medium text-gray-800">{{ $user->id }}</td>
+                        <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $user->username }}</td>
+                        <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->first_name }}</td>
+                        <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->last_name }}</td>
+                        <td class="px-6 py-4 text-gray-700 font-medium truncate max-w-md">{{ $user->email }}</td>
+                           <td class="px-6 py-4 text-gray-600 font-medium">
+                            {{ $user->created_at->format('F j, Y, g:i A') }}
+                        </td> 
                     </tr>
                 @empty
                     <tr>
                         <td colspan="5" class="text-center py-10 text-gray-500">
-                            No units found.
+                            No users found.
                         </td>
                     </tr>
                 @endforelse
@@ -92,6 +95,6 @@
 
     <!-- Pagination -->
     <div class="mt-4">
-        {{ $units->links('pagination::custom-pagination-links') }}
+        {{ $users->links('pagination::custom-pagination-links') }}
     </div>
 </div>

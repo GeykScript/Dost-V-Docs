@@ -6,8 +6,8 @@
 
             <!-- Header -->
         <div class="flex items-center gap-3 mb-2">
-            <div class="bg-blue-50 p-2 rounded-lg">
-                <x-heroicon-s-building-office class="w-5 h-5 text-blue-500" />
+            <div class="bg-gray-100 p-2 rounded-lg">
+                <x-heroicon-s-building-office class="w-5 h-5 text-gray-600" />
             </div>
             <div>
                 <h1 class="text-xl font-bold text-gray-700">Units Management</h1>
