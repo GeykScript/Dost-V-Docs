@@ -88,7 +88,7 @@
                 <tbody class="divide-y divide-gray-100">
                     @forelse($documents as $document)
                             <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer"
-                                onclick="window.location='{{ route('need-response.view') }}'">
+                                onclick="window.location='{{ route('need-response.view', $document->id) }}'">
                                 <td class="px-6 py-4 font-medium text-gray-800">{{ $document->reference_number }}</td>
                                 <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $document->document_name }}</td>
                                 <td class="px-6 py-4 text-gray-700 font-medium">For Signature</td>
