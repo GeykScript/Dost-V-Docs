@@ -17,7 +17,7 @@
     <body class="font-sans antialiased ">
         <div class="min-h-screen bg-gray-100 h-screen flex">
             
-            @include('components.sidebar')
+            <x-sidebar />
 
             <div class="flex flex-col flex-1 overflow-hidden">
                 

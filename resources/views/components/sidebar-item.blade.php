@@ -5,7 +5,7 @@
 ])
 
 @php
-$active = request()->routeIs($route);
+$active = request()->routeIs($route) || request()->routeIs($route.'.*');
 @endphp
 
 <li class="relative group">

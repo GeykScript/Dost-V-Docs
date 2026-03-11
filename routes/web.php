@@ -21,6 +21,12 @@ Route::get('/document/need-responses', function(){
     return view('need-response');
 })->middleware(['auth', 'verified'])->name('need-response');
 
+Route::get('/document/need-responses/view/', function(){
+    return view('need-response-view');
+})->middleware(['auth', 'verified'])->name('need-response.view');
+
+
+
 // My Documents page
 Route::get('/document/my-documents', function () {
     return view('my-documents'); 
@@ -56,9 +62,7 @@ Route::get('/document/setup/action', function () {
     return view('actions');
 })->middleware(['auth', 'verified'])->name('action');
 
-Route::get('/document/need-responses/view/', function(){
-    return view('need-response-view');
-})->middleware(['auth', 'verified'])->name('need-response.view');
+
 
 
 Route::get('/documents/create-document', function(){
