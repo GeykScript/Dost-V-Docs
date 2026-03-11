@@ -48,14 +48,14 @@
                 'id' => 'my-documents',
                 'label' => 'My Documents',
                 'icon' => 's-document-text',
-                'route' => 'dashboard'
+                'route' => 'my-documents'
             ])
 
             @include('components.sidebar-item', [
                 'id' => 'all-documents',
                 'label' => 'All Documents',
                 'icon' => 'o-clipboard-document-list',
-                'route' => 'dashboard'
+                'route' => 'all-documents'
             ])
 
 

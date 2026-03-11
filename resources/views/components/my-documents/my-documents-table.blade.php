@@ -8,42 +8,45 @@ new class extends Component
     use WithPagination;
     
     public $search = '';
+    public $perPage = 6;
+    public $filterYear = '';
+    public $filterStatus = '';
 
     public function render()
     {
         $allDocuments = collect([
             [
-                'ref_no' => '2022-0505-0011',
-                'name' => 'Memorandum of Agreement for Bicol University',
-                'action' => 'For signature',
-                'source' => 'MIS',
-                'status' => 'Completed',
-                'status_color' => 'bg-green-100 text-green-600',
-                'priority' => 'Express',
-                'priority_color' => 'bg-red-100 text-red-600',
-                'deadline' => 'Sep 01, 2025'
-            ],
-            [
-                'ref_no' => '2022-0505-0012',
-                'name' => 'Memorandum of Agreement for Bicol University',
-                'action' => 'For signature',
-                'source' => 'MIS',
-                'status' => 'Completed',
-                'status_color' => 'bg-green-100 text-green-600',
+                'ref_no' => '2023-1120-0045',
+                'name' => 'Leave Application - Annual Vacation',
+                'action' => 'For Approval',
+                'source' => 'HR Unit',
+                'status' => 'Ongoing',
+                'status_color' => 'bg-yellow-100 text-yellow-600',
                 'priority' => 'Routinary',
                 'priority_color' => 'bg-blue-100 text-blue-600',
-                'deadline' => 'Sep 01, 2025'
+                'deadline' => 'Oct 15, 2025'
             ],
             [
-                'ref_no' => '2022-0505-0013',
-                'name' => 'Memorandum of Agreement for Bicol University',
-                'action' => 'For dissemination',
-                'source' => 'MIS',
+                'ref_no' => '2023-1120-0046',
+                'name' => 'Purchase Request for Department IT Equipment',
+                'action' => 'For Signature',
+                'source' => 'Supply Unit',
+                'status' => 'Completed',
+                'status_color' => 'bg-green-100 text-green-600',
+                'priority' => 'Urgent',
+                'priority_color' => 'bg-orange-100 text-orange-600',
+                'deadline' => 'Oct 20, 2025'
+            ],
+            [
+                'ref_no' => '2023-1120-0047',
+                'name' => 'Travel Order - Regional Conference 2025',
+                'action' => 'For Review',
+                'source' => 'RMU',
                 'status' => 'Ongoing',
                 'status_color' => 'bg-yellow-100 text-yellow-600',
                 'priority' => 'Express',
-                'priority_color' => 'bg-orange-100 text-orange-600',
-                'deadline' => 'Sep 01, 2025'
+                'priority_color' => 'bg-red-100 text-red-600',
+                'deadline' => 'Oct 25, 2025'
             ],
         ]);
 
@@ -53,8 +56,8 @@ new class extends Component
                    str_contains(strtolower($doc['name']), strtolower($this->search));
         });
 
-        // FIX: Pass the variable explicitly to the view
-        return view('components.need-responses.need-response-table', [
+        // Updated the view path to reflect "my-documents"
+        return view('components.my-documents.my-documents-table', [
             'documents' => $documents
         ]);
     }
@@ -65,12 +68,12 @@ new class extends Component
 <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
     <div class="p-6">
         <div class="flex items-center gap-3 mb-2">
-            <div class="bg-yellow-100 p-2 rounded-lg">
-                <x-heroicon-s-tag class="w-5 h-5 text-yellow-500" />
+            <div class="bg-blue-50 p-2 rounded-lg">
+                <x-heroicon-s-document-text class="w-5 h-5 text-blue-500" />
             </div>
             <div>
-                <h1 class="text-xl font-bold text-gray-700">Need Response</h1>
-                <p class="text-xs text-gray-400 font-medium">Documents Routed to You</p>
+                <h1 class="text-xl font-bold text-gray-700">My Documents</h1>
+                <p class="text-xs text-gray-400 font-medium">Documents Authored or Owned by You</p>
             </div>
         </div>
 
@@ -95,18 +98,20 @@ new class extends Component
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-xs font-bold text-gray-500 ml-1">Filter by Year</label>
-                    <select wire:model.live="sort" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
-                        <option value="">Select Sort</option>
-                        <option value="newest">Newest First</option>
-                        <option value="deadline">By Deadline</option>
+                    <select wire:model.live="filterYear" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
+                        <option value="">Select Year</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
                     </select>
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-xs font-bold text-gray-500 ml-1">Filter by Status</label>
-                    <select wire:model.live="sort" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
-                        <option value="">Select Sort</option>
-                        <option value="newest">Newest First</option>
-                        <option value="deadline">By Deadline</option>
+                    <select wire:model.live="filterStatus" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
+                        <option value="">Select Status</option>
+                        <option value="draft">Draft</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
                     </select>
                 </div>
             </div>

@@ -27,7 +27,13 @@ Route::get('/accounts', function () {
     return view('accounts-management');
 })->middleware(['auth', 'verified'])->name('account');
 
+Route::get('/documents/my-documents', function(){
+    return view('my-documents');
+})->middleware(['auth', 'verified'])->name('my-documents');
 
+Route::get('/documents/all-documents', function(){
+    return view('all-documents');
+})->middleware(['auth', 'verified'])->name('all-documents');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
