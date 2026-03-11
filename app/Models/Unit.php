@@ -12,6 +12,17 @@ class Unit extends Model
         'abbreviation',
     ];
 
+
+    public function scopeSearch($query, $searchTerm)
+    {
+        return $query->where(function ($query) use ($searchTerm) {
+            $query->where('unit_name', 'like', "%{$searchTerm}%")
+                ->orWhere('description', 'like', "%{$searchTerm}%")
+                ->orWhere('abbreviation', 'like', "%{$searchTerm}%");
+        });
+    }
+
+
     public function positions(){
         return $this->hasMany(Position::class, 'unit_id');
     }
