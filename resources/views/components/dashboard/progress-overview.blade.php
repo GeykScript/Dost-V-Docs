@@ -20,7 +20,7 @@
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
                     <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">
@@ -44,7 +44,7 @@
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
                     <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">
@@ -68,7 +68,7 @@
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
                     <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">

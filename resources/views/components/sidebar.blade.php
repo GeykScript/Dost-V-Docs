@@ -4,7 +4,7 @@
         class="fixed xl:relative xl:translate-x-0 inset-y-0 left-0 z-50 xl:z-0 w-60 bg-sidebar-bg text-white flex flex-col pt-2 min-h-screen transform transition-transform duration-300 ease-in-out">
 
         {{-- Logo --}}
-        <div class="flex items-center justify-between px-4 py-4">
+        <div class="flex items-center justify-between px-2 sm:px-4 py-2">
             <div class="flex flex-col">
                 <h1 class="text-3xl font-black italic tracking-tight">
                     <span class="text-brand-blue">D</span>OCS
