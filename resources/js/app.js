@@ -6,6 +6,8 @@ import './datetime';
 import 'flowbite';
 import ApexCharts from 'apexcharts';
 
+window.ApexCharts = ApexCharts;
+
 // Breeze / Jetstream already loads Alpine, so no need to import it
 // Just define the store
 Alpine.store('sidebar', {
@@ -24,4 +26,5 @@ Alpine.store('sidebar', {
     }
 });
 
-window.ApexCharts = ApexCharts;
+// Import line graph AFTER ApexCharts is available
+import './components/line-graph.js';
