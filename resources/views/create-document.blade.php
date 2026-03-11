@@ -4,7 +4,7 @@
     <div class="p-6">
         <div class="bg-white rounded-lg w-full p-10">
             <div class="flex items-center gap-3 mb-2">
-                <div class="bg-blue-100 p-2 rounded-lg">
+                <div class="bg-blue-100/60 p-2 rounded-lg">
                     <x-heroicon-s-document-plus class="w-5 h-5 text-brand-blue" />
                 </div>
                 <div>
@@ -24,7 +24,7 @@
 
                 <div class="flex flex-col md:flex-row gap-3 w-full justify-end">
                     <button class="text-xs md:text-sm bg-gray-200 text-gray-700 font-semibold rounded-lg px-4 py-2" id="cancel-create">Cancel</button>
-                    <button class="text-xs md:text-sm bg-cyan-200 rounded-lg px-4 py-2 text-brand-blue font-semibold" id="create-document">Create Document</button>
+                    <button class="text-xs md:text-sm bg-brand-blue/20 rounded-lg px-4 py-2 text-brand-blue font-semibold" id="create-document">Create Document</button>
                 </div>
             </div>
         </div>
