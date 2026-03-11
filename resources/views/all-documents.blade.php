@@ -1,3 +1,7 @@
 <x-app-layout>
-    <h1>All Documents</h1>
+  
+
+    <div class="p-6">
+        <livewire:all-documents.all-documents-table />
+    </div>
 </x-app-layout>

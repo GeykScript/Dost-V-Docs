@@ -62,6 +62,13 @@ Route::get('/document/setup/action', function () {
 
 
 
+Route::get('/documents/create-document', function(){
+    return view('create-document');
+})->middleware(['auth', 'verified'])->name('create-document');
+
+Route::get('/documents/all-documents', function(){
+    return view('all-documents');
+})->middleware(['auth', 'verified'])->name('all-documents');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

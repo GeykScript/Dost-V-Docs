@@ -1,5 +1,6 @@
 <x-app-layout>
-
+@section('page-id', 'account')
+@section('title', 'Accounts')
 <div class="h-screen w-full">
     <div class="m-10">
         <div class="bg-[#FFFFFF] rounded-xl p-10">

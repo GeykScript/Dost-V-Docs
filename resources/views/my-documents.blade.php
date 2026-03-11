@@ -1,3 +1,7 @@
 <x-app-layout>
-    <h1>My Documents</h1>
+ 
+
+    <div class="p-6">
+        <livewire:my-documents.my-documents-table />
+    </div>
 </x-app-layout>
