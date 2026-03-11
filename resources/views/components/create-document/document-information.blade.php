@@ -1,9 +1,10 @@
+<!--Part 1, Document details-->
 <div class="col-span-1 mt-4" x-data="{ sourceType: 'internal' }">
     <h4 class="text-lg font-semibold text-gray-600 mb-4">Document Information</h4>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
-        {{-- Document Name (Full Width) --}}
+        <!-- Document Name -->
         <div class="lg:col-span-2">
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Document Name <span class="text-red-500">*</span>
@@ -12,7 +13,7 @@
                    class="bg-white border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5">
         </div>
 
-        {{-- Document Type --}}
+        <!-- Document Type -->
         <div>
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Document Type <span class="text-red-500">*</span>
@@ -22,7 +23,7 @@
                 </select>
         </div>
 
-        {{-- Category --}}
+        <!-- Category -->
         <div>
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Category <span class="text-red-500">*</span>
@@ -32,7 +33,7 @@
                 </select>
         </div>
 
-        {{-- Priority Level --}}
+        <!-- Priority Level -->
         <div>
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Priority Level <span class="text-red-500">*</span>
@@ -42,7 +43,7 @@
                 </select>
         </div>
 
-        {{-- Confidential Checkbox --}}
+        <!-- Confidential Checkbox -->
         <div class="flex items-center lg:mt-8">
             <div class="bg-blue-500 rounded p-0.5 flex items-center justify-center">
                 <input type="checkbox" class="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 cursor-pointer">
@@ -52,7 +53,7 @@
             </label>
         </div>
 
-        {{-- File Upload --}}
+        <!-- File Upload -->
         <div>
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 File Upload <span class="text-gray-400 font-normal">(Optional):</span>
@@ -61,7 +62,7 @@
                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border border file:border-gray-200 file:text-sm file:font-medium file:bg-white file:text-gray-600 hover:file:bg-gray-50 border-gray-200 rounded-lg cursor-pointer">
         </div>
 
-        {{-- File Link --}}
+        <!-- File Link -->
         <div>
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 File Link <span class="text-gray-400 font-normal">(Optional):</span>
@@ -70,7 +71,7 @@
                    class="bg-white border border-gray-200 text-gray-400 placeholder-gray-300 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5">
         </div>
 
-        {{-- Description --}}
+        <!-- Description -->
         <div class="lg:col-span-2">
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Description
@@ -79,7 +80,7 @@
                       class="bg-white border border-gray-200 text-gray-700 placeholder-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5"></textarea>
         </div>
 
-        {{-- Source Type --}}
+        <!-- Source Type -->
         <div class="lg:col-span-2">
             <label class="block mb-2 text-sm font-semibold text-gray-600">
                 Source Type <span class="text-red-500">*</span>
@@ -98,7 +99,7 @@
             </div>
         </div>
 
-        {{-- Sender Information (Shows ONLY if External is selected) --}}
+        <!-- Sender Information (Shows ONLY if External is selected) -->
         <div class="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-6" x-show="sourceType === 'external'" x-collapse>
             <div>
                 <label class="block mb-2 text-sm font-semibold text-gray-600">
