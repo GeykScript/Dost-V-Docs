@@ -1,6 +1,5 @@
 <x-app-layout>
-    @vite(['resources/js/components/line-graph.js'])
-    @section('title', 'Dashboard')
+    
     <div class="p-6">
         <div class="grid grid-cols gap-3">
             <div class="grid grid-cols lg:grid-cols-7 gap-3">
@@ -62,6 +61,7 @@
             @include('components.dashboard.documents-table')
         </div>
     </div>
+    
    
     <!-- dashboard layout  -->
     

@@ -1,6 +1,6 @@
 <x-app-layout>
-
-
+@section('page-id', 'units')
+@section('title', 'Units')
 <div class="min-h-screen w-full">
     <div class="p-4 sm:p-6 md:p-8 lg:p-10">
         <div class="bg-white rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-sm">

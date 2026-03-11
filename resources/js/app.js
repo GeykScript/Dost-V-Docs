@@ -1,30 +1,30 @@
-import './bootstrap';
+// resources/js/app.js
 
-import Alpine from 'alpinejs';
+import './bootstrap';
 import sideMenu from './components/side-menu.js';
 import './datetime';
 import 'flowbite';
-import ApexCharts from 'apexcharts'
+import ApexCharts from 'apexcharts';
 
+window.ApexCharts = ApexCharts;
 
+// Breeze / Jetstream already loads Alpine, so no need to import it
+// Just define the store
 Alpine.store('sidebar', {
-    open: localStorage.getItem('sidebarOpen') === 'true', // Defaults to false if not set
+    open: false,
 
     toggle() {
-        this.open = !this.open;
-        localStorage.setItem('sidebarOpen', this.open);
+        this.open = !this.open
     },
 
     close() {
-        this.open = false;
-        localStorage.setItem('sidebarOpen', 'false');
+        this.open = false
+    },
+
+    openSidebar() {
+        this.open = true
     }
 });
 
-Alpine.data('sideMenu', sideMenu);
-
-window.Alpine = Alpine;
-window.ApexCharts = ApexCharts
-
-
-Alpine.start();
+// Import line graph AFTER ApexCharts is available
+import './components/line-graph.js';

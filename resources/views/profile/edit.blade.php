@@ -1,8 +1,8 @@
 <x-app-layout>
     
     <!-- Profile Section  -->
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8 space-y-2">
+    <div class="p-4 sm:p-6">
+        <div class="max-w-7xl mx-auto  space-y-2">
             <div class="bg-white shadow sm:rounded-lg">
                 <!-- Banner -->
                 <img src="{{ asset('logo/dost_banner1.png') }}" alt="DOST Banner" class="shadow-md rounded-t-lg ">
@@ -58,4 +58,8 @@
             </div> -->
         </div>
     </div>
+
+    <footer class="text-xs text-gray-600  text-center p-4">
+        © 2026 All rights reserved | Developed by Department of Science and Technology - Regional Office V - Management Information Services Unit
+    </footer>
 </x-app-layout>
