@@ -11,21 +11,55 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// Dashboard page
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/unit-management', function () {
-    return view('unit-management');
-})->middleware(['auth', 'verified'])->name('unit.management');
-
+// Need Responses page
 Route::get('/document/need-responses', function(){
     return view('need-response');
 })->middleware(['auth', 'verified'])->name('need-response');
 
-Route::get('/accounts', function () {
-    return view('accounts-management');
+// My Documents page
+Route::get('/document/my-document', function () {
+    return view('my-document'); 
+})->middleware(['auth', 'verified'])->name('my-document');
+
+// All Documents page
+Route::get('/document/all-documents', function () {
+    return view('all-documents'); 
+})->middleware(['auth', 'verified'])->name('all-documents');
+
+// Create Document page
+Route::get('/document/create-document', function () {
+    return view('create-document'); 
+})->middleware(['auth', 'verified'])->name('create-document');
+
+// Units page
+Route::get('/management/unit', function () {
+    return view('units');
+})->middleware(['auth', 'verified'])->name('units');
+
+// Accounts page
+Route::get('/management/accounts', function () {
+    return view('accounts');
 })->middleware(['auth', 'verified'])->name('accounts');
+
+// Document Types page
+Route::get('/document/setup/type', function () {
+    return view('types');
+})->middleware(['auth', 'verified'])->name('type');
+
+// Document Actions page
+Route::get('/document/setup/action', function () {
+    return view('actions');
+})->middleware(['auth', 'verified'])->name('action');
+
+
+
+
+
 
 
 Route::middleware('auth')->group(function () {

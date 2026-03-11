@@ -1,6 +1,5 @@
 <x-app-layout>
-    @section('page-id', 'need-response')
-    @section('title', 'Need Responses')
+
 
     <div class="p-6">
         <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">

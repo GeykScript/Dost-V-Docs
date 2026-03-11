@@ -14,7 +14,7 @@
         <!-- Livewire Styles -->
         @livewireStyles
     </head>    
-    <body class="font-sans antialiased @yield('page-id', 'dashboard')" id="main-body" data-page-id="@yield('page-id', 'dashboard')">
+    <body class="font-sans antialiased ">
         <div class="min-h-screen bg-gray-100 h-screen flex">
             
             @include('components.sidebar')
