@@ -128,7 +128,8 @@ new class extends Component
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($documents as $doc)
-                    <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer">
+                    <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer" 
+                    onclick="window.location='{{ route('need-response.view') }}'">
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc['ref_no'] }}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc['name'] }}</td>
                         <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc['action'] }}</td>

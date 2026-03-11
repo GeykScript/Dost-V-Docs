@@ -58,7 +58,7 @@ Route::get('/document/setup/action', function () {
 
 Route::get('/document/need-responses/view/', function(){
     return view('need-response-view');
-})->middleware(['auth', 'verified'])->name('action');
+})->middleware(['auth', 'verified'])->name('need-response.view');
 
 
 Route::get('/documents/create-document', function(){
