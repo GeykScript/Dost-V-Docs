@@ -63,8 +63,6 @@ Route::get('/document/setup/action', function () {
 })->middleware(['auth', 'verified'])->name('action');
 
 
-
-
 Route::get('/documents/create-document', function(){
     return view('create-document');
 })->middleware(['auth', 'verified'])->name('create-document');
