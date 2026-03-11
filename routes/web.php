@@ -21,9 +21,9 @@ Route::get('/document/need-responses', function(){
     return view('need-response');
 })->middleware(['auth', 'verified'])->name('need-response');
 
-Route::get('/document/need-responses/view/', function(){
-    return view('need-response-view');
-})->middleware(['auth', 'verified'])->name('need-response.view');
+    Route::get('/document/need-responses/view/{id}', function(){
+        return view('need-response-view');
+    })->middleware(['auth', 'verified'])->name('need-response.view');
 
 
 
