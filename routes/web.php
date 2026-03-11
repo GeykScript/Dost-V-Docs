@@ -22,9 +22,9 @@ Route::get('/document/need-responses', function(){
 })->middleware(['auth', 'verified'])->name('need-response');
 
 // My Documents page
-Route::get('/document/my-document', function () {
-    return view('my-document'); 
-})->middleware(['auth', 'verified'])->name('my-document');
+Route::get('/document/my-documents', function () {
+    return view('my-documents'); 
+})->middleware(['auth', 'verified'])->name('my-documents');
 
 // All Documents page
 Route::get('/document/all-documents', function () {

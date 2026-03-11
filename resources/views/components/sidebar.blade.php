@@ -29,7 +29,7 @@
             </p>
             <x-sidebar-item label="Need Responses" icon="s-tag" route="need-response"/>
             <x-sidebar-item label="Create Document" icon="s-plus" route="create-document"/>
-            <x-sidebar-item label="My Documents" icon="s-document-text" route="my-document"/>
+            <x-sidebar-item label="My Documents" icon="s-document-text" route="my-documents"/>
             <x-sidebar-item label="All Documents" icon="o-clipboard-document-list" route="all-documents"/>
 
             <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
