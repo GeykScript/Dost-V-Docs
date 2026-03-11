@@ -12,8 +12,7 @@
             <div class="relative">
                     <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
                         <option value="">Select Action</option>
-                        </select>
-                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </select>
                 </div>
             </div>
 
