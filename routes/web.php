@@ -31,6 +31,10 @@ Route::get('/documents/my-documents', function(){
     return view('my-documents');
 })->middleware(['auth', 'verified'])->name('my-documents');
 
+Route::get('/documents/create-document', function(){
+    return view('create-document');
+})->middleware(['auth', 'verified'])->name('create-document');
+
 Route::get('/documents/all-documents', function(){
     return view('all-documents');
 })->middleware(['auth', 'verified'])->name('all-documents');

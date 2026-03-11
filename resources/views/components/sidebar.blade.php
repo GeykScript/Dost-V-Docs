@@ -41,7 +41,7 @@
                 'id' => 'create-document',
                 'label' => 'Create Document',
                 'icon' => 's-plus',
-                'route' => 'dashboard'
+                'route' => 'create-document'
             ])
 
             @include('components.sidebar-item', [
