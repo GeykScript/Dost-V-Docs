@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
+    protected $table = 'unit';
+    
     protected $fillable = [
         'unit_name',
         'description',
@@ -23,7 +25,7 @@ class Unit extends Model
     }
 
 
-    public function positions(){
-        return $this->hasMany(Position::class, 'unit_id');
+    public function userAssignments(){
+        return $this->hasMany(UserAssignment::class, 'user_id');
     }
 }

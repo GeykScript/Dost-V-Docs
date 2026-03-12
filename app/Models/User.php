@@ -51,12 +51,12 @@ class User extends Authenticatable
 
 
     public function getFullNameAttribute()
-{
-    return $this->first_name
-        . ($this->middle_initial ? ' ' . $this->middle_initial : '')
-        . ' ' . $this->last_name
-        . ($this->suffix ? ' ' . $this->suffix : '');
-}
+    {
+        return $this->first_name
+            . ($this->middle_initial ? ' ' . $this->middle_initial : '')
+            . ' ' . $this->last_name
+            . ($this->suffix ? ' ' . $this->suffix : '');
+    }
 
     public function scopeSearch($query, $searchTerm)
     {
@@ -67,13 +67,8 @@ class User extends Authenticatable
         });
     }
 
-
-    public function assignedPositions(){
-        return $this->hasMany(AssignedPosition::class, 'user_id');
+    public function userAssignments(){
+        return $this->hasMany(UserAssignment::class, 'user_id');
     }
 
-    public function unit()
-{
-    return $this->belongsTo(Unit::class);
-}
 }
