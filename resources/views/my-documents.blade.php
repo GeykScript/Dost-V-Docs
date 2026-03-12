@@ -1,6 +1,6 @@
 <x-app-layout>
     @section('title', 'My Documents')
     <div class="p-6">
-        <livewire:my-documents.my-documents-table />
+        <livewire:admin.mydocumentstable />
     </div>
 </x-app-layout>
