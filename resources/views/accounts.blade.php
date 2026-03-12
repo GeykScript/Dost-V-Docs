@@ -9,7 +9,7 @@
                 <h2 class="bold font-bold text-2xl p-2">Accounts Management</h2>
             </div>
             
-            <livewire:livewire.accounts-table/>
+            <livewire:livewire1.accounts-table/>
         </div>
     </div>
 </div>

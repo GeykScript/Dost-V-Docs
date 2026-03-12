@@ -25,7 +25,7 @@
 
            
             <div class="overflow-x-auto">
-                <livewire:livewire.unit-table/>
+                <livewire:livewire1.unit-table/>
             </div>
 
         </div>
