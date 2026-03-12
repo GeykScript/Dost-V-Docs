@@ -37,11 +37,15 @@ class Document extends Model
         return $this->belongsTo(UserAssignment::class, 'owner_id');
     }
 
-    public function prorityLevel(){
-        return $this->belongsTo(PriorityLevel::class);
+    public function priorityLevel(){
+        return $this->belongsTo(PriorityLevel::class, 'priority_lvl_id');
     }
 
     public function status(){
         return $this->belongsTo(Status::class);
+    }
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class, 'document_id');
     }
 }

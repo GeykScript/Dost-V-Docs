@@ -26,11 +26,11 @@ class Transaction extends Model
     }
 
     public function transaction(){
-        return $this->belongsTo(Transaction::class);
+        return $this->belongsTo(Transaction::class, 'document_id');
     }
 
     public function document(){
-        return $this->belongsTo(Document::class);
+        return $this->belongsTo(Document::class, 'document_id');
     }
 
     public function sender(){
@@ -42,7 +42,7 @@ class Transaction extends Model
     }
 
     public function action(){
-        return $this->belongsTo(Action::class);
+        return $this->belongsTo(Action::class, 'action_id');
     }
 
     public function status(){

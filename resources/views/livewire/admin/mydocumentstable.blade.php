@@ -1,7 +1,7 @@
 
 {{-- Everything below the PHP tag is the Blade template --}}
 <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-    <div class="p-6">
+    <div class="p-10">
         <div class="flex items-center gap-3 mb-2">
             <div class="bg-blue-50 p-2 rounded-lg">
                 <x-heroicon-s-document-text class="w-5 h-5 text-blue-500" />
@@ -71,7 +71,9 @@
                     <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer">
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc->reference_number?? 'N/A'  }}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc->document_name ?? 'N/A'  }}</td>
-                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->transaction->action->action_name ?? 'N/A' }}</td> <!--di pa to final-->
+                        <td class="px-6 py-6 text-gray-700 font-medium">
+                            {{ $doc->transaction->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}
+                        </td>
                         <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->source_type ?? 'N/A'  }}</td> <!-- papalitan pa to, dapat source unit/sender name-->
                         <td class="px-6 py-6">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $doc['status_color'] }}">
@@ -80,7 +82,7 @@
                         </td>
                         <td class="px-6 py-6">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $doc['priority_color'] }}">
-                                {{ $doc->priority->priority_name ?? 'N/A' }} <!--double check based on model relationship-->
+                                {{ $doc->priorityLevel->priority_name ?? 'N/A' }} <!--double check based on model relationship-->
                             </span>
                         </td>
                         <td class="px-6 py-6 text-gray-600 font-medium">{{ $doc->deadline ?? 'N/A' }}</td>

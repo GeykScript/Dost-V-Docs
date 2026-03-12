@@ -18,4 +18,8 @@ class Action extends Model
         });
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'action_id');
+    }
 }
