@@ -1,7 +1,8 @@
 @props([
     'label',
     'icon',
-    'route'
+    'route',
+    'count' => 5, // default
 ])
 
 @php
@@ -9,7 +10,6 @@ $active = request()->routeIs($route) || request()->routeIs($route.'.*');
 @endphp
 
 <li class="relative group">
-
     {{-- Active indicator --}}
     @if($active)
         <div class="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 bg-brand-blue rounded-r-md"></div>
@@ -26,9 +26,15 @@ $active = request()->routeIs($route) || request()->routeIs($route.'.*');
             :component="'heroicon-'.$icon"
             class="w-5 h-5 text-current transition-colors" />
 
-        <span class="ml-3 text-sm">
-            {{ $label }}
-        </span>
+        <div class="ml-3 text-sm flex gap-1 items-center">
+            <p>{{ $label }}</p>
 
+            {{-- Show badge only for "Need Responses" --}}
+            @if($route === 'need-response' && $count > 0)
+                <span class="text-white bg-sky-500 rounded-full px-2 py-[2px] text-[10px] font-semibold">
+                    {{ $count }}
+                </span>
+            @endif
+        </div>
     </a>
 </li>

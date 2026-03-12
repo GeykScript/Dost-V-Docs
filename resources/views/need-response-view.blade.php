@@ -1,14 +1,12 @@
 <x-app-layout>
     @section('title', 'Need Response')
     <div class="p-6">
-        <a href="{{ route('need-response') }}">
-            <div class="flex items-start gap-2">
-                <x-heroicon-o-arrow-uturn-left class="w-4 h-4" />
-                <span class="font-semibold text-sm">Return</span>
+        <div class="grid grid-col lg:grid-cols-5 gap-3 h-full">
+            @include('components.need-responses.details')
+            <div class="col-span-2 grid-col h-full gap-3">
+                @include('components.need-responses.action')
+                @include('components.need-responses.timeline')
             </div>
-        </a>
-        <div>
-            
         </div>
     </div>
 </x-app-layout>
