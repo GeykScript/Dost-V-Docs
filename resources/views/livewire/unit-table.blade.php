@@ -49,10 +49,7 @@
                     placeholder="Search"
                     required />
             </div>  
-            <!-- Add Unit Button -->
-            <div class="col-span-2 md:col-span-2 flex items-center justify-center">
-                <button class="bg-brand-blue text-white  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add Unit</button>
-            </div>     
+                <livewire:modal.unit.create />
         </div>
     </div>
 

@@ -70,7 +70,7 @@
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($actions as $action)
-                    <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
+                    <tr class="hover:bg-gray-100/50 transition-colors ">
                         <td class="px-6 py-4 font-medium text-gray-800">{{ $action->id }}</td>
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2">{{ $action->action_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $action->created_at->format('F j, Y, g:i A') }}</td>
@@ -78,8 +78,8 @@
                             {{ optional($action->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
                         </td>                        
                         <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-trash class="w-4 h-4" /></button>
+                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
+                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-trash class="w-4 h-4" /></button>
                         </td>                
                     </tr>
                 @empty
