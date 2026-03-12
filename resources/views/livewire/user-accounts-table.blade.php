@@ -61,19 +61,18 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">#</th>
                     <th class="px-6 py-3">Username</th>
                     <th class="px-6 py-3">First Name</th>
                     <th class="px-6 py-3">Last Name</th>
                     <th class="px-6 py-3">Email</th>
                     <th class="px-6 py-3">Created At</th>
+                    <th class="px-6 py-3">Action</th>
                     
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($users as $user)
-                     <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
-                        <td class="px-6 py-4 font-medium text-gray-800">{{ $user->id }}</td>
+                     <tr class="hover:bg-gray-100/50 transition-colors ">
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $user->username }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->first_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->last_name }}</td>
@@ -81,6 +80,9 @@
                            <td class="px-6 py-4 text-gray-600 font-medium">
                             {{ $user->created_at->format('F j, Y, g:i A') }}
                         </td> 
+                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2">
+                            <a href="{{ route('accounts.edit', $user->id) }}" class=" text-sky-500 hover:text-sky-400 px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-5 h-5" />Edit</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>

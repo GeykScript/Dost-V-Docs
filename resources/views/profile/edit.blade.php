@@ -13,7 +13,7 @@
                     </div>
                         <!-- Profile Info -->
                     <div class="ml-32 md:ml-48 h-auto pb-12  mt-2 md:mt-5 flex flex-col ">
-                        <h2 class="text-xl md:text-2xl font-bold text-gray-700">John E. Doe</h2>
+                        <h2 class="text-xl md:text-2xl font-bold text-gray-700">{{ Auth::user()->full_name }}</h2>
                         <p class="flex items-center text-gray-500 mt-1  text-xs sm:text-sm md:text-sm">
                             <x-heroicon-s-building-office class="w-3 h-3 md:w-5 md:h-5 mr-1" />
                             MIS - Management Information System
