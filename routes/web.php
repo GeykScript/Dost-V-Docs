@@ -44,13 +44,23 @@ Route::get('/document/create-document', function () {
 
 // Units page
 Route::get('/management/unit', function () {
-    return view('units');
+    return view('units');   
 })->middleware(['auth', 'verified'])->name('units');
 
-// Accounts page
+
+// ACCOUNTS CONTROLLERS
+use App\Http\Controllers\Accounts\AccountsController;
+// Accounts page ---------------------------------
 Route::get('/management/accounts', function () {
-    return view('accounts');
+    return view('Account.accounts');
 })->middleware(['auth', 'verified'])->name('accounts');
+
+// Account Edit page
+Route::get('/management/accounts/edit/{id}', [AccountsController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('accounts.edit');
+
+
 
 // Document Types page
 Route::get('/document/setup/type', function () {
