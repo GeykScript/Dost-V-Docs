@@ -8,6 +8,7 @@
     </div>
     
     <hr class="border-b border-gray-200 mt-4 w-full">
+    <!--progress items-->
     <div class="w-full">
         <div class="w-full border-b border-gray-200">
             <div class="flex items-start justify-between py-3 w-full">
@@ -15,12 +16,12 @@
                     <div class="flex justify-between">
                         <h3 class="text-md font-semibold text-gray-700">For Signature<h3>
                             <div class="px-3 py-1 bg-sky-100/70 rounded-full">
-                        <p class="text-brand-blue text-[10px]">Routed</p>
+                        <p class="text-brand-blue font-medium text-[10px]">Routed</p>
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
-                    <p class="text-xs font-medium italic text-blue-600">For Signature</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">
                             <p class="text-xs font-medium text-gray-600">Source: MIS - Juan De La Cruz</p>
@@ -39,12 +40,12 @@
                     <div class="flex justify-between">
                         <h3 class="text-md font-semibold text-gray-700">For Signature<h3>
                             <div class="px-3 py-1 bg-sky-100/70 rounded-full">
-                        <p class="text-brand-blue text-[10px]">Routed</p>
+                        <p class="text-brand-blue font-medium text-[10px]">Routed</p>
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
-                    <p class="text-xs font-medium italic text-blue-600">For Signature</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">
                             <p class="text-xs font-medium text-gray-600">Source: MIS - Juan De La Cruz</p>
@@ -63,12 +64,12 @@
                     <div class="flex justify-between">
                         <h3 class="text-md font-semibold text-gray-700">For Signature<h3>
                             <div class="px-3 py-1 bg-sky-100/70 rounded-full">
-                        <p class="text-brand-blue text-[10px]">Routed</p>
+                        <p class="text-brand-blue font-medium text-[10px]">Routed</p>
                     </div>
                     </div>
                     
-                    <p class="text-xs font-medium text-gray-600">Memorandum of Agreement with Bicol Uni...</p>
-                    <p class="text-xs font-medium italic text-blue-600">For Signature</p>
+                    <p class="text-xs font-medium text-gray-600 mt-1">Memorandum of Agreement with Bicol Uni...</p>
+                    <p class="text-xs font-medium italic text-brand-blue">For Signature</p>
                     <div class="flex justify-between items-end">
                          <div class=" mt-2 w-full flex flex-col">
                             <p class="text-xs font-medium text-gray-600">Source: MIS - Juan De La Cruz</p>

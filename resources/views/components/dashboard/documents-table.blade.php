@@ -68,7 +68,7 @@
                 <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer">
                     <td class="px-6 py-4 font-medium text-gray-800">2022-0505-0013</td>
                     <td class="px-6 py-4 font-medium text-gray-700">Memorandum of Agreement for Bic...</td>
-                    <td class="px-6 py-4 text-gray-700 font-medium">For dissemination/td>
+                    <td class="px-6 py-4 text-gray-700 font-medium">For dissemination</td>
                     <td class="px-6 py-4 text-gray-700 font-medium">MIS</td>
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-2">

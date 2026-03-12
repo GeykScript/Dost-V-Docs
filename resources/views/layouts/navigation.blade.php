@@ -69,7 +69,7 @@
                                 <div class="flex-col items-start justify-start hidden sm:flex">
                                     <div class="flex ">
                                         <h1 class="text-md font-semibold">
-                                            {{ Auth::user()->full_name }}
+                                            {{ Auth::user()->username }}
                                         </h1>
                                         <div class="ms-1">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

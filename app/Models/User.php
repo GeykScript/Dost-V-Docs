@@ -51,20 +51,24 @@ class User extends Authenticatable
 
 
     public function getFullNameAttribute()
-{
-    return $this->first_name
-        . ($this->middle_initial ? ' ' . $this->middle_initial : '')
-        . ' ' . $this->last_name
-        . ($this->suffix ? ' ' . $this->suffix : '');
-}
-
-
-    public function assignedPositions(){
-        return $this->hasMany(AssignedPosition::class, 'user_id');
+    {
+        return $this->first_name
+            . ($this->middle_initial ? ' ' . $this->middle_initial : '')
+            . ' ' . $this->last_name
+            . ($this->suffix ? ' ' . $this->suffix : '');
     }
 
-    public function unit()
-{
-    return $this->belongsTo(Unit::class);
-}
+    public function scopeSearch($query, $searchTerm)
+    {
+        return $query->where(function ($query) use ($searchTerm) {
+            $query->where('first_name', 'like', "%{$searchTerm}%")
+                ->orWhere('last_name', 'like', "%{$searchTerm}%")
+                ->orWhere('username', 'like', "%{$searchTerm}%");
+        });
+    }
+
+    public function userAssignments(){
+        return $this->hasMany(UserAssignment::class, 'user_id');
+    }
+
 }

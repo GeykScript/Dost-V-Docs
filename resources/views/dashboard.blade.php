@@ -1,12 +1,12 @@
 <x-app-layout>
-    @vite(['resources/js/components/line-graph.js'])
-    @section('title', 'Dashboard')
+    
     <div class="p-6">
         <div class="grid grid-cols gap-3">
             <div class="grid grid-cols lg:grid-cols-7 gap-3">
                 <div class="cols-span-1 lg:col-span-5 grid grid-rows lg:grid-rows-4 gap-3">
                     <div class="grid grid-cols lg:grid-cols-3 row-span-1 gap-3">
                         <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm transition-shadow">
+                            <!--Stats Section-->
                             <div class="flex items-start justify-between">
                                 <div>
                                     <p class="text-sm font-medium text-gray-600">Total Documents</p>
@@ -50,14 +50,18 @@
                         </div>
                     </div>
                     <div class="row-span-3 bg-white rounded-lg">
+                        <!--Linegraph extension-->
                         @include('components.dashboard.dashboard-linegraph')
                     </div>
                 </div>
+                <!--Progress Overview extension-->
                 @include('components.dashboard.progress-overview')
             </div>
+            <!--documents table extension-->
             @include('components.dashboard.documents-table')
         </div>
     </div>
+    
    
     <!-- dashboard layout  -->
     

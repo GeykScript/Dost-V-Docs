@@ -1,62 +1,57 @@
-const getBrandColor = () => {
-  const computedStyle = getComputedStyle(document.documentElement);
-  // Defaulting to your brand blue if the variable isn't found
-  return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#00AEEF";
-};
+// resources/js/components/line-graph.js
 
-const brandColor = getBrandColor();
+document.addEventListener('DOMContentLoaded', () => {
+  const getBrandColor = () => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#00AEEF";
+  };
+  
+  const brandColor = getBrandColor();
 
-const options = {
-  chart: {
-    height: "90%",
-    type: "area",
-    fontFamily: "Inter, sans-serif",
-    toolbar: { show: false },
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'smooth',
-    width: 4,
-  },
-  series: [
-    {
-      name: "New users",
-      data: [6500, 6418, 6456, 6526, 6356, 6456, 6700],
-      color: brandColor,
+  const options = {
+    chart: {
+      height: '90%', // fixed height ensures chart shows
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      toolbar: { show: false },
+      zoom: { enabled: false },
+      selection: { enabled: false },
+      animations: { enabled: false }
     },
-  ],
-  xaxis: {
-    // 1. Change type to 'category'
-    type: 'category',
-    // 2. Move your dates here
-    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    labels: {
-      show: true,
-      style: { colors: '#6B7280' }
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: brandColor,
+        gradientToColors: [brandColor],
+      },
     },
-    axisBorder: { show: false },
-    axisTicks: { show: false },
-  },
-  yaxis: {
-    // 3. Remove categories from here; let it handle the numbers (6500, etc.)
-    labels: {
-      show: true, 
-      style: { colors: '#6B7280' },
-      // Optional: formats 6500 to "6.5k"
-      formatter: (value) => { return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : value },
+    tooltip: { enabled: false },
+    states: {
+      hover: { filter: { type: "none" } },
+      active: { filter: { type: "none" } }
     },
-  },
-  grid: {
-    show: true,
-    borderColor: '#F3F4F6',
-    strokeDashArray: 4,
-  },
-}
+    markers: { size: 0 },
+    dataLabels: { enabled: false },
+    stroke: { curve: 'smooth', width: 4 },
+    series: [
+      { name: "Documents", data: [34, 42, 38, 51, 47, 29, 36], color: brandColor }
+    ],
+    xaxis: {
+      type: 'category',
+      categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      labels: { show: true, style: { colors: '#6B7280' } },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    yaxis: { labels: { show: true, style: { colors: '#6B7280' } } },
+    grid: { show: true, borderColor: '#F3F4F6', strokeDashArray: 4 },
+  };
 
-if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("area-chart"), options);
-  chart.render();
-}
-
+  const chartEl = document.getElementById("area-chart");
+  if (chartEl && typeof ApexCharts !== 'undefined') {
+    const chart = new ApexCharts(chartEl, options);
+    chart.render();
+  }
+});
