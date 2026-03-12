@@ -34,6 +34,18 @@ class Document extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class, 'owner_id');
+        return $this->belongsTo(UserAssignment::class, 'owner_id');
+    }
+
+    public function priorityLevel(){
+        return $this->belongsTo(PriorityLevel::class, 'priority_lvl_id');
+    }
+
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'document_id');
     }
 }

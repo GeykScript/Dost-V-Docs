@@ -2,6 +2,6 @@
   
 
     <div class="p-6">
-        <livewire:all-documents.all-documents-table />
+        <livewire:admin.alldocumentstable />
     </div>
 </x-app-layout>
