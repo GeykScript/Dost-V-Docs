@@ -32,18 +32,19 @@
             <x-sidebar-item label="My Documents" icon="s-document-text" route="my-documents"/>
             <x-sidebar-item label="All Documents" icon="o-clipboard-document-list" route="all-documents"/>
 
-            <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
-                Users & Groups
-            </p>
-            <x-sidebar-item label="Accounts" icon="s-user-group" route="accounts"/>
-            <x-sidebar-item label="Units" icon="s-building-office" route="units"/>
+           @if(auth()->user()->is_super_admin == 1)
+                <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
+                    Users & Groups
+                </p>
+                <x-sidebar-item label="Accounts" icon="s-user-group" route="accounts"/>
+                <x-sidebar-item label="Units" icon="s-building-office" route="units"/>
 
-
-            <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
-                Document Setup
-            </p>
+                <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
+                    Document Setup
+                </p>
                 <x-sidebar-item label="Action" icon="o-document-plus" route="action"/>
                 <x-sidebar-item label="Type" icon="o-document-duplicate" route="type"/>
+            @endif
 
         </ul>
     </div>

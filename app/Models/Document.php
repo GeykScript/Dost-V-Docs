@@ -34,6 +34,14 @@ class Document extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class, 'owner_id');
+        return $this->belongsTo(UserAssignment::class, 'owner_id');
+    }
+
+    public function prorityLevel(){
+        return $this->belongsTo(PriorityLevel::class);
+    }
+
+    public function status(){
+        return $this->belongsTo(Status::class);
     }
 }
