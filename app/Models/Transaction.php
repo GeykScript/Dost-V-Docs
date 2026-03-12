@@ -26,7 +26,7 @@ class Transaction extends Model
     }
 
     public function transaction(){
-        return $this->belongsTo(Transaction::class, 'document_id');
+        return $this->belongsTo(Transaction::class);
     }
 
     public function document(){

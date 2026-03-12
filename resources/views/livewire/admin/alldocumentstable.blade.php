@@ -70,8 +70,8 @@
                     <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer">
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc->reference_number ?? 'N/A'}}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc->document_name ?? 'N/A' }}</td>
-                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->transaction->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}</td> <!-- will display the latest -->
-                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->user->unit->unit_name ?? 'N/A' }}</td>
+                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->transactions->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}</td> <!-- will display the latest -->
+                        <td class="px-6 py-6 text-gray-700 font-medium">{{ 'N/A' }}</td> <!-- to be filled by unit source-->
                         <td class="px-6 py-6">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ">
                                 {{ $doc->status->status_name ?? 'N/A' }}

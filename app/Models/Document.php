@@ -45,7 +45,7 @@ class Document extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function transaction(){
+    public function transactions(){
         return $this->hasMany(Transaction::class, 'document_id');
     }
 }

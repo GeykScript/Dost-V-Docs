@@ -72,7 +72,7 @@
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc->reference_number?? 'N/A'  }}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc->document_name ?? 'N/A'  }}</td>
                         <td class="px-6 py-6 text-gray-700 font-medium">
-                            {{ $doc->transaction->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}
+                            {{ $doc->transactions->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}
                         </td>
                         <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->source_type ?? 'N/A'  }}</td> <!-- papalitan pa to, dapat source unit/sender name-->
                         <td class="px-6 py-6">
