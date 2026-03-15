@@ -16,7 +16,7 @@
             </div>
         </div>           
             <div class="overflow-x-auto mt-4">
-                    <livewire:user-accounts-table />
+                    <livewire:admin.user-accounts-table />
             </div>
         </div>
     </div>

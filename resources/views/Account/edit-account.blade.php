@@ -1,5 +1,5 @@
 <x-app-layout>
-@section('title', 'Edit Accounts')
+@section('title', 'Edit Account')
 
 <!-- Account Edit Page  -->
 <div class="min-h-screen w-full">
@@ -30,13 +30,13 @@
                     </div>
                 </div>
                 <div class="bg-white shadow-sm rounded-lg p-6 ">
-                     @include('Account.update-password-form')
+                     @include('account.partials.update-password-form')
                 </div>
             </div>
             <div class="col-span-3 md:col-span-2 bg-white shadow-sm rounded-lg flex flex-col">
 
                 <div>
-                    @include('Account.update-info-form')
+                    @include('account.partials.update-info-form')
                 </div>
             </div>
         </div>

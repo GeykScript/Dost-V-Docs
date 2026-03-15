@@ -30,7 +30,7 @@
             </p>
         @endif
 
-    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6" id="UpdateProfilePasswordForm">
         @csrf
         @method('put')
 
@@ -55,7 +55,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button class="capitalize">{{ __('Update Password') }}</x-primary-button>
+            <x-loading-button formId="UpdateProfilePasswordForm" class="capitalize">{{ __('Update Password') }}</x-loading-button>
         </div>
     </form>
 </section>

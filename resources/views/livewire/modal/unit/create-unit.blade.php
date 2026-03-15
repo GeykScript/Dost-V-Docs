@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" x-on:unit-created.window="open = false" class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ open: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Add Unit Button -->
     <button
@@ -51,9 +51,9 @@
             </div>
 
             <!-- Form -->
-            <form wire:submit.prevent="createUnit" class="px-7 py-6 space-y-4">
+            <form wire:submit.prevent="createUnit" class="px-7 py-6 space-y-4" id="CreateUnitForm">
                 <div class="grid grid-cols-12 gap-2">
-                     <div class="col-span-7">
+                     <div class="col-span-12 md:col-span-7">
                     <label class="block text-xs font-bold text-gray-500 mb-1">
                         Unit Name
                     </label>
@@ -68,7 +68,7 @@
                     @enderror
                 </div>
 
-                <div class="col-span-5">
+                <div class="col-span-12 md:col-span-5">
                     <label class="block text-xs font-bold text-gray-500 mb-1">
                         Abbreviation
                     </label>
@@ -108,26 +108,11 @@
                         class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
                         Cancel
                     </button>
-                    <button
-                        type="submit"
-                        wire:loading.attr="disabled"
-                        wire:target="createUnit"
-                        class="px-4 py-2  rounded-lg text-sm font-semibold bg-brand-blue hover:bg-sky-400 text-white flex items-center justify-center gap-2">
-
-                        <span wire:loading.class="hidden" wire:target="createUnit">
-                            Create
-                        </span>
-
-                        <span wire:loading.flex wire:target="createUnit" class="hidden items-center gap-2">
-                            Creating
-                            <img src="{{ asset('logo/loading-spinner.svg') }}" class="w-4 h-4" alt="Loading...">
-                        </span>
-
-                    </button>
-
-
+                     <x-loading-button formId="CreateUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                        <x-heroicon-s-plus class="w-4 h-4 mr-1"/>
+                            {{ __('Create Unit') }}
+                        </x-loading-button>
                 </div>
-
             </form>
         </div>
     </div>

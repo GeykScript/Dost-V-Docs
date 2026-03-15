@@ -4,7 +4,6 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Unit;
-use Livewire\Attributes\On;
 use Livewire\WithPagination;
 class UnitTable extends Component
 {
@@ -19,14 +18,9 @@ class UnitTable extends Component
         $this->resetPage(); // reset pagination when search changes 
     }
 
-public function updatedPerPage()
-{
-    $this->resetPage(); // reset pagination when perPage changes
-}
-
-    public function refreshUnits(): void
+    public function updatedPerPage()
     {
-        $this->resetPage();
+        $this->resetPage(); // reset pagination when perPage changes
     }
 
 

@@ -26,10 +26,9 @@ public function createUnit(): void
 
     Unit::create($validated);
 
-    $this->reset();
 
-    $this->dispatch('unit-created'); // close modal
-    $this->dispatch('show-unit-success', message: 'Unit created successfully.');
+    session()->flash('success', 'Unit created successfully.');
+    $this->redirectRoute('units'); 
 }
 
     public function render()

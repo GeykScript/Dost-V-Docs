@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire;
-
+namespace App\Livewire\Admin;
 use Livewire\Component;
+use App\Models\Action;
 use Livewire\WithPagination;
-use App\Models\User;
 
-class UserAccountsTable extends Component
+class ActionsTable extends Component
 {
+
     use WithPagination;
 
     public $search = '';
@@ -22,13 +22,12 @@ class UserAccountsTable extends Component
 {
     $this->resetPage(); // reset pagination when perPage changes
 }
-
     public function render()
     {
-        $query = User::search($this->search);
-            return view('livewire.user-accounts-table', [
-            'users' => $query
+        $query = Action::search($this->search);
+        return view('livewire.admin.actions-table', [
+            'actions' => $query
                 ->paginate($this->perPage)
-            ]);
+        ]);
     }
 }

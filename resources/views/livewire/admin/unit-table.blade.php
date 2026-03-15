@@ -1,20 +1,10 @@
 <div class="overflow-hidden">
-    
-    <!--  Success Message -->
-    <div
-        x-data="{ show: false, message: '' }"
-        x-on:show-unit-success.window="
-            message = $event.detail.message;
-            show = true;
-            setTimeout(() => show = false, 2500)
-        "
-        x-show="show"
-        x-cloak
-        x-transition.opacity
-        class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500"
-    >
-        <span x-text="message"></span>
+
+    @if(session('success'))
+    <div class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500">
+        {{ session('success') }}
     </div>
+    @endif
 
     <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2">
@@ -23,7 +13,6 @@
                 <div class="flex gap-4 items-center">
                     <div
                         x-data="{ open: false, selected: @entangle('perPage') }"
-                        
                         class=" w-16 ">
                         <!-- Dropdown button -->
                         <button
@@ -85,11 +74,11 @@
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($units as $unit)
-                    <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
-                        <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
-                        <td class="px-6 py-4 text-gray-600 font-medium">
+                    <tr class="hover:bg-gray-100/50 transition-colors ">
+                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium">
                             {{ $unit->created_at->format('F j, Y, g:i A') }}
                         </td>                
                     </tr>
