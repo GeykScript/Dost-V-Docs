@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Unit;
@@ -10,6 +10,7 @@ class UnitTable extends Component
 {
     use WithPagination;
 
+    
     public $search = '';
     public $perPage = 10; 
 
@@ -31,9 +32,10 @@ public function updatedPerPage()
 
     public function render()
     {
-        $query = Unit::search($this->search);
+        $query = Unit::search($this->search)
+            ->orderByDesc('id');
 
-           return view('livewire.unit-table', [
+           return view('livewire.admin.unit-table', [
             'units' => $query
                 ->paginate($this->perPage)
         ]);

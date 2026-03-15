@@ -1,10 +1,29 @@
 <div class="overflow-hidden">
+    
+    <!--  Success Message -->
+    <div
+        x-data="{ show: false, message: '' }"
+        x-on:show-unit-success.window="
+            message = $event.detail.message;
+            show = true;
+            setTimeout(() => show = false, 2500)
+        "
+        x-show="show"
+        x-cloak
+        x-transition.opacity
+        class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500"
+    >
+        <span x-text="message"></span>
+    </div>
+
+    <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">
                 <div class="flex gap-4 items-center">
                     <div
                         x-data="{ open: false, selected: @entangle('perPage') }"
+                        
                         class=" w-16 ">
                         <!-- Dropdown button -->
                         <button
@@ -26,7 +45,7 @@
                             <li
                                 @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
                                 class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                 {{ $value }}
                             </li>
                             @endforeach
@@ -49,7 +68,7 @@
                     placeholder="Search"
                     required />
             </div>  
-                <livewire:modal.unit.create />
+                <livewire:modal.unit.create-unit />
         </div>
     </div>
 
@@ -58,7 +77,6 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">#</th>
                     <th class="px-6 py-3">Name</th>
                     <th class="px-6 py-3">Abbreviation</th>
                     <th class="px-6 py-3">Description</th>
@@ -68,7 +86,6 @@
             <tbody class="divide-y divide-gray-100">
                 @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
-                        <td class="px-6 py-4 font-medium text-gray-800">{{ $unit->id }}</td>
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>

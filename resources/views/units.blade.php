@@ -14,7 +14,7 @@
             </div>
         </div>           
             <div class="overflow-x-auto mt-4">
-                    <livewire:unit-table />
+                    <livewire:admin.unit-table />
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ open: false }" x-on:unit-created.window="open = false" class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Add Unit Button -->
     <button
@@ -51,10 +51,7 @@
             </div>
 
             <!-- Form -->
-             <!-- wire:submit.prevent="save" -->
-            <form  class="px-7 py-6 space-y-4">
-
-
+            <form wire:submit.prevent="createUnit" class="px-7 py-6 space-y-4">
                 <div class="grid grid-cols-12 gap-2">
                      <div class="col-span-7">
                     <label class="block text-xs font-bold text-gray-500 mb-1">
@@ -66,6 +63,9 @@
                         wire:model.defer="unit_name"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:ring-1 focus:ring-sky-500"
                         placeholder="e.g Management Information Systems"/>
+                    @error('unit_name')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="col-span-5">
@@ -78,10 +78,11 @@
                         wire:model.defer="abbreviation"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:ring-1 focus:ring-sky-500"
                         placeholder="e.g MIS"/>
+                    @error('abbreviation')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
-
                 </div>
-               
 
                 <div>
                     <label class="block text-xs font-bold text-gray-500 mb-1">
@@ -93,6 +94,9 @@
                         wire:model.defer="description"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:border focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                         placeholder="Short description..."></textarea>
+                    @error('description')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Buttons -->
@@ -104,15 +108,23 @@
                         class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
                         Cancel
                     </button>
-
                     <button
                         type="submit"
-                        @click="open = false"
                         wire:loading.attr="disabled"
-                        class="px-8 py-2 rounded-lg text-sm font-semibold bg-brand-blue hover:bg-sky-400 text-white">
-                        <span wire:loading.remove>Create</span>
-                        <span wire:loading>Creating...</span>
+                        wire:target="createUnit"
+                        class="px-4 py-2  rounded-lg text-sm font-semibold bg-brand-blue hover:bg-sky-400 text-white flex items-center justify-center gap-2">
+
+                        <span wire:loading.class="hidden" wire:target="createUnit">
+                            Create
+                        </span>
+
+                        <span wire:loading.flex wire:target="createUnit" class="hidden items-center gap-2">
+                            Creating
+                            <img src="{{ asset('logo/loading-spinner.svg') }}" class="w-4 h-4" alt="Loading...">
+                        </span>
+
                     </button>
+
 
                 </div>
 
