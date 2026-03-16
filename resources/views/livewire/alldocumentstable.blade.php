@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="flex flex-col gap-1">
-                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
+                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500" :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                             <option value="">All Statuses</option>
                                 @foreach($statuses as $status)
                                     <option value="{{ $status->status_name}}">{{ $status->status_name ?? '-' }}</option>

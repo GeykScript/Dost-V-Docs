@@ -33,12 +33,12 @@
                                 x-show="open"
                                 @click.outside="open = false"
                                 x-cloak
-                                class="absolute w-16 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg">
+                                class="absolute w-16 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg" >
                                 @foreach ([5, 10, 20, 50, 100] as $value)
                                 <li
                                     @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
-                                    class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                    :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                   class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                     {{ $value }}
                                 </li>
                                 @endforeach
@@ -63,7 +63,9 @@
                     </div>  
                     
                     <div class="flex flex-col gap-1">
-                        <select wire:model.live="filterYear" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
+                        <select wire:model.live="filterYear"
+                        class="w-full h-full focus:outline-none focus:ring-0 text-sm border border-gray-300 rounded-lg px-3 focus:ring-1 focus:ring-sky-500 focus:border-sky-500
+                            {{ $filterYear ? 'bg-brand-blue text-white' : 'text-gray-900 bg-white' }}">
                             <option value="">All Years</option>
                                 @foreach($years as $year)
                                     <option value="{{$year}}">{{ $year ?? '-'}}</option>
@@ -72,10 +74,11 @@
                     </div>
 
                     <div class="flex flex-col gap-1">
-                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
-                            <option value="">All Statuses</option>
+                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500" :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
+                            <option value="" class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">All Statuses</option>
                                 @foreach($statuses as $status)
-                                    <option value="{{ $status->status_name}}">{{ $status->status_name ?? '-' }}</option>
+                                    <option value="{{ $status->status_name}}" :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">{{ $status->status_name ?? '-' }}</option>
                                 @endforeach
                         </select>
                     </div>
