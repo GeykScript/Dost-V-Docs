@@ -23,9 +23,9 @@ class CreateUnit extends Component
 public function createUnit(): void
 {
     $validated = $this->validate();
-    dd($validated);
+    //dd($validated);
 
-    //Unit::create($validated);
+    Unit::create($validated);
 
 
     session()->flash('success', 'Unit created successfully.');
