@@ -62,21 +62,101 @@
                             required />
                     </div>  
                     <div class="flex flex-col gap-1">
-                        <select wire:model.live="filterYear" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
-                            <option value="">All Years</option>
-                                @foreach($years as $year)
-                                    <option value="{{$year}}">{{ $year ?? '-'}}</option>
+                        <div
+                            x-data="{ open: false, selected: @entangle('filterYear') }"
+                            class="relative w-40">
+
+                            <!-- Dropdown button -->
+                            <button
+                                @click="open = !open"
+                                type="button"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                    focus:ring-gray-500 focus:border-2 focus:border-brand-blue
+                                    w-full p-2.5 flex justify-between items-center">
+
+                                <span x-text="selected ? selected : 'All Years'"></span>
+                                <x-heroicon-s-chevron-down class="w-4 h-4" />
+                            </button>
+
+                            <!-- Dropdown menu -->
+                            <ul
+                                x-show="open"
+                                @click.outside="open = false"
+                                x-cloak
+                                class="absolute w-40 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+
+                                <!-- All Years -->
+                                <li
+                                    @click="selected = ''; $wire.set('filterYear',''); open=false"
+                                    class="cursor-pointer px-4 py-2 text-sm transition"
+                                    :class="selected == '' ? 'bg-brand-blue text-white' : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
+                                    All Years
+                                </li>
+
+                                @foreach ($years as $year)
+                                <li
+                                    @click="selected = {{ $year }}; $wire.set('filterYear', {{ $year }}); open = false"
+                                    class="cursor-pointer px-4 py-2 text-sm transition"
+                                    :class="selected == {{ $year }} 
+                                        ? 'bg-brand-blue text-white' 
+                                        : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
+                                    {{ $year }}
+                                </li>
                                 @endforeach
-                        </select>
+
+                            </ul>
+                        </div>
+
+                        
                     </div>
 
                     <div class="flex flex-col gap-1">
-                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500" :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
-                            <option value="">All Statuses</option>
-                                @foreach($statuses as $status)
-                                    <option value="{{ $status->status_name}}">{{ $status->status_name ?? '-' }}</option>
+                         <div
+                            x-data="{ open: false, selected: @entangle('filterStatus') }"
+                            class="relative w-40">
+
+                            <!-- Dropdown button -->
+                            <button
+                                @click="open = !open"
+                                type="button"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                    focus:ring-gray-500 focus:border-2 focus:border-brand-blue
+                                    w-full p-2.5 flex justify-between items-center">
+
+                                <span x-text="selected ? selected : 'All Status'"></span>
+                                <x-heroicon-s-chevron-down class="w-4 h-4" />
+                            </button>
+
+                            <!-- Dropdown menu -->
+                            <ul
+                                x-show="open"
+                                @click.outside="open = false"
+                                x-cloak
+                                class="absolute w-40 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+
+                                <!-- All Statuses -->
+                                <li
+                                    @click="selected = ''; $wire.set('filterStatus',''); open=false"
+                                    class="cursor-pointer px-4 py-2 text-sm transition"
+                                    :class="selected == '' ? 'bg-brand-blue text-white' : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
+                                    All Statuses
+                                </li>
+
+                                @foreach ($statuses as $status)
+                                    <li
+                                        @click="selected = '{{ $status->status_name }}'; $wire.set('filterStatus', '{{ $status->status_name }}'); open = false"
+                                        class="cursor-pointer px-4 py-2 text-sm transition"
+                                        :class="selected == '{{ $status->status_name }}'
+                                            ? 'bg-brand-blue text-white'
+                                            : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
+
+                                        {{ $status->status_name }}
+
+                                    </li>
                                 @endforeach
-                        </select>
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
