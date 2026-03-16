@@ -79,7 +79,7 @@
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-600 font-medium">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button>
+                            <livewire:modal.unit.edit-unit :unit="$unit" />
                         </td>
                     </tr>
                 @empty
