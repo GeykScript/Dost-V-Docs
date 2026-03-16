@@ -14,9 +14,9 @@ class DeleteAction extends Component
     public function deleteAction(): void
         {
             // Use Laravel SoftDeletes
-            // $this->action->delete();
-            
-            dd($this->action);
+            $this->action->delete();
+
+            //dd($this->action);
 
             session()->flash('success', 'Action deleted successfully.');
             $this->redirectRoute('action'); // use the route name from your routes file

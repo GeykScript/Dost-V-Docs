@@ -20,7 +20,7 @@ class DeleteUnit extends Component
             }   
             else {
             // Soft delete
-            $this->unit->delete();
+           $this->unit->delete();
             
             session()->flash('success', 'Unit deleted successfully.');
             $this->redirectRoute('units'); 
