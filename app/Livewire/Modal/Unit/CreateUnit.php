@@ -23,12 +23,13 @@ class CreateUnit extends Component
 public function createUnit(): void
 {
     $validated = $this->validate();
+    dd($validated);
 
-    Unit::create($validated);
+    // Unit::create($validated);
 
 
-    session()->flash('success', 'Unit created successfully.');
-    $this->redirectRoute('units'); 
+    // session()->flash('success', 'Unit created successfully.');
+    // $this->redirectRoute('units'); 
 }
 
     public function render()

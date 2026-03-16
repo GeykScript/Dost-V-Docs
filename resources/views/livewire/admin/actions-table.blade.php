@@ -80,8 +80,8 @@
                             {{ optional($action->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
                         </td>                        
                         <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-trash class="w-4 h-4" /></button>
+                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button>
+                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-trash class="w-4 h-4" />Delete</button>
                         </td>                
                     </tr>
                 @empty

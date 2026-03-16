@@ -19,12 +19,14 @@ public function addType(): void
 {
     $validated = $this->validate();
 
-    Type::create($validated);
+    dd($validated);
 
-    session()->flash('success', 'Type created successfully.');
+//     Type::create($validated);
 
-   // Redirect to the Document Types page
-    $this->redirectRoute('type'); // use the route name from your routes file
+//     session()->flash('success', 'Type created successfully.');
+
+//    // Redirect to the Document Types page
+//     $this->redirectRoute('type'); // use the route name from your routes file
 }
 
     public function render()

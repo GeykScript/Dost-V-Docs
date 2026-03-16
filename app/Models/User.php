@@ -71,4 +71,13 @@ class User extends Authenticatable
         return $this->hasMany(UserAssignment::class, 'user_id');
     }
 
+
+public function currentAssignment()
+{
+    return $this->hasOne(UserAssignment::class)
+        ->where('is_current', true)
+        ->where('unit_id', 2)
+        ->with('unit');
+}
+
 }
