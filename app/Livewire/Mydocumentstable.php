@@ -41,10 +41,10 @@ class Mydocumentstable extends Component
 
         $statuses = Status::all();
 
-        $years = Document::selectRaw('YEAR(created_at) as year')
-            ->distinct()
-            ->orderBy('year','desc')
-            ->pluck('year');
+        $years = Document::get()->pluck('created_at')
+            ->map(fn($date) => $date->format('Y'))
+            ->unique()
+            ->sortDesc();
 
         return view('livewire.mydocumentstable', [
             'documents' => $query->paginate($this->perPage),
