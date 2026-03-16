@@ -12,8 +12,11 @@
         </div>
 
         <div class="flex justify-center items-center my-4">
-            <h1 class="font-semibold  text-brand-blue text-md md:text-lg" >Login Account</h1>
-        </div>
+<h1 class="font-bold text-md md:text-lg 
+    bg-gradient-to-r from-sky-600 to-sky-400 
+    bg-clip-text text-transparent">
+    Login Account
+</h1>        </div>
 
             <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

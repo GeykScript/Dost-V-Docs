@@ -1,5 +1,6 @@
 <x-app-layout>
-    
+    @section('title', 'Profile')
+
     <!-- Profile Section  -->
     <div class="p-4 sm:p-6">
         <div class="max-w-7xl mx-auto  space-y-2">

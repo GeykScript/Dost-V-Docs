@@ -40,11 +40,13 @@ class EditUnit extends Component
     public function editUnit(): void
     {
         $validated = $this->validate();
-        dd($validated);
+        //dd($validated);
 
-        // $this->unit->update($validated);
+        $this->unit->update($validated);
 
-        // session()->flash('success', 'Unit updated successfully.');
+        session()->flash('success', 'Unit updated successfully.');
+        $this->redirectRoute('units'); 
+
     }
 
     public function render()
