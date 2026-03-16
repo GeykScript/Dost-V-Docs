@@ -1,5 +1,6 @@
 <x-app-layout>
-    
+    @section('title', 'Dashboard')
+
     <div class="p-6">
         <div class="grid grid-cols gap-3">
             <div class="grid grid-cols lg:grid-cols-7 gap-3">

@@ -8,7 +8,7 @@
     <div class="grid grid-cols-12 mb-4 gap-2">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">
-                <div class="flex gap-4 items-center">
+               <div class="flex gap-4 items-center">
                     <div
                         x-data="{ open: false, selected: @entangle('perPage') }"
                         class=" w-16 ">
@@ -32,7 +32,7 @@
                             <li
                                 @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
                                 class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                 {{ $value }}
                             </li>
                             @endforeach
@@ -66,8 +66,7 @@
                 <tr>
                     <th class="px-6 py-3" colspan="2">Type</th>
                     <th class="px-6 py-3">Created At</th>
-                    <th class="px-6 py-3">Updated At</th>
-                    <th class="px-6 py-3" colspan="2" >Action</th>
+                    <th class="px-6 py-3"  >Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -75,12 +74,8 @@
                     <tr class="hover:bg-gray-100/50 transition-colors cursor-pointer">
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2">{{ $type->type_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $type->created_at->format('F j, Y, g:i A') }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">
-                            {{ optional($type->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
-                        </td>                        
-                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-trash class="w-4 h-4" /></button>
+                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" >
+                            <livewire:modal.type.delete-type :type="$type"/>
                         </td>                
                     </tr>
                 @empty

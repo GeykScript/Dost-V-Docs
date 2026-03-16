@@ -19,8 +19,9 @@ class AddAction extends Component
 public function addAction(): void
 {
     $validated = $this->validate();
-
-    Action::create($validated);
+    dd($validated);
+    
+    //Action::create($validated);
 
     session()->flash('success', 'Action created successfully.');
 

@@ -1,7 +1,7 @@
 <x-guest-layout>
 
-    <div class="flex flex-col px-6 md:px-12">
-        <div class="flex justify-center items-center mt-10">
+    <div class="flex flex-col px-6 md:px-10">
+        <div class="flex justify-center items-center mt-6">
             <div class="flex">
                 <img src="{{ asset ('logo/docs_logo.png')}}" alt="DOCS Logo" class="w-auto h-16 md:h-20">
                 <div class="flex flex-col justify-center ">
@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="flex justify-center items-center my-6">
+        <div class="flex justify-center items-center my-4">
             <h1 class="font-semibold  text-brand-blue text-md md:text-lg" >Login Account</h1>
         </div>
 
@@ -65,8 +65,8 @@
                 </label>
             </div>
 
-            <div class="flex mt-6">
-                <x-loading-button formId="LoginForm" class="w-full text-center flex justify-center mb-12 h-10 md:h-12 items-center bg-gray-800">
+            <div class="flex mt-5">
+                <x-loading-button formId="LoginForm" class="w-full text-center flex justify-center mb-10 h-10 md:h-12 items-center bg-gray-800">
                     {{ __('Log in') }}
                 </x-loading-button>
             </div>

@@ -1,4 +1,4 @@
-<div class="col-span-3 bg-white rounded-lg h-full p-8">
+<div class="col-span-1 lg:col-span-3 bg-white rounded-lg h-full p-8">
     <a href="{{ route('need-response') }}">
         <div class="flex items-start gap-2">
             <x-heroicon-o-arrow-uturn-left class="w-4 h-4" />
@@ -6,7 +6,7 @@
         </div>
     </a>
     <div class="flex lg:justify-between flex-col lg:flex-row xs:gap-4 mt-4">
-        <div class="p-1 px-2 font-semibold rounded-lg bg-cyan-100 text-brand-blue flex items-center gap-2">
+        <div class="p-1 px-2 font-semibold rounded-lg bg-sky-100 text-brand-blue flex items-center gap-2">
             <p class="text-[11px]">Ref No.</p> 
             <p class="text-lg">2022-0505-0011</p>
         </div>

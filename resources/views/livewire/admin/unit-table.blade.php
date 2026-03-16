@@ -5,6 +5,11 @@
         {{ session('success') }}
     </div>
     @endif
+    @if(session('error'))
+    <div class="mb-3 rounded-lg border border-red-200 bg-red-100 px-4 py-3 text-sm font-medium text-red-500">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2">
@@ -66,21 +71,22 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3"colspan="2">Name</th>
                     <th class="px-6 py-3">Abbreviation</th>
                     <th class="px-6 py-3">Description</th>
-                    <th class="px-6 py-3">Created At</th>
+                    <th class="px-6 py-3" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
-                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium">
-                            {{ $unit->created_at->format('F j, Y, g:i A') }}
-                        </td>                
+                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
+                            <livewire:modal.unit.edit-unit :unit="$unit" />
+                            <livewire:modal.unit.delete-unit :unit="$unit" />
+                        </td>
                     </tr>
                 @empty
                     <tr>

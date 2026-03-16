@@ -1,5 +1,5 @@
 <x-app-layout>
-   
+   @section('title', 'Create Document')
 
     <div class="p-6">
         <div class="bg-white rounded-lg w-full p-10">

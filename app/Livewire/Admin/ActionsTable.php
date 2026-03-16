@@ -19,9 +19,9 @@ class ActionsTable extends Component
     }
 
     public function updatedPerPage()
-{
-    $this->resetPage(); // reset pagination when perPage changes
-}
+    {
+        $this->resetPage(); // reset pagination when perPage changes
+    }
     public function render()
     {
         $query = Action::search($this->search);

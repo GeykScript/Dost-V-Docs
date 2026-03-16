@@ -19,7 +19,9 @@ public function addType(): void
 {
     $validated = $this->validate();
 
-    Type::create($validated);
+    dd($validated);
+
+    //Type::create($validated);
 
     session()->flash('success', 'Type created successfully.');
 

@@ -55,7 +55,7 @@
                 <div class="grid grid-cols-12 gap-2">
                     <div class="col-span-12">
                         <label class="block text-xs font-bold text-gray-500 mb-1">
-                            Type Name
+                            Type Name <span class="text-red-500">*</span>
                         </label>
 
                         <x-text-input

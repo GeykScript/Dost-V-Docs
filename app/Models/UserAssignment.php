@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+
+use App\Models\User;
+use App\Models\Unit;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
 
 class UserAssignment extends Model
@@ -25,11 +29,11 @@ class UserAssignment extends Model
     }
 
     public function transactSender(){
-        return $this->hasMany(Transactions::class, 'sender_id');
+        return $this->hasMany(Transaction::class, 'sender_id');
     }
 
     public function transactReceiver(){
-        return $this->hasMany(Transactions::class, 'receiver_id');
+        return $this->hasMany(Transaction::class, 'receiver_id');
     }
 
     public function document(){
