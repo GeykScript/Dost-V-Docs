@@ -66,21 +66,21 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3"colspan="2">Name</th>
                     <th class="px-6 py-3">Abbreviation</th>
                     <th class="px-6 py-3">Description</th>
-                    <th class="px-6 py-3">Created At</th>
+                    <th class="px-6 py-3">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
-                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-600 font-medium">
-                            {{ $unit->created_at->format('F j, Y, g:i A') }}
-                        </td>                
+                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button>
+                        </td>
                     </tr>
                 @empty
                     <tr>

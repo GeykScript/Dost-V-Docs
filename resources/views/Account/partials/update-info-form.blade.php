@@ -2,7 +2,7 @@
     <header class="flex gap-2 items-center ">
         <x-heroicon-o-identification class="w-6 h-6 text-gray-800" />
 
-        <h2 class=" text-xl text-gray-600 font-bold">
+        <h2 class=" text-lg md:text-xl text-gray-600 font-bold">
             {{ __('Profile Information') }}
 
         </h2>

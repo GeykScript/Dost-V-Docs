@@ -30,9 +30,12 @@
             <x-sidebar-item label="Need Responses" icon="s-tag" route="need-response"/>
             <x-sidebar-item label="Create Document" icon="s-plus" route="create-document"/>
             <x-sidebar-item label="My Documents" icon="s-document-text" route="my-documents"/>
-            <x-sidebar-item label="All Documents" icon="o-clipboard-document-list" route="all-documents"/>
-
-           @if(auth()->user()->is_super_admin == 1)
+            <!-- Hide if not RMU  -->
+            @if(auth()->user()->currentAssignment) 
+                <x-sidebar-item label="All Documents" icon="o-clipboard-document-list" route="all-documents"/>
+            @endif
+            <!-- Only show if super admin  -->
+           @if(auth()->user()->is_super_admin)
                 <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
                     Users & Groups
                 </p>

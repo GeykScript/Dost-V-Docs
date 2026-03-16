@@ -67,7 +67,7 @@
                     <th class="px-6 py-3" colspan="2">Type</th>
                     <th class="px-6 py-3">Created At</th>
                     <th class="px-6 py-3">Updated At</th>
-                    <th class="px-6 py-3" colspan="2" >Action</th>
+                    <th class="px-6 py-3"  >Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -78,9 +78,9 @@
                         <td class="px-6 py-4 text-gray-700 font-medium">
                             {{ optional($type->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
                         </td>                        
-                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-trash class="w-4 h-4" /></button>
+                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" >
+                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button>
+                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1"><x-heroicon-s-trash class="w-4 h-4" />Delete</button>
                         </td>                
                     </tr>
                 @empty
