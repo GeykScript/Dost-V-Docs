@@ -15,7 +15,7 @@
                 <div class="absolute top-2 bottom-0 w-[2px] bg-cyan-400"></div>
             </div>
 
-            <div class="flex-grow min-w-0 pb-6 sm:pb-8 border-b border-gray-100 mb-6 sm:mb-8">
+            <div class="flex-grow min-w-0 pb-2 border-b border-gray-100 mb-3">
                 <div class="flex justify-between items-start mb-1.5 gap-2 min-w-0">
                     <h3 class="text-base font-bold text-cyan-500 leading-none mt-0.5 truncate">For Signature</h3>
                     <span class="bg-cyan-100 text-cyan-500 text-[10px] sm:text-[10px] font-bold px-2 sm:px-3 py-1 rounded-md leading-none shrink-0">Routed</span>
@@ -47,7 +47,7 @@
                 <div class="absolute top-2 bottom-0 w-[2px] bg-gray-300"></div>
             </div>
 
-            <div class="flex-grow min-w-0 pb-6 sm:pb-8 border-b border-gray-100 mb-6 sm:mb-8">
+            <div class="flex-grow min-w-0 pb-2 border-b border-gray-100 mb-3">
                 <div class="flex justify-between items-start mb-1.5 gap-2 min-w-0">
                     <h3 class="text-base font-bold text-gray-700 leading-none mt-0.5 truncate">For Signature</h3>
                     <span class="bg-cyan-100 text-cyan-500 text-[10px] sm:text-[10px] font-bold px-2 sm:px-3 py-1 rounded-md leading-none shrink-0">Routed</span>
