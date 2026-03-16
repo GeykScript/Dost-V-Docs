@@ -67,7 +67,6 @@
                 <tr>
                     <th class="px-6 py-3" colspan="2">Action</th>
                     <th class="px-6 py-3">Created At</th>
-                    <th class="px-6 py-3">Updated At</th>
                     <th class="px-6 py-3" colspan="2" >Action</th>
                 </tr>
             </thead>
@@ -76,12 +75,9 @@
                     <tr class="hover:bg-gray-100/50 transition-colors ">
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2">{{ $action->action_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $action->created_at->format('F j, Y, g:i A') }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">
-                            {{ optional($action->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
-                        </td>                        
                         <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-trash class="w-4 h-4" />Delete</button>
+                            <!-- <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button> -->
+                            <livewire:modal.action.delete-action :action="$action"/>
                         </td>                
                     </tr>
                 @empty
