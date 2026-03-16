@@ -26,6 +26,10 @@ Route::get('/document/need-responses/view/{id}', function(){
 })->middleware(['auth', 'verified'])->name('need-response.view');
 
 
+Route::get('/document/need-responses/transaction/view/', function(){
+    return view('documents.transaction.transaction-view');
+})->middleware(['auth', 'verified'])->name('transaction.view');
+
 
 // My Documents page
 Route::get('/document/my-documents', function () {
