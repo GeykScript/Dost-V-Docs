@@ -20,12 +20,13 @@ public function addAction(): void
 {
     $validated = $this->validate();
     dd($validated);
-//     Action::create($validated);
+    
+    //Action::create($validated);
 
-//     session()->flash('success', 'Action created successfully.');
+    session()->flash('success', 'Action created successfully.');
 
-//    // Redirect to the Document Actions page
-//     $this->redirectRoute('action'); // use the route name from your routes file
+   // Redirect to the Document Actions page
+    $this->redirectRoute('action'); // use the route name from your routes file
 }
 
     public function render()

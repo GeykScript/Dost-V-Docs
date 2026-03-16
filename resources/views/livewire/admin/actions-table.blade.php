@@ -8,10 +8,9 @@
     <div class="grid grid-cols-12 mb-4 gap-2">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">
-                <div class="flex gap-4 items-center">
+            <div class="flex gap-4 items-center">
                     <div
                         x-data="{ open: false, selected: @entangle('perPage') }"
-                        
                         class=" w-16 ">
                         <!-- Dropdown button -->
                         <button
@@ -33,7 +32,7 @@
                             <li
                                 @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
                                 class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                 {{ $value }}
                             </li>
                             @endforeach

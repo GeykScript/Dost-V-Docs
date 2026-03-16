@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', 'Need Response')
+    @section('title', 'View Need Response')
     <div class="p-6">
         <div class="grid grid-col lg:grid-cols-5 gap-3 h-full">
             @include('documents.needResponses.partials.details')
