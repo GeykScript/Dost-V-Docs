@@ -51,14 +51,14 @@
                     </div>
                     <div class="row-span-3 bg-white rounded-lg">
                         <!--Linegraph extension-->
-                        @include('components.dashboard.dashboard-linegraph')
+                        @include('dashboard.partials.dashboard-linegraph')
                     </div>
                 </div>
                 <!--Progress Overview extension-->
-                @include('components.dashboard.progress-overview')
+                @include('dashboard.partials.progress-overview')
             </div>
             <!--documents table extension-->
-            @include('components.dashboard.documents-table')
+            @include('dashboard.partials.documents-table')
         </div>
     </div>
     

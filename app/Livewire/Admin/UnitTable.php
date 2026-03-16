@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
+
 use Livewire\Component;
-use App\Models\Action;
+use App\Models\Unit;
 use Livewire\WithPagination;
-
-class ActionsTable extends Component
+class UnitTable extends Component
 {
-
     use WithPagination;
 
+    
     public $search = '';
-    public $perPage = 10; //
+    public $perPage = 10; 
 
     public function updatingSearch()
     {
@@ -19,14 +19,18 @@ class ActionsTable extends Component
     }
 
     public function updatedPerPage()
-{
-    $this->resetPage(); // reset pagination when perPage changes
-}
+    {
+        $this->resetPage(); // reset pagination when perPage changes
+    }
+
+
     public function render()
     {
-        $query = Action::search($this->search);
-        return view('livewire.actions-table', [
-            'actions' => $query
+        $query = Unit::search($this->search)
+            ->orderByDesc('id');
+
+           return view('livewire.admin.unit-table', [
+            'units' => $query
                 ->paginate($this->perPage)
         ]);
     }

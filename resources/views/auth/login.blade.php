@@ -26,7 +26,7 @@
         @endif
 
         <!-- form to login  -->
-        <form method="POST" action="{{ route('login') }}" >
+        <form method="POST" action="{{ route('login') }}" id="LoginForm">
             @csrf
 
 
@@ -66,12 +66,12 @@
             </div>
 
             <div class="flex mt-6">
-                <x-primary-button class="w-full text-center flex justify-center mb-12 h-10 md:h-12 items-center bg-gray-800">
+                <x-loading-button formId="LoginForm" class="w-full text-center flex justify-center mb-12 h-10 md:h-12 items-center bg-gray-800">
                     {{ __('Log in') }}
-                </x-primary-button>
+                </x-loading-button>
             </div>
         </form>
     </div>
-    
+ 
 
 </x-guest-layout>

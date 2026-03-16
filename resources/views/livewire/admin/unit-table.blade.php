@@ -1,4 +1,12 @@
 <div class="overflow-hidden">
+
+    @if(session('success'))
+    <div class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">
@@ -26,7 +34,7 @@
                             <li
                                 @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
                                 class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                 {{ $value }}
                             </li>
                             @endforeach
@@ -49,10 +57,7 @@
                     placeholder="Search"
                     required />
             </div>  
-            <!-- Add Unit Button -->
-            <div class="col-span-2 md:col-span-2 flex items-center justify-center">
-                <button class="bg-brand-blue text-white  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add Action</button>
-            </div>     
+                <livewire:modal.unit.create-unit />
         </div>
     </div>
 
@@ -61,25 +66,20 @@
         <table class="w-full text-left text-sm">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">#</th>
-                    <th class="px-6 py-3" colspan="2">Action</th>
+                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3">Abbreviation</th>
+                    <th class="px-6 py-3">Description</th>
                     <th class="px-6 py-3">Created At</th>
-                    <th class="px-6 py-3">Updated At</th>
-                    <th class="px-6 py-3" colspan="2" >Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @forelse($actions as $action)
+                @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
-                        <td class="px-6 py-4 font-medium text-gray-800">{{ $action->id }}</td>
-                        <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2">{{ $action->action_name }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">{{ $action->created_at->format('F j, Y, g:i A') }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium">
-                            {{ optional($action->updated_at)->format('F j, Y, g:i A') ?? 'Not updated' }}
-                        </td>                        
-                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" /></button>
-                            <button class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-trash class="w-4 h-4" /></button>
+                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs">{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
+                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium">
+                            {{ $unit->created_at->format('F j, Y, g:i A') }}
                         </td>                
                     </tr>
                 @empty
@@ -95,6 +95,6 @@
 
     <!-- Pagination -->
     <div class="mt-4">
-        {{ $actions->links('pagination::custom-pagination-links') }}
+        {{ $units->links('pagination::custom-pagination-links') }}
     </div>
 </div>

@@ -14,9 +14,9 @@
             </div>
 
             <div class="grid grid-cols lg:grid-cols-2 mt-6 gap-10">
-                @include('components.create-document.document-information')
+                @include('documents.createDocument.partials.document-information')
                                 
-                @include('components.create-document.document-actions')
+                @include('documents.createDocument.partials.document-actions')
             </div>
 
             <div class="flex flex-col items-start justify-start lg:items-end lg:justify-end gap-3 mt-10">

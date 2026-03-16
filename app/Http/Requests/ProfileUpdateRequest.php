@@ -37,12 +37,12 @@ public function rules(): array
             'regex:/^[A-Za-z\s]+$/'
         ],
 
-     'suffix' => [
-    'nullable',
-    'string',
-    'max:10',
-    'regex:/^[A-Za-z\.]+$/'
-],
+        'suffix' => [
+        'nullable',
+        'string',
+        'max:10',
+        'regex:/^[A-Za-z\.]+$/'
+    ],
 
         'email' => [
             'required',

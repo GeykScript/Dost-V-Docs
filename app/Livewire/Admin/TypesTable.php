@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Type;
@@ -25,7 +25,7 @@ class TypesTable extends Component
     public function render()
     {
         $query = Type::search($this->search);
-        return view('livewire.types-table',[
+        return view('livewire.admin.types-table',[
             'types' => $query
                 ->paginate($this->perPage)
         ]);

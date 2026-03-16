@@ -33,7 +33,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="space-y-6" id="UpdateProfileForm">
         @csrf
         @method('patch')
 
@@ -90,7 +90,7 @@
         </div>
         <!-- save changes button  -->
         <div class="flex items-center justify-end gap-4">
-                    <x-primary-button class="capitalize">{{ __('Save Changes') }}</x-primary-button>      
+                    <x-loading-button formId="UpdateProfileForm" class="capitalize">{{ __('Save Changes') }}</x-loading-button>      
         </div>
 
     </form>

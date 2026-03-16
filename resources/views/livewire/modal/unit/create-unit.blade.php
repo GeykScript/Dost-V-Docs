@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ open: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Add Unit Button -->
     <button
@@ -51,12 +51,9 @@
             </div>
 
             <!-- Form -->
-             <!-- wire:submit.prevent="save" -->
-            <form  class="px-7 py-6 space-y-4">
-
-
+            <form wire:submit.prevent="createUnit" class="px-7 py-6 space-y-4" id="CreateUnitForm">
                 <div class="grid grid-cols-12 gap-2">
-                     <div class="col-span-7">
+                     <div class="col-span-12 md:col-span-7">
                     <label class="block text-xs font-bold text-gray-500 mb-1">
                         Unit Name
                     </label>
@@ -66,9 +63,12 @@
                         wire:model.defer="unit_name"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:ring-1 focus:ring-sky-500"
                         placeholder="e.g Management Information Systems"/>
+                    @error('unit_name')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="col-span-5">
+                <div class="col-span-12 md:col-span-5">
                     <label class="block text-xs font-bold text-gray-500 mb-1">
                         Abbreviation
                     </label>
@@ -78,10 +78,11 @@
                         wire:model.defer="abbreviation"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:ring-1 focus:ring-sky-500"
                         placeholder="e.g MIS"/>
+                    @error('abbreviation')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
-
                 </div>
-               
 
                 <div>
                     <label class="block text-xs font-bold text-gray-500 mb-1">
@@ -93,6 +94,9 @@
                         wire:model.defer="description"
                         class="w-full text-sm border border-gray-300 rounded-lg placeholder:text-gray-400 px-3 py-2.5 focus:border focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                         placeholder="Short description..."></textarea>
+                    @error('description')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Buttons -->
@@ -104,18 +108,11 @@
                         class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
                         Cancel
                     </button>
-
-                    <button
-                        type="submit"
-                        @click="open = false"
-                        wire:loading.attr="disabled"
-                        class="px-8 py-2 rounded-lg text-sm font-semibold bg-brand-blue hover:bg-sky-400 text-white">
-                        <span wire:loading.remove>Create</span>
-                        <span wire:loading>Creating...</span>
-                    </button>
-
+                     <x-loading-button formId="CreateUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                        <x-heroicon-s-plus class="w-4 h-4 mr-1"/>
+                            {{ __('Create Unit') }}
+                        </x-loading-button>
                 </div>
-
             </form>
         </div>
     </div>

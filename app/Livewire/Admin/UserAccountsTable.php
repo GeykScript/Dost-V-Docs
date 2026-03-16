@@ -1,41 +1,34 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
-use App\Models\Unit;
-use Livewire\Attributes\On;
 use Livewire\WithPagination;
-class UnitTable extends Component
+use App\Models\User;
+
+class UserAccountsTable extends Component
 {
     use WithPagination;
 
     public $search = '';
-    public $perPage = 10; 
+    public $perPage = 10; //
 
     public function updatingSearch()
     {
         $this->resetPage(); // reset pagination when search changes 
     }
 
-public function updatedPerPage()
+    public function updatedPerPage()
 {
     $this->resetPage(); // reset pagination when perPage changes
 }
 
-    public function refreshUnits(): void
-    {
-        $this->resetPage();
-    }
-
-
     public function render()
     {
-        $query = Unit::search($this->search);
-
-           return view('livewire.unit-table', [
-            'units' => $query
+        $query = User::search($this->search);
+            return view('livewire.admin.user-accounts-table', [
+            'users' => $query
                 ->paginate($this->perPage)
-        ]);
+            ]);
     }
 }
