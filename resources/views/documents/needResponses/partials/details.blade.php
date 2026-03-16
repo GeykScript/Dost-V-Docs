@@ -1,4 +1,4 @@
-<div class="col-span-3 bg-white rounded-lg h-full p-8">
+<div class="col-span-1 lg:col-span-3 bg-white rounded-lg h-full p-8">
     <a href="{{ route('need-response') }}">
         <div class="flex items-start gap-2">
             <x-heroicon-o-arrow-uturn-left class="w-4 h-4" />
