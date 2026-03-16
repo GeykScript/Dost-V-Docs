@@ -131,7 +131,7 @@
                                 {{ $doc->priorityLevel->priority_name ?? 'N/A' }}
                             </span>
                         </td>
-                        <td class="px-6 py-6 text-gray-600 font-medium">{{ $doc->deadline ?? 'N/A' }}</td>
+                        <td class="px-6 py-6 text-gray-600 font-medium">{{ $doc->deadline->format('F j,Y, g:i A') ?? 'N/A' }}</td>
                     </tr>
                 @empty
                     <tr>
