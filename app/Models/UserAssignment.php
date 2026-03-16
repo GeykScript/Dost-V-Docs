@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAssignment extends Model
 {
-    protected $table = 'user_assignements';
+    protected $table = 'user_assignments';
 
     protected $fillable = [
         'user_id',

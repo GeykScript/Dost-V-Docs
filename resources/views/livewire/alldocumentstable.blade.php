@@ -1,7 +1,7 @@
 
 {{-- Everything below the PHP tag is the Blade template --}}
-<div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-    <div class="p-6">
+<div class="bg-white rounded-xl p-10 border border-gray-100 shadow-sm overflow-hidden">
+    <div class="mb-5">
         <div class="flex items-center gap-3 mb-2">
             <div class="bg-purple-50 p-2 rounded-lg">
                 <x-heroicon-o-clipboard-document-list class="w-5 h-5 text-purple-600" />
@@ -15,12 +15,35 @@
         <div class="flex flex-col lg:flex-row md:items-center justify-between gap-4">
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <select wire:model.live="perPage" class="bg-gray-50 border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2">
-                        <option value="6">6</option>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                    </select>
-                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400 -ml-8 pointer-events-none" />
+                   <div
+                        x-data="{ open: false, selected: @entangle('perPage') }"
+                        class=" w-16 ">
+                        <!-- Dropdown button -->
+                        <button
+                            @click="open = !open"
+                            type="button"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                    focus:ring-gray-500 focus:border-2 focus:border-brand-blue  w-full p-2.5 
+                                    flex justify-between items-center">
+                            <span x-text="selected"></span>
+                            <x-heroicon-s-chevron-down class="w-4 h-4" />
+                        </button>
+                        <!-- Dropdown menu -->
+                        <ul
+                            x-show="open"
+                            @click.outside="open = false"
+                            x-cloak
+                            class="absolute w-16 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg">
+                            @foreach ([5, 10, 20, 50, 100] as $value)
+                            <li
+                                @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
+                                class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
+                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                {{ $value }}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
                 <p class="text-xs text-gray-600">entries per page</p>
             </div>
@@ -71,19 +94,41 @@
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc->reference_number ?? 'N/A'}}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc->document_name ?? 'N/A' }}</td>
                         <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->transactions->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}</td> <!-- will display the latest -->
-                        <td class="px-6 py-6 text-gray-700 font-medium">{{ 'N/A' }}</td> <!-- to be filled by unit source-->
+                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->user->unit->unit_name ?? 'N/A' }}</td> <!-- to be filled by unit source-->
                         <td class="px-6 py-6">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ">
+                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                @if($doc->status->status_name == 'On going')
+                                    bg-[#F28911]/20 text-[#F28911]
+                                @elseif($doc->status->status_name == 'Completed')
+                                    bg-[#25DF4D]/20 text-[#25DF4D]
+                                @elseif($doc->status->status_name == 'Late')
+                                    bg-[#E73C3C]/20 text-[#E73C3C]
+                                @else
+                                    bg-gray-100 text-gray-800
+                                @endif
+                            ">
                                 {{ $doc->status->status_name ?? 'N/A' }}
                             </span>
                         </td>
-                        <td class="px-6 py-6">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ">
+                         <td class="px-6 py-6">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                @if($doc->priorityLevel->priority_name == 'Urgent')
+                                    bg-[#F28911]/20 text-[#F28911]
+                                @elseif($doc->priorityLevel->priority_name == 'Routinary')
+                                    bg-[#1086B2]/20 text-[#1086B2]
+                                @elseif($doc->priorityLevel->priority_name == 'Express')
+                                    bg-[#E73C3C]/20 text-[#E73C3C]
+                                @elseif ($doc->priorityLevel->priority_name == 'Rush')
+                                    bg-[#EFCB00]/20 text-[#EFCB00]
+                                @else
+                                    bg-gray-100 text-gray-800
+                                @endif
+                            ">
                                 {{ $doc->priorityLevel->priority_name ?? 'N/A' }}
                             </span>
                         </td>
                         <td class="px-6 py-6 text-gray-600 font-medium">{{ $doc->deadline ?? 'N/A'}}</td>
-                    </tr>
+                    </tr>    
                 @empty
                     <tr>
                         <td colspan="7" class="text-center py-10 text-gray-500">
@@ -93,5 +138,10 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-4">
+        {{ $documents->links('pagination::custom-pagination-links') }}
     </div>
 </div>

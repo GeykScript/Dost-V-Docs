@@ -48,4 +48,6 @@ class Document extends Model
     public function transactions(){
         return $this->hasMany(Transaction::class, 'document_id');
     }
+
+
 }
