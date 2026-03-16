@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Document;
+use App\Models\Status;
+use Illuminate\Support\Facades\DB;
 
 class Mydocumentstable extends Component
 {
@@ -27,10 +29,27 @@ class Mydocumentstable extends Component
 
     public function render()
     {
-        $query = Document::search($this->search);
+        $query = Document::with(['user.unit', 'status'])->search($this->search);
+
+        if ($this->filterYear) {
+        $query->whereYear('created_at', $this->filterYear); // the years are based on the saved documents from the docs table
+        } 
+
+        if ($this->filterStatus) {
+            $query->where('status_id', $this->filterStatus);
+        }
+
+        $statuses = Status::all();
+
+        $years = Document::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderBy('year','desc')
+            ->pluck('year');
 
         return view('livewire.mydocumentstable', [
-            'documents' => $query->paginate($this->perPage)
+            'documents' => $query->paginate($this->perPage),
+            'years' => $years,
+            'statuses' =>  $statuses
         ]);
     }
 }

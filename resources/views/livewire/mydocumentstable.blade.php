@@ -1,80 +1,88 @@
 
 {{-- Everything below the PHP tag is the Blade template --}}
 <div class="bg-white rounded-xl border border-gray-100 p-10 shadow-sm overflow-hidden">
-    <div class="mb-5">
-        <div class="flex items-center gap-3 mb-2">
-            <div class="bg-blue-50 p-2 rounded-lg">
-                <x-heroicon-s-document-text class="w-5 h-5 text-blue-500" />
+        <div class="mb-4">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="bg-purple-50 p-2 rounded-lg">
+                    <x-heroicon-o-clipboard-document-list class="w-5 h-5 text-purple-600" />
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-700">All Documents</h1>
+                    <p class="text-xs text-gray-400 font-medium">Central Repository of Records</p>
+                </div>
             </div>
-            <div>
-                <h1 class="text-xl font-bold text-gray-700">My Documents</h1>
-                <p class="text-xs text-gray-400 font-medium">Documents Authored or Owned by You</p>
-            </div>
-        </div>
 
-        <div class="flex flex-col lg:flex-row md:items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <div
-                        x-data="{ open: false, selected: @entangle('perPage') }"
-                        class=" w-16 ">
-                        <!-- Dropdown button -->
-                        <button
-                            @click="open = !open"
-                            type="button"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                                    focus:ring-gray-500 focus:border-2 focus:border-brand-blue  w-full p-2.5 
-                                    flex justify-between items-center">
-                            <span x-text="selected"></span>
-                            <x-heroicon-s-chevron-down class="w-4 h-4" />
-                        </button>
-                        <!-- Dropdown menu -->
-                        <ul
-                            x-show="open"
-                            @click.outside="open = false"
-                            x-cloak
-                            class="absolute w-16 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg">
-                            @foreach ([5, 10, 20, 50, 100] as $value)
-                            <li
-                                @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
-                                class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
-                                {{ $value }}
-                            </li>
-                            @endforeach
-                        </ul>
+            <div class="flex flex-col lg:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="flex gap-4 items-center">
+                        <div
+                            x-data="{ open: false, selected: @entangle('perPage') }"
+                            class=" w-16 ">
+                            <!-- Dropdown button -->
+                            <button
+                                @click="open = !open"
+                                type="button"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                        focus:ring-gray-500 focus:border-2 focus:border-brand-blue  w-full p-2.5 
+                                        flex justify-between items-center">
+                                <span x-text="selected"></span>
+                                <x-heroicon-s-chevron-down class="w-4 h-4" />
+                            </button>
+                            <!-- Dropdown menu -->
+                            <ul
+                                x-show="open"
+                                @click.outside="open = false"
+                                x-cloak
+                                class="absolute w-16 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg">
+                                @foreach ([5, 10, 20, 50, 100] as $value)
+                                <li
+                                    @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
+                                    class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
+                                    :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                    {{ $value }}
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- Label -->
+                        <p class="text-sm font-medium text-gray-900 md:block hidden">
+                            entries per page
+                        </p>
                     </div>
                 </div>
-                <p class="text-xs text-gray-600">entries per page</p>
-            </div>
-            
+                
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <div class="col-span-4 md:col-span-4  flex flex-col items-center justify-center">
+                        <input
+                            wire:model.live.debounce.300ms="search"
+                            type="text"
+                            name="search"
+                            class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500"
+                            placeholder="Search"
+                            required />
+                    </div>  
+                    
+                    <div class="flex flex-col gap-1">
+                        <select wire:model.live="filterYear" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
+                            <option value="">All Years</option>
+                                @foreach($years as $year)
+                                    <option value="{{$year}}">{{ $year ?? '-'}}</option>
+                                @endforeach
+                        </select>
+                    </div>
 
-            <div class="flex flex-col lg:flex-row gap-4">
-                <div class="flex flex-col gap-1">
-                    <label class="text-xs font-bold text-gray-500 ml-1">Search</label>
-                    <input type="text" wire:model.live="search" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full lg:w-96 p-2 focus:outline-none">
-                </div>
-                <div class="flex flex-col gap-1">
-                    <label class="text-xs font-bold text-gray-500 ml-1">Filter by Year</label>
-                    <select wire:model.live="filterYear" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
-                        <option value="">Select Year</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                    </select>
-                </div>
-                <div class="flex flex-col gap-1">
-                    <label class="text-xs font-bold text-gray-500 ml-1">Filter by Status</label>
-                    <select wire:model.live="filterStatus" class="bg-gray-50 border border-gray-200 text-sm rounded-lg w-full sm:w-48 p-2 text-gray-400 focus:outline-none">
-                        <option value="">Select Status</option>
-                        <option value="On going">On going</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Late">Late</option>
-                    </select>
+                    <div class="flex flex-col gap-1">
+                        <select wire:model.live="filterStatus" class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500">
+                            <option value="">All Statuses</option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status->status_name}}">{{ $status->status_name ?? '-' }}</option>
+                                @endforeach
+                        </select>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
 
 <!--My Documents Table-->
     <div class="overflow-x-auto">
