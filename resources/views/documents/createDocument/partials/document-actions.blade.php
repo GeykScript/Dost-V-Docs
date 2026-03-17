@@ -102,7 +102,7 @@
                     Remarks:
                 </label>
                 <textarea rows="4" placeholder="Document Remarks" 
-                        class="bg-white border border-gray-200 text-gray-700 placeholder:text-gray-300 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outline-none block w-full p-2.5"></textarea>
+                        class="fbg-white border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue block w-full p-3 resize-none flex-grow min-h-[120px]"></textarea>
             </div>
         </div>
 </div>
