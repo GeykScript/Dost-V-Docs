@@ -1,29 +1,30 @@
-<div x-data="{ open: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
+
+<div x-data="{ editOpen: false, deleteOpen: false }"   class="col-span-2 md:col-span-2 flex items-center justify-center">
 
         <button 
             type="button"
-            @click="open = true"
+            @click="editOpen = true"
             class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1">
             <x-heroicon-s-pencil-square class="w-4 h-4" />Edit
         </button>
 
-    <!-- Modal Wrapper -->
+    <!-- Edit Modal Wrapper -->
     <div
         x-cloak
-        x-show="open"
+        x-show="editOpen"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="open = false">
+         @keydown.escape.window="editOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="open"
+            x-show="editOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="open"
+            x-show="editOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-xl bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -41,7 +42,7 @@
 
                 <button
                     type="button"
-                    @click="open = false"
+                    @click="editOpen = false"
                     class="text-gray-400 hover:text-gray-600">
                     <x-heroicon-s-x-mark class="w-5 h-5" />
                 </button>
@@ -92,13 +93,34 @@
                             <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                        <!-- Delete inside Edit Modal -->
+                       
+                        <div class="grid grid-cols-12 gap-2 bg-red-50 border border-red-500 rounded-lg p-4 ">
+                            <div class="col-span-1 flex items-center justify-center">
+                                 <!-- Icon with background -->
+                                <div class="bg-red-500/10 p-2 rounded-full flex items-center justify-center">
+                                    <x-heroicon-o-exclamation-circle class="w-6 h-6 text-red-500" />
+                                </div>
+                            </div>
+                            <div class="col-span-8 flex flex-col px-2">
+                                <h1 class="font-bold ">Unit Deletion</h1>
+                                <p class="text-xs">Deleting this unit will remove it from the system. Please confirm your decision.</p>
+                            </div>
+                            <div class="col-span-3 flex items-center justify-center">
+                                 <button
+                                    type="button"
+                                    @click="editOpen = false; deleteOpen = true"
+                                    class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-red-500 hover:bg-red-400 flex items-center gap-1">
+                                    <x-heroicon-s-trash class="w-4 h-4"/> Delete
+                                </button>
+                            </div>
+                        </div>
 
                     <!-- Buttons -->
                     <div class="flex items-center justify-end gap-2 pt-2">
-
                         <button
                             type="button"
-                            @click="open = false"
+                            @click="editOpen = false"
                             class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
                             Cancel
                         </button>
@@ -107,7 +129,62 @@
                                 {{ __('Save Changes') }}
                         </x-loading-button>
                     </div>
+            </form> 
+        </div>
+    </div>
+
+
+    <!--Delete Modal Wrapper -->
+    <div
+        x-cloak
+        x-show="deleteOpen"
+        class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
+        @keydown.escape.window="deleteOpen = false">
+
+        <!-- Backdrop -->
+        <div
+            x-show="deleteOpen"
+            x-transition.opacity
+            class="absolute inset-0 bg-black/50">
+        </div>
+
+        <!-- Modal Panel -->
+        <div
+            x-show="deleteOpen"
+            x-transition.scale
+            class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden">
+
+         
+            <!-- Form -->
+            <form wire:submit.prevent="deleteUnit" class="px-7 py-6 space-y-4" id="DeleteUnitForm">
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12 flex flex-col items-center justify-center">
+                        <div class="flex p-4 items-center justify-center rounded-full w-20 h-20  bg-red-500 ">
+                            <x-heroicon-s-exclamation-triangle class="text-2xl text-white " />
+                        </div>
+                        <h1 class="text-center text-xl font-bold text-gray-700 mt-4 mb-2">Are you sure you want to delete?</h1>
+                        <p class="text-center text-xs text-gray-500">This action cannot be undone. Please confirm your decision.</p>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="flex items-center justify-end gap-2 pt-2">
+
+                    <button
+                        type="button"
+                        @click="deleteOpen = false"
+                        class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
+                        Cancel
+                    </button>
+                    <x-loading-button formId="DeleteUnitForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
+                        <x-heroicon-s-trash class="w-4 h-4 mr-1"/>
+                            {{ __('Delete Unit') }}
+                        </x-loading-button>
+                </div>
             </form>
         </div>
     </div>
+
 </div>
+
+
+

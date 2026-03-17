@@ -29,6 +29,6 @@ class DeleteUnit extends Component
 
     public function render()
     {
-        return view('livewire.modal.unit.delete-unit');
+        return view('livewire.modal.unit.edit-unit');
     }
 }

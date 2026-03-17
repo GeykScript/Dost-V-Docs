@@ -85,7 +85,6 @@
                         <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
                         <td class="px-6 py-0 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
                             <livewire:modal.unit.edit-unit :unit="$unit" />
-                            <livewire:modal.unit.delete-unit :unit="$unit" />
                         </td>
                     </tr>
                 @empty

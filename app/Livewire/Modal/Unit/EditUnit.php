@@ -37,6 +37,7 @@ class EditUnit extends Component
         ];
     }
 
+    // Edit Unit function
     public function editUnit(): void
     {
         $validated = $this->validate();
@@ -47,6 +48,23 @@ class EditUnit extends Component
         session()->flash('success', 'Unit updated successfully.');
         $this->redirectRoute('units'); 
 
+    }
+
+    // Delete Unit function 
+     public function deleteUnit(): void
+    {
+            // Check if unit has current user assignments
+            if ($this->unit->userAssignments()->where('is_current', true)->exists()) {
+                session()->flash('error', 'Cannot delete unit because it has active users.');
+                $this->redirectRoute('units');
+            }   
+            else {
+            // Soft delete
+           $this->unit->delete();
+            
+            session()->flash('success', 'Unit deleted successfully.');
+            $this->redirectRoute('units'); 
+        }
     }
 
     public function render()
