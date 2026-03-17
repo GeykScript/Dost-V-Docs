@@ -5,7 +5,7 @@
     </div>
     @endif
 
-    <div class="grid grid-cols-12 mb-4 gap-2">
+    <div class="grid grid-cols-12 mb-4 gap-2 py-2 px-2 md:px-0">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">
             <div class="flex gap-4 items-center">
@@ -51,7 +51,7 @@
                     wire:model.live.debounce.300ms="search"
                     type="text"
                     name="search"
-                    class="w-full h-full focus:outline-none focus:ring-0 text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus-within:ring-1 focus-within:ring-sky-500 focus-within:border-sky-500"
+                    class="w-full h-full focus:outline-none  text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus:ring-1 focus:ring-sky-500 focus:border-sky-500"
                     placeholder="Search"
                     required />
             </div>
