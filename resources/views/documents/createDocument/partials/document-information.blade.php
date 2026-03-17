@@ -23,9 +23,23 @@
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Document Type <span class="text-red-500">*</span>
             </label>
-            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                <option value="">Select Type</option>
-                </select>
+           
+            <x-dropdown align="left" width="w-full">
+                    <x-slot name="trigger">
+                    <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                        <span>Select Type</span>
+                        <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                    </button>
+                </x-slot>
+                <x-slot name="content">
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Type</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Official Record</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Letter</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Administrative</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Financial Files</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Reports</button>
+                </x-slot>
+            </x-dropdown>
         </div>
 
         <!-- Category -->
@@ -33,9 +47,19 @@
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Category <span class="text-red-500">*</span>
             </label>
-            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                <option value="">Select Category</option>
-                </select>
+            <x-dropdown align="left" width="w-full">
+                    <x-slot name="trigger">
+                    <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                        <span>Select Category</span>
+                        <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                    </button>
+                </x-slot>
+                <x-slot name="content">
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Category</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Soft Copy</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Hard Copy</button>
+                </x-slot>
+            </x-dropdown>
         </div>
 
         <!-- Priority Level -->
@@ -43,9 +67,22 @@
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Priority Level <span class="text-red-500">*</span>
             </label>
-            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                <option value="">Select Action</option>
-                </select>
+            <x-dropdown align="left" width="w-full">
+                    <x-slot name="trigger">
+                    <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                        <span>Select Level</span>
+                        <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                    </button>
+                </x-slot>
+                <x-slot name="content">
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Level</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Express</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Urgent</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Rush</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Priority</button>
+                        <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Routinary</button>
+                </x-slot>
+            </x-dropdown>
         </div>
 
         <!-- Confidential Checkbox -->
