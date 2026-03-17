@@ -24,9 +24,24 @@
 
                 <div class="flex flex-col md:flex-row gap-3 w-full justify-end">
                     <button class="text-xs md:text-sm bg-gray-200 text-gray-700 font-semibold rounded-lg px-4 py-2" id="cancel-create">Cancel</button>
-                    <button class="text-xs md:text-sm bg-brand-blue/20 rounded-lg px-4 py-2 text-brand-blue font-semibold" id="create-document">Create Document</button>
+                    <button 
+                        x-data 
+                        type="button"
+                        class="text-xs md:text-sm bg-brand-blue/20 rounded-lg px-4 py-2 text-brand-blue font-semibold" 
+                        id="create-document"
+                        @click="$dispatch('open-modal-create-document-confirm')">
+                        Create Document
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    <x-form-confirmation-modal 
+        id="create-document-confirm"
+        title="Confirm Document Creation"
+        message="Are you sure you want to create this document transaction?"
+        action="createDocument" 
+        type="info" 
+        confirmText="Confirm & Create"
+    />
 </x-app-layout>
