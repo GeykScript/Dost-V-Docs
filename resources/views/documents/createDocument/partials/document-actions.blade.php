@@ -68,7 +68,7 @@
                             Source Personnel <span class="text-red-500">*</span>
                         </label>
                         <input type="text" value="John E. Doe" readonly 
-                                class="bg-gray-50 border border-gray-200 text-gray-500 text-sm rounded-lg block w-full p-2.5 cursor-not-allowed">
+                        class="bg-gray-100 border-none focus:ring-0 focus:outline-none text-gray-500 text-sm rounded-lg block w-full p-2.5 cursor-not-allowed">
                     </div>
                 </div>
             </div>
