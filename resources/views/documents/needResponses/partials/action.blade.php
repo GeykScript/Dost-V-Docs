@@ -21,7 +21,7 @@
             
             <div class="space-y-4 flex-grow flex flex-col">
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-600">Actions</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-600">Actions<span class="text-red-500">*</span></label>
                     <x-dropdown align="left" width="w-full">
                         <x-slot name="trigger">
                             <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">

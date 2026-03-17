@@ -9,12 +9,20 @@
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Action <span class="text-red-500">*</span>
             </label>
-            <div class="relative">
-                    <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                        <option value="">Select Action</option>
-                    </select>
-                </div>
-            </div>
+            <x-dropdown align="left" width="w-full">
+                <x-slot name="trigger">
+                    <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                        <span>For Signature</span>
+                        <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                    </button>
+                </x-slot>
+                <x-slot name="content">
+                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">For Signature</button>
+                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">For Approval</button>
+                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">For Review</button>
+                </x-slot>
+            </x-dropdown>
+        </div>
 
             <!--Deadline-->
             <div>
@@ -38,11 +46,22 @@
                             <label class="block mb-2 text-sm font-medium text-gray-600">
                              Unit Source <span class="text-red-500">*</span>
                         </label>
-                        <div class="relative">
-                            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                                <option value="">Select Unit Source</option>
-                            </select>
-                        </div>
+                        <x-dropdown align="left" width="w-full">
+                                <x-slot name="trigger">
+                                <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                                    <span>Select Unit</span>
+                                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Management Information System Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Technical Operations</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Finance and Administrative Services</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Project Management Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Human Resources</button>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">
@@ -62,21 +81,41 @@
                             <label class="block mb-2 text-sm font-medium text-gray-600">
                             Tag Unit <span class="text-red-500">*</span>
                         </label>
-                        <div class="relative">
-                            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                                <option value="">Select Unit</option>
-                            </select>
-                        </div>
+                        <x-dropdown align="left" width="w-full">
+                                <x-slot name="trigger">
+                                <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                                    <span>Select Unit</span>
+                                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Management Information System Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Technical Operations</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Finance and Administrative Services</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Project Management Unit</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Human Resources</button>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-600">
                             Tag Personnel <span class="text-red-500">*</span>
                         </label>
-                        <div class="relative">
-                            <select class="bg-white border border-gray-200 text-gray-400 text-sm rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none block w-full p-2.5 appearance-none">
-                                <option value="">Select Personnel</option>
-                            </select>
-                        </div>
+                        <x-dropdown align="left" width="w-full">
+                                <x-slot name="trigger">
+                                <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
+                                    <span>Select Personnel</span>
+                                    <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Select Personnel</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Pedro Mortega</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Gian Russel Villegas</button>
+                                    <button type="button" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">Cidreck Gaming</button>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
                 </div>
             </div>
