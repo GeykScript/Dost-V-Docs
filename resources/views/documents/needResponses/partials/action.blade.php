@@ -125,9 +125,21 @@
         <button type="button" class="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">
             Clear
         </button>
-        <button type="submit" class="bg-[#d4f1f9] text-[#00a3cc] font-bold py-2.5 px-10 rounded-lg text-sm hover:bg-[#bce6f2] transition-colors">
+    
+        <button x-data 
+                type="button"
+                class="bg-[#d4f1f9] text-[#00a3cc] font-bold py-2.5 px-10 rounded-lg text-sm hover:bg-[#bce6f2] transition-colors"
+                id="make-action"
+                @click="$dispatch('open-modal-make-action-confirm')">
             Submit
         </button>
     </div>
-
+    <x-form-confirmation-modal 
+        id="make-action-confirm"
+        title="Confirm Document Action"
+        message="Are you sure you want to make action for this document transaction?"
+        action="makeAction" 
+        type="info" 
+        confirmText="Confirm Action"
+    />
 </div>
