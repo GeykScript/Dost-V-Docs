@@ -20,8 +20,7 @@
         <div
             x-show="open"
             x-transition.opacity
-            class="absolute inset-0 bg-black/50"
-            @click="open = false">
+            class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
