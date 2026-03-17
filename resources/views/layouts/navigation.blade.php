@@ -60,7 +60,6 @@
                         </x-slot>
                     </x-dropdown>
                     
-
                     <!-- Profile -->
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -78,7 +77,11 @@
                                         </div>
                                     </div>
                                     <!-- Need to change  -->
-                                    <p class="text-[10px]">MIS Unit</p> 
+                                    <p class="text-[10px]">
+                                          {{ Auth::user()->userAssignments->map(function($assignment) {
+                                            return $assignment->unit->abbreviation;
+                                            })->implode(', ') }}
+                                    </p> 
                                 </div>
                             </button>
                         </x-slot>
