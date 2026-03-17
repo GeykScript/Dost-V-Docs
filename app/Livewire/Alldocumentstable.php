@@ -6,27 +6,35 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Document;
 use App\Models\User;
+use App\Models\UserAssignment;
+use App\Models\PriorityLevel;
 use App\Models\Status;
 use Illuminate\Support\Facades\DB;
 
 class Alldocumentstable extends Component
 {
      use WithPagination;
-
     public $search = '';
     public $perPage = 10;
     public $filterYear = '';
     public $filterStatus = '';
+    public $filterPriority = '';
+    
+    public function updatedFilterYear()
+{
+    $this->resetPage();
+}
 
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
+public function updatedFilterStatus()
+{
+    $this->resetPage();
+}
 
-    public function updatedPerPage()
-    {
-        $this->resetPage();
-    }
+public function updatedFilterPriority()
+{
+    $this->resetPage();
+}
+    
 
     public function render()
     {
@@ -40,7 +48,19 @@ class Alldocumentstable extends Component
             $query->where('status_id', $this->filterStatus);
         }
 
+                if ($this->filterStatus) {
+            $query->where('status_id', $this->filterStatus);
+        }
+
+        if ($this->filterPriority) {
+            $query->where('priority_lvl_id', $this->filterPriority);
+        }
+
+
+
         $statuses = Status::all();
+        $priorityLevels = PriorityLevel::all();
+
 
         $years = Document::selectRaw('YEAR(created_at) as year')
             ->distinct()
@@ -50,7 +70,9 @@ class Alldocumentstable extends Component
         return view('livewire.alldocumentstable', [
             'documents' =>  $query->paginate($this->perPage),
             'years' => $years,
-            'statuses' => $statuses
+            'statuses' => $statuses,
+            'priorityLevels' => $priorityLevels
+
         ]);
     }
 }

@@ -1,23 +1,10 @@
 
 {{-- Everything below the PHP tag is the Blade template --}}
-<div class="bg-white rounded-xl p-6  border border-gray-100 shadow-sm overflow-hidden">
-        <div class="mb-4">
-            <!-- Title section -->
-            <div class="flex items-center gap-3 mb-2">
-                <div class="bg-purple-50 p-2 rounded-lg">
-                    <x-heroicon-o-clipboard-document-list class="w-5 h-5 text-purple-600" />
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-gray-700">All Documents</h1>
-                    <p class="text-xs text-gray-400 font-medium">Central Repository of Records</p>
-                </div>
-            </div>
-        
-            <!-- Search and Filters -->
-            <div class="grid grid-cols-12 mb-4 gap-2 py-2 px-2 md:px-0">
+<div class="overflow-hidden">
+ <!-- Main Content -->
+    <div class="grid grid-cols-12 mb-4 gap-2 py-2  md:px-2">
                 <!-- per page dropdown -->
-                <div class="col-span-12 md:col-span-4 order-2 md:order-1">
-                    <!-- DROPDOWN  -->
+                <div class="col-span-12 md:col-span-3 order-2 md:order-1">   
                     <div class="flex items-center gap-4">
                         <div class="flex gap-4 items-center">
                             <div
@@ -43,7 +30,7 @@
                                         <li
                                             @click="selected = {{ $value }}; $wire.set('perPage', {{ $value }}); open = false"
                                             class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition"
-                                            :class="{ 'bg-gray-800 text-white': selected == {{ $value }} }">
+                                            :class="{ 'bg-brand-blue text-white': selected == {{ $value }} }">
                                             {{ $value }}
                                         </li>
                                         @endforeach
@@ -57,9 +44,9 @@
                     </div>
                 </div>
                 
-                <div class="col-span-12 md:col-span-8 grid grid-cols-12 gap-2 order-1 md:order-2">
+                <div class="col-span-12 md:col-span-9 grid grid-cols-12 gap-2 order-1 md:order-2">
                     <!-- SEARCH -->
-                    <div class="col-span-12 md:col-span-6  flex flex-col items-center justify-center">
+                    <div class="col-span-12 md:col-span-5  flex flex-col items-center justify-center">
                         <input
                             wire:model.live.debounce.300ms="search"
                             type="text"
@@ -67,10 +54,12 @@
                             class="w-full h-full focus:outline-none  text-sm text-gray-900 placeholder:text-gray-500 border border-gray-300 rounded-lg px-3 focus:ring-1 focus:ring-sky-500 focus:border-sky-500"
                             placeholder="Search"
                             required />
-                    </div>  
-
+                    </div> 
+                    <div class="col-span-12 md:col-span-1 flex items-center md:justify-center px-2 md:px-0">
+                        <p class="text-xs font-semibold text-gray-600">Filter By:</p>
+                    </div> 
                     <!-- YEAR FILTER -->
-                    <div class="col-span-6 md:col-span-3">
+                    <div class="col-span-4 md:col-span-2">
                         <div
                             x-data="{ open: false, selected: @entangle('filterYear') }"
                             class="relative ">
@@ -91,7 +80,7 @@
                                 x-show="open"
                                 @click.outside="open = false"
                                 x-cloak
-                                class="absolute w-40 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                                class="absolute w-32 mt-1  bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                                     <!-- All Years -->
                                     <li
                                         @click="selected = ''; $wire.set('filterYear',''); open=false"
@@ -113,10 +102,55 @@
                             </ul>
                         </div>  
                     </div>
-                    <!-- Status Filter  -->
-                    <div class="col-span-6 md:col-span-3 flex flex-col gap-1">
+                   <!-- Priority lvl Filter -->
+                    <div class="col-span-4 md:col-span-2 flex flex-col gap-1">
                         <div
-                            x-data="{ open: false, selected: @entangle('filterStatus') }"
+                            x-data="{ open: false, selectedLabel: 'All Levels' }"
+                            class="relative">
+
+                            <!-- Dropdown button -->
+                            <button
+                                @click="open = !open"
+                                type="button"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                                    focus:ring-gray-500 focus:border-2 focus:border-brand-blue
+                                    w-full p-2.5 flex justify-between items-center">
+
+                                <span x-text="selectedLabel"></span>
+                                <x-heroicon-s-chevron-down class="w-4 h-4" />
+                            </button>
+
+                            <!-- Dropdown menu -->
+                            <ul
+                                x-show="open"
+                                @click.outside="open = false"
+                                x-cloak
+                                class="absolute w-32 mt-1 h-38 overflow-x-auto no-scrollbar bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+
+                                <!-- All Levels -->
+                                <li
+                                    @click="selectedLabel = 'All Levels'; $wire.set('filterPriority',''); open=false"
+                                    class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white"
+                                    :class="{ 'bg-brand-blue text-white': selectedLabel == 'All Levels' }">
+                                    All Levels
+                                </li>
+
+                                @foreach ($priorityLevels as $priority)
+                                    <li
+                                        @click="selectedLabel = '{{ $priority->priority_name }}'; $wire.set('filterPriority','{{ $priority->id }}'); open=false"
+                                        class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white"
+                                        :class="{ 'bg-brand-blue text-white': selectedLabel == '{{ $priority->priority_name }}' }">
+                                        {{ $priority->priority_name }}
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Status Filter  -->
+                    <div class="col-span-4 md:col-span-2 flex flex-col gap-1">
+                        <div
+                            x-data="{ open: false, selectedLabel: 'All Status' }"
                             class="relative ">
 
                             <!-- Dropdown button -->
@@ -127,7 +161,7 @@
                                             focus:ring-gray-500 focus:border-2 focus:border-brand-blue
                                             w-full p-2.5 flex justify-between items-center">
 
-                                        <span x-text="selected ? selected : 'All Status'"></span>
+                                        <span x-text="selectedLabel"></span>
                                         <x-heroicon-s-chevron-down class="w-4 h-4" />
                             </button>
 
@@ -136,38 +170,37 @@
                                         x-show="open"
                                         @click.outside="open = false"
                                         x-cloak
-                                        class="absolute w-40 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                                        class="absolute w-32 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
 
                                         <!-- All Statuses -->
                                         <li
-                                            @click="selected = ''; $wire.set('filterStatus',''); open=false"
-                                            class="cursor-pointer px-4 py-2 text-sm transition"
-                                            :class="selected == '' ? 'bg-brand-blue text-white' : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
-                                            All Statuses
+
+                                            @click="selectedLabel = 'All Status'; $wire.set('filterStatus',''); open=false"
+                                            class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white"
+                                            :class="{ 'bg-brand-blue text-white': selectedLabel == 'All Status' }">
+                                            All Status
                                         </li>
 
                                         @foreach ($statuses as $status)
-                                            <li
-                                                @click="selected = '{{ $status->status_name }}'; $wire.set('filterStatus', '{{ $status->status_name }}'); open = false"
-                                                class="cursor-pointer px-4 py-2 text-sm transition"
-                                                :class="selected == '{{ $status->status_name }}'
-                                                    ? 'bg-brand-blue text-white'
-                                                    : 'text-gray-700 hover:bg-brand-blue hover:text-white'">
+                                        <li
+                                            @click="selectedLabel = '{{ $status->status_name }}'; $wire.set('filterStatus','{{ $status->id }}'); open=false"
+                                            class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white"
+                                            :class="{ 'bg-brand-blue text-white': selectedLabel == '{{ $status->status_name }}' }">
 
-                                                {{ $status->status_name }}
+                                            {{ $status->status_name }}
 
-                                            </li>
+                                        </li>
                                         @endforeach
-
                             </ul>
                         </div>
-                    </div>    
+                    </div> 
+   
                 </div>
-            </div>
-        </div>
+    </div>
 
-    <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm">
+      <!--My Documents Table-->
+    <div class="overflow-x-auto   ">
+        <table class="w-full text-left text-sm mb-32 ">
             <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-3">ref no.</th>
@@ -179,13 +212,13 @@
                     <th class="px-6 py-3">deadline</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100"> <!-- Changed the fetching format -->
+            <tbody class="divide-y divide-gray-100">
                 @forelse($documents as $doc) 
                     <tr class="hover:bg-gray-50/50 transition-colors cursor-pointer">
                         <td class="px-6 py-6 font-medium text-gray-800">{{ $doc->reference_number ?? 'N/A'}}</td>
                         <td class="px-6 py-6 font-medium text-gray-700 truncate max-w-xs">{{ $doc->document_name ?? 'N/A' }}</td>
                         <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->transactions->sortByDesc('created_at')->first()->action->action_name ?? 'N/A' }}</td> <!-- will display the latest -->
-                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->user->unit->unit_name ?? 'N/A' }}</td> <!-- to be filled by unit source-->
+                        <td class="px-6 py-6 text-gray-700 font-medium">{{ $doc->user->unit->abbreviation ?? 'N/A' }}</td> 
                         <td class="px-2 py-6">
                                 <span @class([
                                     'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
