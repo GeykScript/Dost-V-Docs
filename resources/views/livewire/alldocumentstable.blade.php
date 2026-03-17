@@ -210,6 +210,7 @@
                     <th class="px-6 py-3">status</th>
                     <th class="px-6 py-3">priority level</th>
                     <th class="px-6 py-3">deadline</th>
+                    <th class="px-6 py-3">action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -246,6 +247,8 @@
                             </span>
                         </td>
                         <td class="px-6 py-6 text-gray-600 font-medium">{{ $doc->deadline->format('F j,Y, g:i A') ?? 'N/A'}}</td>
+                        <td class="px-6 py-6 text-gray-600 font-medium"><a href="#" class="text-sky-500 hover:text-sky-400 flex items-center text-sm gap-1">View<x-heroicon-o-information-circle class="w-5 h-5" /></a></td>
+
                     </tr>    
                 @empty
                     <tr>
