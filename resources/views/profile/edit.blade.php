@@ -8,22 +8,38 @@
                 <!-- Banner -->
                 <img src="{{ asset('logo/dost_banner1.png') }}" alt="DOST Banner" class="shadow-md rounded-t-lg ">
                 <!-- Profile Details -->
-                <div class="relative flex">
-                    <div class="bg-white rounded-full  absolute flex -top-5 md:-top-10 left-6 p-0 m-0">
+                <div class="relative flex justify-center items-center">
+                    <div class="bg-white rounded-full  absolute flex -top-5 md:-top-10 md:left-6 p-0 m-0">
                         <x-heroicon-s-user-circle class="w-24 h-24 md:w-40 md:h-40 rounded-full border border-white text-brand-blue" />
                     </div>
                         <!-- Profile Info -->
-                    <div class="ml-32 md:ml-48 h-auto pb-12  mt-2 md:mt-5 flex flex-col ">
-                        <h2 class="text-xl md:text-2xl font-bold text-gray-700">{{ Auth::user()->full_name }}</h2>
-                        <p class="flex items-center text-gray-500 mt-1  text-xs sm:text-sm md:text-sm">
-                            <x-heroicon-s-building-office class="w-3 h-3 md:w-5 md:h-5 mr-1" />
-                            MIS - Management Information System
-                        </p>
-                        <p class="flex items-center text-gray-500 text-xs sm:text-sm md:text-sm">
-                            <x-heroicon-s-briefcase class="w-3 h-3 md:w-5 md:h-5  mr-1" />
-                            Unit Head
-                        </p>
-                    </div>
+                        <div class="w-full ml-0 md:ml-48 h-auto pb-12 mt-20 md:mt-5 flex flex-col justify-center items-center md:items-start ">
+                            <h2 class="text-xl md:text-2xl font-bold text-gray-700">{{ Auth::user()->full_name }}</h2>
+                            <div class="flex flex-col px-8 md:px-0">
+                                <div class="flex gap-1 ">
+                                    <div class="flex items-center justify-center">
+                                        <x-heroicon-s-building-office class="text-gray-500  w-3 h-3 md:w-5 md:h-5 mr-1" />
+                                    </div>
+                                    <div>
+                                        <p class="flex items-center text-gray-500 text-xs sm:text-sm md:text-sm">
+                                            {{ Auth::user()->userAssignments->map(function($assignment) {
+                                            return $assignment->unit->unit_name . ' (' . $assignment->unit->abbreviation . ')';
+                                            })->implode(', ') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 ">
+                                    <div class="flex items-center justify-center">
+                                        <x-heroicon-s-briefcase class="text-gray-500 w-3 h-3 md:w-5 md:h-5 mr-1" />
+                                    </div>
+                                    <div>
+                                        <p class="flex items-center text-gray-500 text-xs sm:text-sm md:text-sm">
+                                            {{ Auth::user()->userAssignments->pluck('position')->implode(', ') }}
+                                        </p>
+                                    </div>
+                                </div>   
+                            </div>  
+                        </div>
                 </div>
             </div>
 
