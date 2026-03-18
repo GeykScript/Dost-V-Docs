@@ -16,10 +16,9 @@ class DeleteAction extends Component
             // Use Laravel SoftDeletes
             $this->action->delete();
 
-            //dd($this->action);
-
-            session()->flash('success', 'Action deleted successfully.');
-            $this->redirectRoute('action'); // use the route name from your routes file
+         // Close modal and show success message
+        $this->dispatch('close-delete-modal');
+        $this->dispatch('action-success', message: 'Action deleted successfully.');
     }
 
     public function render()

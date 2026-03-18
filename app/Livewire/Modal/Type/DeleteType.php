@@ -16,10 +16,8 @@ class DeleteType extends Component
             // Use Laravel SoftDeletes
              $this->type->delete();
             
-            //dd($this->type);
-
-            session()->flash('success', 'Type deleted successfully.');
-            $this->redirectRoute('type'); // use the route name from your routes file
+            $this->dispatch('close-delete-modal');
+            $this->dispatch('type-success', message: 'Type deleted successfully.');
     }
 
     public function render()

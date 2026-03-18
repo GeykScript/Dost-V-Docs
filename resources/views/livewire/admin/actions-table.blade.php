@@ -1,7 +1,26 @@
 <div class="overflow-hidden">
-    @if(session('success'))
-    <div class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500">
-        {{ session('success') }}
+
+    @if($successMessage)
+    <div 
+        wire:key="{{ $successMessage . uniqid() }}"
+        x-data="{ show: true }" 
+        x-init="setTimeout(() => show = false, 3000)"
+        x-show="show"
+        class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500"
+        x-transition
+    >
+        {{ $successMessage }}
+    </div>
+    @elseif ($errorMessage)
+    <div 
+        wire:key="{{ $errorMessage . uniqid() }}"
+        x-data="{ show: true }" 
+        x-init="setTimeout(() => show = false, 3000)"
+        x-show="show"
+        class="mb-3 rounded-lg border border-red-200 bg-red-100 px-4 py-3 text-sm font-medium text-red-500"
+        x-transition
+    >
+        {{ $errorMessage }}
     </div>
     @endif
 
@@ -55,6 +74,7 @@
                     placeholder="Search"
                     required />
             </div>
+            <!-- create button modal  -->
             <livewire:modal.action.add-action/>   
         </div>
     </div>
@@ -62,27 +82,46 @@
     <!-- Unit Table  -->
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
+            <thead class="bg-gray-800 text-white uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3" colspan="2">Action</th>
+                    <th class="px-6 py-3 rounded-l-md" colspan="2">Action</th>
+                    <th class="px-6 py-3">Status</th>
                     <th class="px-6 py-3">Created At</th>
-                    <th class="px-6 py-3" colspan="2" >Action</th>
+                    <th class="px-6 py-3 rounded-r-md text-center">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($actions as $action)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
                         <td class="px-6 py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2">{{ $action->action_name }}</td>
+                        <td class="px-6 py-4 text-gray-700 font-medium">
+                            @if($action->trashed())
+                                    <span class="text-red-500 text-xs font-semibold flex items-center gap-0.5">
+                                        Deleted
+                                        <x-heroicon-s-x-circle class="w-4 h-4  mr-1" />
+                                    </span>
+                                @else
+                                    <span class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                                        Active
+                                        <x-heroicon-s-check-circle class="w-4 h-4  mr-1" />
+                                    </span>
+                            @endif
+                        </td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $action->created_at->format('F j, Y, g:i A') }}</td>
-                        <td class="px-6 py-4 text-gray-700 font-medium flex gap-2" colspan="2">
-                            <!-- <button class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-4 h-4" />Edit</button> -->
-                            <livewire:modal.action.delete-action :action="$action"/>
+                        <td class="px-6 py-4 text-gray-700 font-medium flex items-center justify-center gap-2" >
+                            @if ($action->trashed())
+                                    <span class=" w-1/1 md:w-1/3 text-center text-red-500 px-2 py-2 flex justify-center text-xs font-semibold  items-center ">
+                                        --
+                                    </span>
+                                @else
+                                    <livewire:modal.action.delete-action :action="$action"/>    
+                            @endif
                         </td>                
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center py-10 text-gray-500">
-                            No units found.
+                        <td colspan="6" class="text-center py-10 text-gray-500">
+                            No actions found.
                         </td>
                     </tr>
                 @endforelse

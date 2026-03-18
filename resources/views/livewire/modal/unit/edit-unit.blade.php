@@ -1,32 +1,32 @@
 
-<div x-data="{ editOpen: false, deleteOpen: false }"   class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ editUnitOpen: false, deleteUnitOpen: false }"   class="col-span-2 md:col-span-2 flex items-center justify-center">
     <!-- button showing in the table row to open the edit modal -->
         <button 
             type="button"
-            @click="editOpen = true"
-            class="bg-white text-sky-500 border border-sky-500 hover:bg-sky-500 hover:text-white  px-3 py-2 rounded-md text-sm flex items-center gap-1">
+            @click="editUnitOpen = true"
+            class="bg-white text-sky-500 border border-sky-500 hover:bg-sky-50   px-3 py-2 rounded-md text-sm flex items-center gap-1">
             <x-heroicon-s-pencil-square class="w-4 h-4" />Edit
         </button>
 
     <!-- Edit Modal Wrapper -->
     <div
         x-cloak
-        x-show="editOpen"
-        x-on:close-edit-modal.window="editOpen = false"
+        x-show="editUnitOpen"
+        x-on:close-edit-modal.window="editUnitOpen = false"
 
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="editOpen = false">
+        @keydown.escape.window="editUnitOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="editOpen"
+            x-show="editUnitOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="editOpen"
+            x-show="editUnitOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-xl bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -44,7 +44,7 @@
 
                 <button
                     type="button"
-                    @click="editOpen = false"
+                    @click="editUnitOpen = false"
                     class="text-gray-400 hover:text-gray-600">
                     <x-heroicon-s-x-mark class="w-5 h-5" />
                 </button>
@@ -111,7 +111,7 @@
                             <div class="col-span-12 md:col-span-3 flex items-start md:items-center justify-start md:justify-center">
                                 <button
                                     type="button"
-                                    @click="editOpen = false; deleteOpen = true"
+                                    @click="editUnitOpen = false; deleteUnitOpen = true"
                                     class="px-4 py-2 rounded-lg text-xs font-semibold  text-white bg-red-500 hover:bg-red-400 shadow-lg flex items-center gap-1">
                                     <x-heroicon-s-trash class="w-3 h-3"/> Delete
                                 </button>
@@ -124,14 +124,14 @@
                     <div class="flex items-center justify-end gap-2 pt-2">
                         <button
                                 type="button"
-                                @click="if (!$wire.__instance.loading) editOpen = false"
+                                @click="if (!$wire.__instance.loading) editUnitOpen = false"
                                 wire:loading.attr="disabled"
                                 wire:target="editUnit"
                                 class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
                                 Cancel
                         </button>
-                        <x-loading-livewire-button wireTarget="editUnit" formId="EditUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
-                            <x-heroicon-s-pencil-square class="w-4 h-4 mr-1" />
+                        <x-loading-livewire-button wireTarget="editUnit" formId="EditUnitForm" class="w-1/1  text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                            <x-heroicon-s-pencil-square class="w-4 h-4 mr-1 hidden sm:block" />
                                 {{ __('Save Changes') }}
                         </x-loading-livewire-button>
                     </div>
@@ -144,21 +144,21 @@
     <!--Delete Modal Wrapper -->
     <div
         x-cloak
-        x-show="deleteOpen"
-        x-on:close-delete-modal.window="deleteOpen = false"
+        x-show="deleteUnitOpen"
+        x-on:close-delete-modal.window="deleteUnitOpen = false"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="deleteOpen = false">
+        @keydown.escape.window="deleteUnitOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="deleteOpen"
+            x-show="deleteUnitOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="deleteOpen"
+            x-show="deleteUnitOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -177,7 +177,7 @@
                 <div class="flex items-center justify-end gap-2 pt-2">
                         <button
                                 type="button"
-                                @click="if (!$wire.__instance.loading) deleteOpen = false"
+                                @click="if (!$wire.__instance.loading) deleteUnitOpen = false"
                                 wire:loading.attr="disabled"
                                 wire:target="deleteUnit"
                                 class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">

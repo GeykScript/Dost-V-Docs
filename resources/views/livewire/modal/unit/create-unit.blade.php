@@ -1,9 +1,9 @@
-<div x-data="{ createOpen: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ createUnitOpen: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Add Unit Button -->
     <button
         type="button"
-        @click="createOpen = true"
+        @click="createUnitOpen = true"
         class="bg-brand-blue text-white text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold">
         <x-heroicon-s-plus class="w-4 h-4 hidden sm:block"/>
         Add Unit
@@ -12,21 +12,21 @@
     <!-- Modal Wrapper -->
     <div
         x-cloak
-        x-show="createOpen"
-        x-on:close-create-modal.window="createOpen = false"
+        x-show="createUnitOpen"
+        x-on:close-create-modal.window="createUnitOpen = false"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="createOpen = false">
+        @keydown.escape.window="createUnitOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="createOpen"
+            x-show="createUnitOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="createOpen"
+            x-show="createUnitOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-xl bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -44,7 +44,7 @@
 
                 <button
                     type="button"
-                    @click="createOpen = false"
+                    @click="createUnitOpen = false"
                     class="text-gray-400 hover:text-gray-600">
                     <x-heroicon-s-x-mark class="w-5 h-5" />
                 </button>
@@ -103,7 +103,7 @@
                     <div class="flex items-center justify-end gap-2 pt-2">
                         <button
                                 type="button"
-                                @click="if (!$wire.__instance.loading) createOpen = false"
+                                @click="if (!$wire.__instance.loading) createUnitOpen = false"
                                 wire:loading.attr="disabled"
                                 wire:target="createUnit"
                                 class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">

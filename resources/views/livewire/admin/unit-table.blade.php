@@ -93,13 +93,13 @@
                     <th class="px-6 py-3 rounded-r-md" colspan="2">Action</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100">
+            <tbody class="divide-y  divide-gray-100">
                 @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
-                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md" colspan="2">{{ $unit->description }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">
+                        <td class="px-6 py-1.5 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md" colspan="2">{{ $unit->description }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md">
                             <span class="text-xs bg-orange-100 text-orange-600 rounded-full px-3 font-semibold py-1.5">
                                 @if ($unit->active_user_assignments_count > 99)
                                     99+
@@ -108,7 +108,7 @@
                                 @endif
                             </span>
                         </td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md">
                             @if($unit->trashed())
                                     <span class="text-red-500 text-xs font-semibold flex items-center gap-0.5">
                                         Deleted
@@ -121,7 +121,7 @@
                                     </span>
                             @endif
                         </td>
-                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
+                        <td class="px-6 py-1.5 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
                             <!-- Edit modal with Delete modal inside  -->
                             <livewire:modal.unit.edit-unit :unit="$unit" />
                         </td>

@@ -45,7 +45,7 @@ class UnitTable extends Component
     public function updatedPerPage()
     {
           $this->successMessage = null;
-    $this->errorMessage = null;
+        $this->errorMessage = null;
         $this->resetPage(); // reset pagination when perPage changes
     }
 
