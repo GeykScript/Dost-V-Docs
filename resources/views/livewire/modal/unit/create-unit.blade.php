@@ -1,9 +1,9 @@
-<div x-data="{ open: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ createOpen: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Add Unit Button -->
     <button
         type="button"
-        @click="open = true"
+        @click="createOpen = true"
         class="bg-brand-blue text-white text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold">
         <x-heroicon-s-plus class="w-4 h-4 hidden sm:block"/>
         Add Unit
@@ -12,20 +12,21 @@
     <!-- Modal Wrapper -->
     <div
         x-cloak
-        x-show="open"
+        x-show="createOpen"
+        x-on:close-create-modal.window="createOpen = false"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="open = false">
+        @keydown.escape.window="createOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="open"
+            x-show="createOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="open"
+            x-show="createOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-xl bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -43,7 +44,7 @@
 
                 <button
                     type="button"
-                    @click="open = false"
+                    @click="createOpen = false"
                     class="text-gray-400 hover:text-gray-600">
                     <x-heroicon-s-x-mark class="w-5 h-5" />
                 </button>
@@ -98,20 +99,21 @@
                     @enderror
                 </div>
 
-                <!-- Buttons -->
-                <div class="flex items-center justify-end gap-2 pt-2">
-
-                    <button
-                        type="button"
-                        @click="open = false"
-                        class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
-                        Cancel
-                    </button>
-                     <x-loading-button formId="CreateUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
-                        <x-heroicon-s-plus class="w-4 h-4 mr-1"/>
-                            {{ __('Create Unit') }}
-                        </x-loading-button>
-                </div>
+                    <!-- Buttons -->
+                    <div class="flex items-center justify-end gap-2 pt-2">
+                        <button
+                                type="button"
+                                @click="if (!$wire.__instance.loading) createOpen = false"
+                                wire:loading.attr="disabled"
+                                wire:target="createUnit"
+                                class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                                Cancel
+                        </button>
+                        <x-loading-livewire-button wireTarget="createUnit" formId="CreateUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                            <x-heroicon-s-plus class="w-4 h-4 mr-1" />
+                                {{ __('Create Unit') }}
+                        </x-loading-livewire-button>
+                    </div>
             </form>
         </div>
     </div>

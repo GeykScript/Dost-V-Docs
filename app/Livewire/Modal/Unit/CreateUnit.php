@@ -28,8 +28,12 @@ public function createUnit(): void
     Unit::create($validated);
 
 
-    session()->flash('success', 'Unit created successfully.');
-    $this->redirectRoute('units'); 
+    // session()->flash('success', 'Unit created successfully.');
+    // $this->redirectRoute('units'); 
+
+    // Close modal and show success message
+        $this->dispatch('close-create-modal');
+        $this->dispatch('unit-success', message: 'Unit created successfully.');
 }
 
     public function render()

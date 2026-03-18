@@ -37,35 +37,75 @@ class EditUnit extends Component
         ];
     }
 
-    // Edit Unit function
     public function editUnit(): void
     {
         $validated = $this->validate();
-        //dd($validated);
 
-        $this->unit->update($validated);
+       // Fill the model with validated data
+        $this->unit->fill($validated);
 
-        session()->flash('success', 'Unit updated successfully.');
-        $this->redirectRoute('units'); 
+        // Check if anything changed
+        if (!$this->unit->isDirty()) {
+            $this->dispatch('unit-success', message: 'No changes made.');
+            return;
+        }
 
+        // Save only if changed
+        $this->unit->save();
+
+        // Close modal and show success message
+        $this->dispatch('close-edit-modal');
+        $this->dispatch('unit-success', message: 'Unit updated successfully.');
     }
+
+    public function deleteUnit(): void
+    {
+        // Reload the unit fresh with user assignments
+        // Reload the Relationships fresh()
+        $unit = $this->unit->fresh(); 
+
+        // Check if unit has current user assignments
+        $hasActiveUsers = $unit->userAssignments()
+                                ->where('is_current', 1)
+                                ->exists();
+
+        if ($hasActiveUsers) {
+            // Close modal and show error message
+            $this->dispatch('close-delete-modal');
+            $this->dispatch('unit-error', message: 'Cannot delete unit because it has active users.');
+            return;
+        }
+
+        // Soft delete
+        $unit->delete();
+
+        $this->dispatch('close-delete-modal');
+        $this->dispatch('unit-success', message: 'Unit deleted successfully.');
+    }
+
+
+
+
+
+
+
 
     // Delete Unit function 
-     public function deleteUnit(): void
-    {
-            // Check if unit has current user assignments
-            if ($this->unit->userAssignments()->where('is_current', true)->exists()) {
-                session()->flash('error', 'Cannot delete unit because it has active users.');
-                $this->redirectRoute('units');
-            }   
-            else {
-            // Soft delete
-           $this->unit->delete();
+    //  public function deleteUnit(): void
+    // {
+    //         // Check if unit has current user assignments
+    //         if ($this->unit->userAssignments()->where('is_current', true)->exists()) {
+    //             session()->flash('error', 'Cannot delete unit because it has active users.');
+    //             $this->redirectRoute('units');
+    //         }   
+    //         else {
+    //         // Soft delete
+    //        $this->unit->delete();
             
-            session()->flash('success', 'Unit deleted successfully.');
-            $this->redirectRoute('units'); 
-        }
-    }
+    //         session()->flash('success', 'Unit deleted successfully.');
+    //         $this->redirectRoute('units'); 
+    //     }
+    // }
 
     public function render()
     {

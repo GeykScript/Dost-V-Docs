@@ -1,10 +1,10 @@
 
 <div x-data="{ editOpen: false, deleteOpen: false }"   class="col-span-2 md:col-span-2 flex items-center justify-center">
-
+    <!-- button showing in the table row to open the edit modal -->
         <button 
             type="button"
             @click="editOpen = true"
-            class="bg-sky-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1">
+            class="bg-white text-sky-500 border border-sky-500 hover:bg-sky-500 hover:text-white  px-3 py-2 rounded-md text-sm flex items-center gap-1">
             <x-heroicon-s-pencil-square class="w-4 h-4" />Edit
         </button>
 
@@ -12,8 +12,10 @@
     <div
         x-cloak
         x-show="editOpen"
+        x-on:close-edit-modal.window="editOpen = false"
+
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-         @keydown.escape.window="editOpen = false">
+        @keydown.escape.window="editOpen = false">
 
         <!-- Backdrop -->
         <div
@@ -51,7 +53,7 @@
             <!-- Form -->
                 <form wire:submit.prevent="editUnit" class="px-7 py-6 space-y-4" id="EditUnitForm">
                     <div class="grid grid-cols-12 gap-2">
-                        <div class="col-span-12 md:col-span-7">
+                        <div class="col-span-12 md:col-span-9">
                             <label class="block text-xs font-bold text-gray-500 mb-1">Unit Name</label>
                             <x-text-input
                                 type="text"
@@ -63,7 +65,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-span-12 md:col-span-5">
+                        <div class="col-span-12 md:col-span-3">
                             <label class="block text-xs font-bold text-gray-500 mb-1">
                                 Abbreviation
                             </label>
@@ -93,51 +95,57 @@
                             <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+
                         <!-- Delete inside Edit Modal -->
-                       
-                        <div class="grid grid-cols-12 gap-2 bg-red-50 border border-red-500 rounded-lg p-4 ">
-                            <div class="col-span-1 flex items-center justify-center">
-                                 <!-- Icon with background -->
+                        <div class="grid grid-cols-12 gap-2 bg-red-50 border border-red-500 shadow-md rounded-lg p-4 ">
+                            <div class="col-span-12 md:col-span-1 flex items-start md:items-center justofy-start md:justify-center">
+                                <!-- Icon with background -->
                                 <div class="bg-red-500/10 p-2 rounded-full flex items-center justify-center">
                                     <x-heroicon-o-exclamation-circle class="w-6 h-6 text-red-500" />
                                 </div>
                             </div>
-                            <div class="col-span-8 flex flex-col px-2">
+                            <div class="col-span-12 md:col-span-8 flex flex-col px-2">
                                 <h1 class="font-bold ">Unit Deletion</h1>
                                 <p class="text-xs">Deleting this unit will remove it from the system. Please confirm your decision.</p>
                             </div>
-                            <div class="col-span-3 flex items-center justify-center">
-                                 <button
+                            <div class="col-span-12 md:col-span-3 flex items-start md:items-center justify-start md:justify-center">
+                                <button
                                     type="button"
                                     @click="editOpen = false; deleteOpen = true"
-                                    class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-red-500 hover:bg-red-400 flex items-center gap-1">
-                                    <x-heroicon-s-trash class="w-4 h-4"/> Delete
+                                    class="px-4 py-2 rounded-lg text-xs font-semibold  text-white bg-red-500 hover:bg-red-400 shadow-lg flex items-center gap-1">
+                                    <x-heroicon-s-trash class="w-3 h-3"/> Delete
                                 </button>
                             </div>
                         </div>
 
+
+
                     <!-- Buttons -->
                     <div class="flex items-center justify-end gap-2 pt-2">
                         <button
-                            type="button"
-                            @click="editOpen = false"
-                            class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
-                            Cancel
+                                type="button"
+                                @click="if (!$wire.__instance.loading) editOpen = false"
+                                wire:loading.attr="disabled"
+                                wire:target="editUnit"
+                                class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                                Cancel
                         </button>
-                        <x-loading-button formId="EditUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                        <x-loading-livewire-button wireTarget="editUnit" formId="EditUnitForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
                             <x-heroicon-s-pencil-square class="w-4 h-4 mr-1" />
                                 {{ __('Save Changes') }}
-                        </x-loading-button>
+                        </x-loading-livewire-button>
                     </div>
             </form> 
         </div>
     </div>
+    <!-- end of Edit modal Wrapper  -->
 
 
     <!--Delete Modal Wrapper -->
     <div
         x-cloak
         x-show="deleteOpen"
+        x-on:close-delete-modal.window="deleteOpen = false"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
         @keydown.escape.window="deleteOpen = false">
 
@@ -154,7 +162,6 @@
             x-transition.scale
             class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden">
 
-         
             <!-- Form -->
             <form wire:submit.prevent="deleteUnit" class="px-7 py-6 space-y-4" id="DeleteUnitForm">
                 <div class="grid grid-cols-12 gap-2">
@@ -168,22 +175,23 @@
                 </div>
                 <!-- Buttons -->
                 <div class="flex items-center justify-end gap-2 pt-2">
-
-                    <button
-                        type="button"
-                        @click="deleteOpen = false"
-                        class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
-                        Cancel
-                    </button>
-                    <x-loading-button formId="DeleteUnitForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
-                        <x-heroicon-s-trash class="w-4 h-4 mr-1"/>
-                            {{ __('Delete Unit') }}
-                        </x-loading-button>
+                        <button
+                                type="button"
+                                @click="if (!$wire.__instance.loading) deleteOpen = false"
+                                wire:loading.attr="disabled"
+                                wire:target="deleteUnit"
+                                class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                                Cancel
+                        </button>
+                        <x-loading-livewire-button wireTarget="deleteUnit"  formId="DeleteUnitForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
+                            <x-heroicon-s-trash class="w-4 h-4 mr-1"/>
+                                {{ __('Delete Unit') }}
+                        </x-loading-livewire-button>
                 </div>
             </form>
         </div>
     </div>
-
+    <!-- end of Delete modal Wrapper  -->
 </div>
 
 
