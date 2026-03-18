@@ -1,27 +1,5 @@
 <div class="overflow-hidden">
-    @if($successMessage)
-    <div 
-        wire:key="{{ $successMessage . uniqid() }}"
-        x-data="{ show: true }" 
-        x-init="setTimeout(() => show = false, 3000)"
-        x-show="show"
-        class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500"
-        x-transition
-    >
-        {{ $successMessage }}
-    </div>
-    @elseif ($errorMessage)
-    <div 
-        wire:key="{{ $errorMessage . uniqid() }}"
-        x-data="{ show: true }" 
-        x-init="setTimeout(() => show = false, 3000)"
-        x-show="show"
-        class="mb-3 rounded-lg border border-red-200 bg-red-100 px-4 py-3 text-sm font-medium text-red-500"
-        x-transition
-    >
-        {{ $errorMessage }}
-    </div>
-    @endif
+    <x-alert-message :success-message="$successMessage" :error-message="$errorMessage" />
     <div class="grid grid-cols-12 mb-4 gap-2 py-2 px-2 md:px-0">
         <!-- per page dropdown -->
         <div class="col-span-12 md:col-span-6 order-2 md:order-1">

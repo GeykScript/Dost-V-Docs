@@ -1,28 +1,6 @@
 <div class="overflow-hidden">
-
-    @if($successMessage)
-    <div 
-        wire:key="{{ $successMessage . uniqid() }}"
-        x-data="{ show: true }" 
-        x-init="setTimeout(() => show = false, 3000)"
-        x-show="show"
-        class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500"
-        x-transition
-    >
-        {{ $successMessage }}
-    </div>
-    @elseif ($errorMessage)
-    <div 
-        wire:key="{{ $errorMessage . uniqid() }}"
-        x-data="{ show: true }" 
-        x-init="setTimeout(() => show = false, 3000)"
-        x-show="show"
-        class="mb-3 rounded-lg border border-red-200 bg-red-100 px-4 py-3 text-sm font-medium text-red-500"
-        x-transition
-    >
-        {{ $errorMessage }}
-    </div>
-    @endif
+	
+    <x-alert-message :success-message="$successMessage" :error-message="$errorMessage" />
 
     <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2 py-2 px-2 md:px-0">
@@ -123,7 +101,14 @@
                         </td>
                         <td class="px-6 py-1.5 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
                             <!-- Edit modal with Delete modal inside  -->
-                            <livewire:modal.unit.edit-unit :unit="$unit" />
+                             @if ($unit->trashed())
+                                    <span class=" w-1/1 md:w-1/3 text-center text-sky-500 px-2 py-2 flex justify-center text-xs font-semibold  items-center ">
+                                        --
+                                    </span>
+                                @else
+                                <!-- Delete button modal  -->
+                                    <livewire:modal.unit.edit-unit :unit="$unit" />
+                            @endif
                         </td>
                     </tr>
                 @empty
