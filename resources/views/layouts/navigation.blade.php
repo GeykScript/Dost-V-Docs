@@ -49,8 +49,7 @@
                                             <p class="text-xs text-gray-500">The document Memorandum of agreement has received by Adorable Baby. Document has been routed to Gusion Montefalco.</p>
                                             <p class="text-xs text-gray-500 italic text-right mt-1">2 mins ago</p>
                                         </div>
-                                    </div>
-                                  
+                                    </div> 
                                 <div class="p-2 flex justify-end">
                                     <a href="#" class="text-brand-blue  text-xs hover:underline">
                                         View All
@@ -64,7 +63,13 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex gap-2 items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white   focus:outline-none transition ease-in-out duration-150">
-                                <x-heroicon-s-user-circle class="w-8 h-8 " />
+                                    @if (Auth::user()->profile_path)
+                                        <img src="{{ asset('storage/' . Auth::user()->profile_path) }}" 
+                                            alt="Profile Picture" 
+                                            class="w-8 h-8 rounded-full object-cover ">
+                                    @else
+                                        <x-heroicon-s-user-circle class="w-8 h-8" />
+                                    @endif
                                 <div class="flex-col items-start justify-start hidden sm:flex">
                                     <div class="flex ">
                                         <h1 class="text-md font-semibold">
@@ -78,7 +83,7 @@
                                     </div>
                                     <!-- Need to change  -->
                                     <p class="text-[10px]">
-                                          {{ Auth::user()->userAssignments->map(function($assignment) {
+                                        {{ Auth::user()->userAssignments->map(function($assignment) {
                                             return $assignment->unit->abbreviation;
                                             })->implode(', ') }}
                                     </p> 
