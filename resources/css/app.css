@@ -16,9 +16,6 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,4 +31,22 @@
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+
+
+
+/* CSS for Cropping.js modal  */
+.cropper-bg {
+    background-color: #222222 !important;
+    background-image: none !important;
+}
+
+.cropper-view-box {
+    outline: 2px solid #00AEEF !important;
+    border-radius: 100% !important;
+    /* blue border */
+}
+
+.cropper-face {
+    background-color: rgba(255, 255, 255, 0.1) !important;
 }
