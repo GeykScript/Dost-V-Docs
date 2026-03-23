@@ -9,7 +9,7 @@ use App\Models\Status;
 use App\Models\PriorityLevel;
 use Illuminate\Support\Facades\DB;
 
-class Mydocumentstable extends Component
+class MyDocumentsTable extends Component
 {
     use WithPagination;
 
