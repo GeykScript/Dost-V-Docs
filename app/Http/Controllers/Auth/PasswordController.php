@@ -24,13 +24,13 @@ class PasswordController extends Controller
                 ->symbols(), ],
         ]);
 
+        if (Hash::check($validated['password'], $request->user()->password)) {
+            return back()->with('status', 'no-changes-password');
+        }
+
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
-
-        if (! $request->user()->isDirty('password')) {
-            return back()->with('status', 'no-changes-password');
-        }
 
         return back()->with('status', 'password-updated');
     }

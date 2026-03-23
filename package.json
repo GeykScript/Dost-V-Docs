@@ -21,6 +21,7 @@
     "dependencies": {
         "@fontsource/poppins": "^5.2.7",
         "apexcharts": "^3.46.0",
+        "cropperjs": "^1.5.13",
         "flowbite": "^4.0.1"
     }
 }
