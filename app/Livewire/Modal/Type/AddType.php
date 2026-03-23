@@ -23,10 +23,8 @@ public function addType(): void
 
     Type::create($validated);
 
-    session()->flash('success', 'Type created successfully.');
-
-   // Redirect to the Document Types page
-    $this->redirectRoute('type'); // use the route name from your routes file
+    $this->dispatch('close-create-modal');
+    $this->dispatch('type-success', message: 'Type created successfully.');
 }
 
     public function render()

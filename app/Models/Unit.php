@@ -14,6 +14,7 @@ class Unit extends Model
         'unit_name',
         'description',
         'abbreviation',
+        'deleted_at',
     ];
 
 
@@ -28,6 +29,12 @@ class Unit extends Model
 
 
     public function userAssignments(){
-        return $this->hasMany(UserAssignment::class, 'user_id');
+        return $this->hasMany(UserAssignment::class, 'unit_id');
     }
+
+    public function activeUserAssignments()
+{
+    return $this->hasMany(UserAssignment::class, 'unit_id')
+                ->whereNull('end_date');
+}
 }

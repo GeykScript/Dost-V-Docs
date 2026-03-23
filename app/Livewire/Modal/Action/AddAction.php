@@ -23,10 +23,9 @@ public function addAction(): void
     
     Action::create($validated);
 
-    session()->flash('success', 'Action created successfully.');
-
-   // Redirect to the Document Actions page
-    $this->redirectRoute('action'); // use the route name from your routes file
+   // Close modal and show success message
+        $this->dispatch('close-create-modal');
+        $this->dispatch('action-success', message: 'Action created successfully.');
 }
 
     public function render()

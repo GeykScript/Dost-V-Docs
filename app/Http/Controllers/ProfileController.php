@@ -16,8 +16,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $profile = $request->user()->profile_path; // Assuming 'profile_path' is the column name in users table
         return view('profile.edit', [
             'user' => $request->user(),
+            'profile' => $profile,
         ]);
     }
 
@@ -61,4 +63,20 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function uploadProfilePicture(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'profilePhoto' => 'required|image|max:1024', // 1MB
+        ]);
+        $user = $request->user();
+
+        $path = $request->file('profilePhoto')->store('profiles', 'public');
+
+       
+        $user->profile_path = $path;
+        $user->save();
+
+        return Redirect::route('profile.edit')->with('success', 'Profile picture updated successfully.');
+}
 }

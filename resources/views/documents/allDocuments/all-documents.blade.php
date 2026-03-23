@@ -16,7 +16,7 @@
                   </div>
               </div>
                   <div class="overflow-x-auto mt-4">
-                    <livewire:alldocumentstable />
+                    <livewire:all-documents-table />
                   </div>
             </div>
         </div>

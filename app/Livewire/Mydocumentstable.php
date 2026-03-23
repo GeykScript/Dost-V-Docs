@@ -73,7 +73,7 @@ public function updatedFilterPriority()
             ->orderBy('year','desc')
             ->pluck('year');
 
-        return view('livewire.mydocumentstable', [
+        return view('livewire.my-documents-table', [
             'documents' => $query->paginate($this->perPage),
             'years' => $years,
             'statuses' =>  $statuses,

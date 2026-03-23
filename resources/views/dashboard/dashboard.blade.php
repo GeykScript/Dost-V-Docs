@@ -11,7 +11,7 @@
                             <div class="flex items-start justify-between">
                                 <div>
                                     <p class="text-sm font-medium text-gray-600">Total Documents</p>
-                                    <h3 class="text-3xl font-semibold text-700 mt-1">100</h3>
+                                    <h3 class="text-3xl font-semibold text-gray-700 mt-1">100</h3>
                                 </div>
                                 <div class="p-3 bg-sky-100/70 rounded-full">
                                 <x-heroicon-s-clipboard-document class="h-5 w-5 text-brand-blue" />

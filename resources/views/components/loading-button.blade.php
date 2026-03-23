@@ -1,3 +1,8 @@
+
+<!-- Use this loading button component if the page loads
+when the form is submitted -->
+
+
 @props([
     'formId' => null, // ID of the form this button will submit
     'type' => 'submit',

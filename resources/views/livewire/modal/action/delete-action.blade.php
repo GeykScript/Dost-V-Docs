@@ -1,30 +1,31 @@
-<div x-data="{ open: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
+<div x-data="{ deleteActionOpen: false }"  class="col-span-2 md:col-span-2 flex items-center justify-center">
 
     <!-- Delete  Button -->
     <button 
             type="button"
-            @click="open = true"
-            class="bg-red-500 text-white px-3 py-2 rounded-md text-sm flex items-center gap-1">
+            @click="deleteActionOpen = true"
+            class="bg-white text-red-500 border border-red-500 hover:bg-red-50 px-3 py-2 rounded-md text-sm flex items-center gap-1">
             <x-heroicon-s-trash class="w-4 h-4" />Delete
         </button>
 
     <!-- Modal Wrapper -->
     <div
         x-cloak
-        x-show="open"
+        x-show="deleteActionOpen"
+        x-on:close-delete-modal.window="deleteActionOpen = false"
         class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
-        @keydown.escape.window="open = false">
+        @keydown.escape.window="deleteActionOpen = false">
 
         <!-- Backdrop -->
         <div
-            x-show="open"
+            x-show="deleteActionOpen"
             x-transition.opacity
             class="absolute inset-0 bg-black/50">
         </div>
 
         <!-- Modal Panel -->
         <div
-            x-show="open"
+            x-show="deleteActionOpen"
             x-transition.scale
             class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden">
 
@@ -40,20 +41,22 @@
                         <p class="text-center text-xs text-gray-500">This action cannot be undone. Please confirm your decision.</p>
                     </div>
                 </div>
-                <!-- Buttons -->
-                <div class="flex items-center justify-end gap-2 pt-2">
-
-                    <button
-                        type="button"
-                        @click="open = false"
-                        class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 ">
-                        Cancel
-                    </button>
-                    <x-loading-button formId="DeleteActionForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
-                        <x-heroicon-s-trash class="w-4 h-4 mr-1"/>
-                            {{ __('Delete Action') }}
-                        </x-loading-button>
-                </div>
+       
+                    <!-- Buttons -->
+                    <div class="flex items-center justify-end gap-2 pt-2">
+                        <button
+                                type="button"
+                                @click="if (!$wire.__instance.loading) deleteActionOpen = false"
+                                wire:loading.attr="disabled"
+                                wire:target="deleteAction"
+                                class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                                Cancel
+                        </button>
+                        <x-loading-livewire-button wireTarget="deleteAction" formId="DeleteActionForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
+                            <x-heroicon-s-trash class="w-4 h-4 mr-1" />
+                                {{ __('Delete Action') }}
+                        </x-loading-livewire-button>
+                    </div>
             </form>
         </div>
     </div>

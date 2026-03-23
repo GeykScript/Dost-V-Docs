@@ -1,15 +1,6 @@
 <div class="overflow-hidden">
-
-    @if(session('success'))
-    <div class="mb-3 rounded-lg border border-green-200 bg-green-100 px-4 py-3 text-sm font-medium text-green-500">
-        {{ session('success') }}
-    </div>
-    @endif
-    @if(session('error'))
-    <div class="mb-3 rounded-lg border border-red-200 bg-red-100 px-4 py-3 text-sm font-medium text-red-500">
-        {{ session('error') }}
-    </div>
-    @endif
+	
+    <x-alert-message :success-message="$successMessage" :error-message="$errorMessage" />
 
     <!-- main content  -->
     <div class="grid grid-cols-12 mb-4 gap-2 py-2 px-2 md:px-0">
@@ -62,6 +53,7 @@
                     placeholder="Search"
                     required />
             </div>  
+            <!-- create button modal  -->
                 <livewire:modal.unit.create-unit />
         </div>
     </div>
@@ -69,28 +61,59 @@
     <!-- Unit Table  -->
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
+            <thead class="bg-gray-800 text-white uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3"colspan="2">Name</th>
+                    <th class="px-6 py-3 rounded-l-md" colspan="2">Name</th>
                     <th class="px-6 py-3">Abbreviation</th>
-                    <th class="px-6 py-3">Description</th>
-                    <th class="px-6 py-3" colspan="2">Action</th>
+                    <th class="px-6 py-3" colspan="2">Description</th>
+                    <th class="px-6 py-3">Users</th>
+                    <th class="px-6 py-3">Status</th>
+                    <th class="px-6 py-3 rounded-r-md" colspan="2">Action</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100">
+            <tbody class="divide-y  divide-gray-100">
                 @forelse($units as $unit)
                     <tr class="hover:bg-gray-100/50 transition-colors ">
-                        <td class="px-6 py-0 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-700 font-medium truncate max-w-md">{{ $unit->description }}</td>
-                        <td class="px-6 py-0 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
-                            <livewire:modal.unit.edit-unit :unit="$unit" />
-                            <livewire:modal.unit.delete-unit :unit="$unit" />
+                        <td class="px-6 py-1.5 md:py-4 font-medium text-gray-700 truncate max-w-xs" colspan="2" >{{ $unit->unit_name }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium">{{ $unit->abbreviation }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md" colspan="2">{{ $unit->description }}</td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md">
+                            <span class="text-xs bg-orange-100 text-orange-600 rounded-full px-3 font-semibold py-1.5">
+                                @if ($unit->active_user_assignments_count > 99)
+                                    99+
+                                @else
+                                    {{ $unit->active_user_assignments_count }}
+                                @endif
+                            </span>
+                        </td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-700 font-medium truncate max-w-md">
+                            @if($unit->trashed())
+                                    <span class="text-red-500 text-xs font-semibold flex items-center gap-0.5">
+                                        Deleted
+                                        <x-heroicon-s-x-circle class="w-4 h-4  mr-1" />
+                                    </span>
+                                @else
+                                    <span class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                                        Active
+                                        <x-heroicon-s-check-circle class="w-4 h-4  mr-1" />
+                                    </span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-1.5 md:py-4 text-gray-600 font-medium flex gap-2" colspan="2">
+                            <!-- Edit modal with Delete modal inside  -->
+                             @if ($unit->trashed())
+                                    <span class=" w-1/1 md:w-1/3 text-center text-sky-500 px-2 py-2 flex justify-center text-xs font-semibold  items-center ">
+                                        --
+                                    </span>
+                                @else
+                                <!-- Delete button modal  -->
+                                    <livewire:modal.unit.edit-unit :unit="$unit" />
+                            @endif
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="text-center py-10 text-gray-500">
+                        <td colspan="8" class="text-center py-10 text-gray-500">
                             No units found.
                         </td>
                     </tr>
