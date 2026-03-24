@@ -8,10 +8,12 @@ use App\Models\User;
 
 class UserAccountsTable extends Component
 {
+
     use WithPagination;
 
     public $search = '';
     public $perPage = 10; //
+
 
     public function updatingSearch()
     {
@@ -19,9 +21,9 @@ class UserAccountsTable extends Component
     }
 
     public function updatedPerPage()
-{
-    $this->resetPage(); // reset pagination when perPage changes
-}
+    {
+        $this->resetPage(); // reset pagination when perPage changes
+    }
 
     public function render()
     {
