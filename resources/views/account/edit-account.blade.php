@@ -38,7 +38,7 @@
                 
                 <div class="col-span-1 md:col-span-2 bg-white shadow-sm rounded-lg flex flex-col">
                     <div>
-                        <livewire:admin.edit-user :user="$user" />
+                        @include('account.partials.update-info-form')
                     </div>
                 </div>
                 

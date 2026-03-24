@@ -1,5 +1,4 @@
 <section class="p-6">
-    <!--Updating User Profile Details-->
     <header class="mb-8">
         <div class="flex gap-2 items-center">
             <x-heroicon-o-identification class="w-6 h-6 text-gray-800" />
@@ -19,20 +18,16 @@
         </div>
     </header>
 
-    <x-alert-message :success-message="$successMessage" :error-message="$errorMessage" />
+    @if (session('status'))
+        <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)" class="mb-4 text-sm text-green-700 bg-green-50 border border-green-200 p-3 rounded-lg">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <form 
-        wire:submit.prevent 
-        @profile-updated.window="
-            original.username = form.username;
-            original.email = form.email;
-            original.first_name = form.first_name;
-            original.last_name = form.last_name;
-            original.suffix = form.suffix;
-            errors = {};
-            clearedBackendErrors = {};
-            generalError = '';
-        "
+        id="profileUpdateForm"
+        method="POST" 
+        action="{{ route('accounts.update', $user->id) }}" 
         x-data="{
             original: {
                 username: '{{ $user->username }}',
@@ -42,11 +37,11 @@
                 suffix: '{{ $user->suffix }}'
             },
             form: {
-                username: @entangle('username'),
-                email: @entangle('email'),
-                first_name: @entangle('first_name'),
-                last_name: @entangle('last_name'),
-                suffix: @entangle('suffix')
+                username: '{{ old('username', $user->username) }}',
+                email: '{{ old('email', $user->email) }}',
+                first_name: '{{ old('first_name', $user->first_name) }}',
+                last_name: '{{ old('last_name', $user->last_name) }}',
+                suffix: '{{ old('suffix', $user->suffix) }}'
             },
             errors: {},
             clearedBackendErrors: {},
@@ -78,12 +73,15 @@
                     return; 
                 }
 
+                // If valid, open the modal
                 $dispatch('open-modal-confirm-profile-update', { name: this.form.username });
             }
         }"
         class="space-y-6 mt-4"
     >
-        <!--error for general concerns, backend related errors-->
+        @csrf
+        @method('PUT')
+
         <template x-if="generalError">
             <div class="text-sm text-red-700 bg-red-50 border border-red-200 p-3 rounded-lg mb-4" x-text="generalError"></div>
         </template>
@@ -101,6 +99,7 @@
                 </div>
                 <x-text-input 
                     id="username" 
+                    name="username"
                     x-model="form.username" 
                     type="text" 
                     class="mt-1 block w-full transition-colors" 
@@ -120,7 +119,8 @@
                     </div>
                 </div>
                 <x-text-input 
-                    id="email" 
+                    id="email"
+                    name="email" 
                     x-model="form.email" 
                     type="email" 
                     class="mt-1 block w-full transition-colors" 
@@ -141,6 +141,7 @@
                 </div>
                 <x-text-input 
                     id="first_name" 
+                    name="first_name"
                     x-model="form.first_name" 
                     type="text" 
                     class="mt-1 block w-full transition-colors" 
@@ -161,6 +162,7 @@
                 </div>
                 <x-text-input 
                     id="last_name" 
+                    name="last_name"
                     x-model="form.last_name" 
                     type="text" 
                     class="mt-1 block w-full transition-colors" 
@@ -178,6 +180,7 @@
                 </div>
                 <x-text-input 
                     id="suffix" 
+                    name="suffix"
                     x-model="form.suffix" 
                     type="text" 
                     class="mt-1 block w-full transition-colors" 
@@ -196,14 +199,18 @@
             </x-primary-button>      
         </div>
     </form>
-
-    <!--Confirmation Modal-->
-    <x-form-confirmation-modal 
-        id="confirm-profile-update"
-        title="Update Profile Details?"
-        message="You are about to change the profile credentials for this employee. Please confirm your decision."
-        confirmText="Save Changes"
-        action="updateProfile"
-        type="info"
-    />
 </section>
+
+<x-form-confirmation-modal 
+    id="confirm-profile-update"
+    title="Update Profile Details?"
+    message="You are about to change the profile credentials for this employee. Please confirm your decision."
+    confirmText="Save Changes"
+    type="info"
+/>
+
+<script>
+    window.addEventListener('submit-confirm-profile-update', () => {
+        document.getElementById('profileUpdateForm').submit();
+    });
+</script>

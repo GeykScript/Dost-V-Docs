@@ -69,6 +69,9 @@ Route::get('/management/accounts/edit/{id}', [EditAccountController::class, 'ind
     ->middleware(['auth', 'verified'])
     ->name('accounts.edit');
 
+Route::put('/management/accounts/edit/put/{id}', [EditAccountController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('accounts.update');
 
 
 // Document Types page

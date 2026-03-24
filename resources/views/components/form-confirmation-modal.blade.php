@@ -40,7 +40,7 @@
                 
                 class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden">
 
-                <form wire:submit.prevent="{{ $action }}; open = false; confirmed = false" class="px-7 py-8">
+                <form @submit.prevent="$dispatch('submit-{{ $id }}'); open = false; confirmed = false" class="px-7 py-8">
                     <div class="flex flex-col items-center justify-center text-center">
                         <div class="flex items-center justify-center rounded-full w-20 h-20 mb-4 {{ $iconColor }} shadow-lg shadow-red-100">
                             @if($type === 'danger')
