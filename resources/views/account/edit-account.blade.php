@@ -5,7 +5,7 @@
   
     <div class="p-4 sm:p-6">
         
-        <div class="max-w-full mx-auto w-full">
+        <div class="max-w-full mx-auto w-full flex flex-col gap-4">
             
             <div class="pb-4">
                 <a href="{{ route('accounts') }}" class="text-gray-500 font-semibold hover:text-gray-600 flex items-center gap-1 w-fit">
@@ -38,11 +38,15 @@
                 
                 <div class="col-span-1 md:col-span-2 bg-white shadow-sm rounded-lg flex flex-col">
                     <div>
-                        <livewire:admin.edit-user :user="$user" />
+                        @include('account.partials.update-info-form')
                     </div>
                 </div>
                 
             </div>
+            <div class="rounded-lg bg-white p-6">
+                <livewire:admin.user-assignments-table :user="$user" />
+            </div>
+            
         </div>
     </div>
     

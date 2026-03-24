@@ -59,14 +59,14 @@
     <!-- Unit Table  -->
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
+            <thead class="bg-gray-900 text-white uppercase text-xs font-semibold">
                 <tr>
-                    <th class="px-6 py-3">Username</th>
+                    <th class="px-6 py-3 rounded-l-md">Username</th>
                     <th class="px-6 py-3">First Name</th>
                     <th class="px-6 py-3">Last Name</th>
                     <th class="px-6 py-3">Email</th>
                     <th class="px-6 py-3">Created At</th>
-                    <th class="px-6 py-3">Action</th>
+                    <th class="px-6 py-3 rounded-r-md">Action</th>
                     
                 </tr>
             </thead>
