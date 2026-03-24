@@ -71,5 +71,8 @@
                         <p class="text-md font-semibold text-brand-blue">Uploading...</p>
                     </div>
                 </div>
+
+                    <x-form.loading-modal open="loading" id="loadingModal" message="Processing..." />
+
     </div>
 
