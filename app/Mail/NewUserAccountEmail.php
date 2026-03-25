@@ -32,10 +32,9 @@ class NewUserAccountEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New User Account Email',
+            subject: 'DOST Bicol: Your Temporary Account Credentials – Please Login and Change Your Password'
         );
     }
-
     /**
      * Get the message content definition.
      */

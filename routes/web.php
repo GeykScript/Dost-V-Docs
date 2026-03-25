@@ -108,7 +108,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-    
+
 // use App\Models\User;
 // use Illuminate\Support\Str;
 // use App\Mail\NewUserAccountEmail;
