@@ -72,7 +72,6 @@
                     </div>
                 </div>
 
-                    <x-form.loading-modal open="loading" id="loadingModal" message="Processing..." />
 
     </div>
 

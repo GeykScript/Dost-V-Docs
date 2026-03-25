@@ -25,8 +25,8 @@
                                 <x-heroicon-s-user-circle class="w-24 h-24 rounded-full border border-white text-brand-blue bg-white" />
                             </div>
                             <div class="h-auto pb-8 mt-14 flex flex-col justify-center items-center">
-                                <h2 class="text-lg md:text-xl font-bold text-gray-700">{{ $user->full_name }}</h2>
-                                <p class="flex items-center font-medium text-gray-500 text-xs md:text-sm">{{ $user->username }}</p>
+                                <h2 class="text-lg md:text-xl font-bold text-gray-800">{{ $user->full_name }}</h2>
+                                <p class="flex items-center font-medium text-gray-600 text-xs md:text-sm">{{ $user->username }}</p>
                             </div>
                         </div>
                     </div>

@@ -60,30 +60,27 @@ class EditUnit extends Component
 
     public function deleteUnit(): void
     {
+        // Reload the unit fresh with user assignments
+        // Reload the Relationships fresh()
+        $unit = $this->unit->fresh(); 
 
+        // Check if unit has current user assignments
+        $hasActiveUsers = $unit->userAssignments()
+                                ->where('is_current', 1)
+                                ->exists();
+
+        if ($hasActiveUsers) {
+            // Close modal and show error message
+            $this->dispatch('close-delete-modal');
+            $this->dispatch('unit-error', message: 'Cannot delete unit because it has active users.');
+            return;
+        }
     
         // Soft delete
         $this->unit->delete();
 
         $this->dispatch('close-delete-modal');
         $this->dispatch('unit-success', message: 'Unit deleted successfully.');
-
-        
-        // Reload the unit fresh with user assignments
-        // Reload the Relationships fresh()
-        // $unit = $this->unit->fresh(); 
-
-        // // Check if unit has current user assignments
-        // $hasActiveUsers = $unit->userAssignments()
-        //                         ->where('is_current', 1)
-        //                         ->exists();
-
-        // if ($hasActiveUsers) {
-        //     // Close modal and show error message
-        //     $this->dispatch('close-delete-modal');
-        //     $this->dispatch('unit-error', message: 'Cannot delete unit because it has active users.');
-        //     return;
-        // }
 
     }
 

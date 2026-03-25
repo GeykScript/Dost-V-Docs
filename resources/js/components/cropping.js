@@ -18,12 +18,15 @@
         const uploadBtn = document.getElementById('uploadPhotoBtn');
 
         // Open file to select image
+        if (openFileBtn) {
         openFileBtn.addEventListener('click', () => {
             profileInput.value = ''; // Reset the input to allow re-selecting the same file
             profileInput.click();
         });
+    }
 
         // When file is selected
+        if (profileInput) {
         profileInput.addEventListener('change', function () {
             if (this.files && this.files[0]) {
                 selectedFile = this.files[0];
@@ -46,8 +49,10 @@
                 reader.readAsDataURL(selectedFile);
             }
         });
+    }
 
         // Cancel button
+        if (cancelBtn) {
         cancelBtn.addEventListener('click', () => {
             profileInput.value = ''; // Reset the input
             cropModal.classList.add('hidden');
@@ -55,8 +60,10 @@
 
             if (cropper) cropper.destroy();
         });
+    }
 
         // Upload button
+        if (uploadBtn) {
         uploadBtn.addEventListener('click', () => {
             if (!cropper) return;
 
@@ -84,5 +91,7 @@
                 profileForm.submit();
             }, originalType);
         });
+    }
 
     });
+    

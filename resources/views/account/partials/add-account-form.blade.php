@@ -67,7 +67,7 @@
                                 <div class="col-span-12 md:col-span-6 ">
                                     <div class="flex items-center justify-between">
                                         <label for="username" class="block font-medium text-sm text-gray-700">Username<span class="text-red-600"> *</span></label>
-                                        <p x-show="errors.username" x-text="errors.username" class="text-xs text-red-500 mt-1"></p>
+                                        <p x-show="errors.username" x-text="errors.username" class="text-xs font-medium text-red-500 mt-1"></p>
                                     </div> 
                                         <x-text-input 
                                             id="username" 
@@ -82,7 +82,7 @@
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="flex items-center justify-between">
                                         <label for="email" class="block font-medium text-sm text-gray-700">Email<span class="text-red-600"> *</span></label>
-                                        <p x-show="errors.email" x-text="errors.email" class="text-xs text-red-500 mt-1"></p>
+                                        <p x-show="errors.email" x-text="errors.email" class="text-xs font-medium text-red-500 mt-1"></p>
                                     </div>
                                         <x-text-input 
                                             id="email" 
@@ -97,7 +97,7 @@
                                 <div class="col-span-12 md:col-span-5">
                                     <div class="flex items-center justify-between">
                                         <label for="first_name" class="block font-medium text-sm text-gray-700">First Name<span class="text-red-600"> *</span></label>
-                                        <p x-show="errors.first_name" x-text="errors.first_name " class="text-xs text-red-500 mt-1"></p>
+                                        <p x-show="errors.first_name" x-text="errors.first_name " class="text-xs font-medium text-red-500 mt-1"></p>
                                     </div>
                                         <x-text-input 
                                             id="first_name" 
@@ -111,7 +111,7 @@
                                 <div class="col-span-12 md:col-span-5">
                                     <div class="flex items-center justify-between">
                                         <label for="last_name" class="block font-medium text-sm text-gray-700">Last Name<span class="text-red-600"> *</span></label>
-                                        <p x-show="errors.last_name" x-text="errors.last_name" class="text-xs text-red-500 mt-1"></p>
+                                        <p x-show="errors.last_name" x-text="errors.last_name" class="text-xs font-medium text-red-500 mt-1"></p>
                                     </div>
                                     <x-text-input 
                                         id="last_name" 
@@ -126,7 +126,7 @@
                                 <div class="col-span-12 md:col-span-2">
                                     <div class="flex items-center justify-between">
                                         <label for="suffix" class="block font-medium text-sm text-gray-700">Suffix</label>
-                                        <p x-show="errors.suffix" x-text="errors.suffix" class="text-xs text-red-500 mt-1"></p>
+                                        <p x-show="errors.suffix" x-text="errors.suffix" class="text-xs font-medium text-red-500 mt-1"></p>
                                     </div>
                                     <x-text-input 
                                         id="suffix" 
@@ -149,7 +149,7 @@
                                         <div class="flex flex-col">
                                             <div class="flex items-center justify-between">
                                                 <label for="unit" class="block font-medium text-sm text-gray-700">Unit</label>
-                                                <p x-show="errors.unit" x-text="errors.unit" class="text-xs text-red-500 mt-1"></p>
+                                                <p x-show="errors.unit" x-text="errors.unit" class="text-xs font-medium text-red-500 mt-1"></p>
                                             </div>
                                             <div 
                                                 x-data="{ open: false, selected: 'Select Unit', selectedId: ' ' }" 
@@ -189,7 +189,7 @@
                                         <div class="flex flex-col">
                                                 <div class="flex items-center justify-between">
                                                     <label for="position" class="block font-medium text-sm text-gray-700">Position</label>
-                                                    <p x-show="errors.position" x-text="errors.position" class="text-xs text-red-500 mt-1"></p>
+                                                    <p x-show="errors.position" x-text="errors.position" class="text-xs font-medium text-red-500 mt-1"></p>
                                                 </div>
 
                                             <div 
@@ -241,7 +241,7 @@
                                                 </div>
 
                                                 <div 
-                                                    x-data="{ isAdmin: 0 }" 
+                                                    x-data="{ is_super_admin: 0 }" 
                                                     class="flex items-center justify-between shadow-md  border border-amber-500/10 rounded-lg px-4 py-3"
                                                 >
                                                     <div>
@@ -251,17 +251,17 @@
 
                                                     <button 
                                                         type="button"
-                                                        @click="isAdmin = !isAdmin"
-                                                        :class="isAdmin ? 'bg-amber-600' : 'bg-gray-300'"
+                                                        @click="is_super_admin = !is_super_admin"
+                                                        :class="is_super_admin ? 'bg-amber-600' : 'bg-gray-300'"
                                                         class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
                                                     >
                                                         <span 
-                                                            :class="isAdmin ? 'translate-x-6' : 'translate-x-1'"
+                                                            :class="is_super_admin ? 'translate-x-6' : 'translate-x-1'"
                                                             class="inline-block h-4 w-4 transform bg-white rounded-full transition"
                                                         ></span>
                                                     </button>
 
-                                                    <input type="hidden" name="is_admin" :value="isAdmin ? 1 : 0">
+                                                    <input type="hidden" name="is_super_admin" :value="is_super_admin ? 1 : 0">
                                                 </div>
                                         </div>
                                     </div>

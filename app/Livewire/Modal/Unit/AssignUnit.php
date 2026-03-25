@@ -16,7 +16,7 @@ class AssignUnit extends Component
     public $position = '';
 
     // Strictly Head and Staff
-    public $availablePositions = ['Head', 'Staff'];
+    public $availablePositions = ['Unit Head', 'Staff'];
 
     public function mount($userId)
     {
@@ -40,7 +40,7 @@ class AssignUnit extends Component
     {
         $this->validate([
             'unitId' => 'required|exists:units,id',
-            'position' => 'required|in:Head,Staff',
+            'position' => 'required|in:Unit Head,Staff',
         ], [
             'unitId.required' => 'Please select a unit.',
             'position.required' => 'Please select a position.'

@@ -21,6 +21,7 @@ class PasswordController extends Controller
                 Password::min(8)      // Minimum 8 characters
                 ->letters()       // Must include letters
                 ->numbers()       // Must include numbers
+                ->mixedCase()   // Must include both uppercase and lowercase letters
                 ->symbols(), ],
         ]);
 

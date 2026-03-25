@@ -29,7 +29,7 @@ class UserAccountRequest extends FormRequest
             'email'      => 'required|email|unique:users,email',
             'unit_id'    => 'required|exists:units,id',
             'position'   => 'required|string|max:255',
-            'is_admin'   => 'required|in:0,1',
+            'is_super_admin'   => 'required|in:0,1',
         ];
     }
 }
