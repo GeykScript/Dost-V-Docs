@@ -42,12 +42,6 @@
                     </div>
                 </div> 
 
-                <button
-                    type="button"
-                    @click="createUnitOpen = false"
-                    class="text-gray-400 hover:text-gray-600">
-                    <x-heroicon-s-x-mark class="w-5 h-5" />
-                </button>
             </div>
 
             <!-- Form -->

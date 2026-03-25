@@ -1,17 +1,15 @@
-document.addEventListener('alpine:init', () => {
-    Alpine.store('sidebar', {
-        open: false,
+Alpine.store('sidebar', {
+    open: false,
 
-        toggle() {
-            this.open = !this.open;
-        },
+    toggle() {
+        this.open = !this.open
+    },
 
-        close() {
-            this.open = false;
-        },
+    close() {
+        this.open = false
+    },
 
-        openSidebar() {
-            this.open = true;
-        }
-    });
+    openSidebar() {
+        this.open = true
+    }
 });

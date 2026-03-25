@@ -8,7 +8,8 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\UserAssignment;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserAccountEmail;
 use App\Http\Requests\UserAccount\UserAccountRequest;
 
 class AddAccountController extends Controller
@@ -28,12 +29,6 @@ class AddAccountController extends Controller
         // Hash the password before saving
         $hashPassword['password'] = bcrypt($generatedPassword);
 
-        dd([
-            'validated' => $validatedData,
-            'plain_password' => $generatedPassword,
-            'hashed_password' => $hashPassword['password'],
-
-        ]);
 
         // Create the user
         $user = User::create([
@@ -43,7 +38,7 @@ class AddAccountController extends Controller
             'suffix' => $validatedData['suffix'],
             'email' => $validatedData['email'],
             'password' => $hashPassword['password'],
-            'is_super_admin' => $validatedData['is_admin'],
+            'is_super_admin' => $validatedData['is_super_admin'],
         ]);
 
         // Create the user assignment
@@ -56,6 +51,8 @@ class AddAccountController extends Controller
             'created_at' => now(),
             'updated_at' => null,
         ]);
+
+        Mail::to($user->email)->send(new NewUserAccountEmail($user, $generatedPassword));
 
         return redirect()->route('accounts')
             ->with('success', 'Account created successfully!');

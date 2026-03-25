@@ -68,6 +68,9 @@
                                     <div class="flex items-center justify-between">
                                         <label for="username" class="block font-medium text-sm text-gray-700">Username<span class="text-red-600"> *</span></label>
                                         <p x-show="errors.username" x-text="errors.username" class="text-xs font-medium text-red-500 mt-1"></p>
+                                        @error('username')
+                                            <p class="text-xs font-medium text-red-500 mt-1">{{ $message }}</p>
+                                        @enderror 
                                     </div> 
                                         <x-text-input 
                                             id="username" 
@@ -76,22 +79,30 @@
                                             class="mt-1 block w-full"
                                             x-bind:class="errors.username ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                             @input="clearError('username')"
-                                            />                               
+                                            /> 
+                                                                     
                                 </div>
 
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="flex items-center justify-between">
                                         <label for="email" class="block font-medium text-sm text-gray-700">Email<span class="text-red-600"> *</span></label>
                                         <p x-show="errors.email" x-text="errors.email" class="text-xs font-medium text-red-500 mt-1"></p>
+                                         @error('email')
+                                                <p class="text-xs font-medium text-red-500 mt-1">{{ $message }}</p>
+                                            @enderror
                                     </div>
                                         <x-text-input 
                                             id="email" 
                                             name="email" 
                                             type="email"
-                                            class="mt-1 block w-full"
+                                            :value="old('email')"
+                                            class="mt-1 block w-full {{ $errors->has('email') 
+                                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
+                                        : 'border-gray-300 focus:sky-500 focus:ring-sky-500' }}"
                                             x-bind:class="errors.email ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                             @input="clearError('email')"
-                                            />                                          
+                                            />
+                                                                                     
                                 </div>
 
                                 <div class="col-span-12 md:col-span-5">
@@ -106,7 +117,10 @@
                                             class="mt-1 block w-full"
                                             x-bind:class="errors.first_name ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                             @input="clearError('first_name')"
-                                            />                                   
+                                            />
+                                            @error('first_name')
+                                                <p class="text-xs font-medium text-red-500 mt-1">{{ $message }}</p>
+                                            @enderror
                                 </div>
                                 <div class="col-span-12 md:col-span-5">
                                     <div class="flex items-center justify-between">
@@ -121,6 +135,9 @@
                                         x-bind:class="errors.last_name ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                         @input="clearError('last_name')"
                                     />
+                                    @error('last_name')
+                                        <p class="text-xs font-medium text-red-500 mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-2">
@@ -136,6 +153,9 @@
                                         x-bind:class="errors.suffix ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                         @input="clearError('suffix')"
                                     />
+                                    @error('suffix')
+                                        <p class="text-xs font-medium text-red-500 mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 grid grid-cols-12 gap-6">
