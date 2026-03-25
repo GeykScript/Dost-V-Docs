@@ -76,7 +76,11 @@
                                             id="username" 
                                             name="username" 
                                             type="text"
-                                            class="mt-1 block w-full"
+                                            :value="old('username')"
+                                            class="mt-1 block w-full
+                                            {{ $errors->has('username') 
+                                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
+                                        : 'border-gray-300 focus:sky-500 focus:ring-sky-500' }}"
                                             x-bind:class="errors.username ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                             @input="clearError('username')"
                                             /> 
@@ -114,6 +118,7 @@
                                             id="first_name" 
                                             name="first_name" 
                                             type="text"
+                                            :value="old('first_name')"
                                             class="mt-1 block w-full"
                                             x-bind:class="errors.first_name ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                             @input="clearError('first_name')"
@@ -131,6 +136,7 @@
                                         id="last_name" 
                                         name="last_name" 
                                         type="text" 
+                                        :value="old('last_name')"
                                         class="mt-1 block w-full"
                                         x-bind:class="errors.last_name ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                         @input="clearError('last_name')"
@@ -149,6 +155,7 @@
                                         id="suffix" 
                                         name="suffix" 
                                         type="text" 
+                                        :value="old('suffix')"
                                         class="mt-1 block w-full"
                                         x-bind:class="errors.suffix ? 'border-red-500 ring-red-500' : 'border-gray-300'"
                                         @input="clearError('suffix')"
@@ -207,6 +214,9 @@
                                             </div>                                        
                                         </div>
                                         <div class="flex flex-col">
+                                                @error('unit-error')
+                                                    <p class="text-sm font-medium p-2 border-red-500 border text-red-500 bg-red-100 rounded-md my-1">{{ $message }}</p>
+                                                @enderror
                                                 <div class="flex items-center justify-between">
                                                     <label for="position" class="block font-medium text-sm text-gray-700">Position</label>
                                                     <p x-show="errors.position" x-text="errors.position" class="text-xs font-medium text-red-500 mt-1"></p>

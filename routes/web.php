@@ -106,3 +106,24 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+    
+// use App\Models\User;
+// use Illuminate\Support\Str;
+// use App\Mail\NewUserAccountEmail;
+// use Illuminate\Support\Facades\Mail;
+
+// Route::get('/preview-new-user-email', function () {
+//     // Create a dummy user for preview
+//     $user = new User([
+//         'first_name' => 'John',
+//         'username' => 'john.doe',
+//     ]);
+
+//     // Generate a dummy password
+//     $generatedPassword = 'DostDOCS-' . Str::random(8);
+
+//     // Return the email view directly
+//     return new NewUserAccountEmail($user, $generatedPassword);
+// });
