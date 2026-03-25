@@ -61,7 +61,7 @@
     <!-- Unit Table  -->
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-800 text-white uppercase text-xs font-semibold">
+            <thead class="bg-sidebar-bg text-white uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-3 rounded-l-md" colspan="2">Name</th>
                     <th class="px-6 py-3">Abbreviation</th>
