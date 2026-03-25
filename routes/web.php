@@ -41,11 +41,6 @@ Route::get('/document/all-documents', function () {
     return view('documents.allDocuments.all-documents'); 
 })->middleware(['auth', 'verified'])->name('all-documents');
 
-// Create Document page
-Route::get('/document/create-document', function () {
-    return view('documents.createDocument.create-document'); 
-})->middleware(['auth', 'verified'])->name('create-document');
-
 // Units page
 Route::get('/management/unit', function () {
     return view('unit.units');   
@@ -74,6 +69,13 @@ Route::put('/management/accounts/edit/put/{id}', [EditAccountController::class, 
     ->name('accounts.update');
 
 
+
+use App\Http\Controllers\Documents\CreateDocumentController;
+
+Route::get('/documents/create-document', [CreateDocumentController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('create-document');
+
 // Document Types page
 Route::get('/document/setup/type', function () {
     return view('type.types');
@@ -85,9 +87,7 @@ Route::get('/document/setup/action', function () {
 })->middleware(['auth', 'verified'])->name('action');
 
 
-Route::get('/documents/create-document', function(){
-    return view('create-document');
-})->middleware(['auth', 'verified'])->name('create-document');
+
 
 Route::get('/documents/all-documents', function(){
     return view('all-documents');
