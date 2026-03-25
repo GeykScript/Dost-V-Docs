@@ -18,12 +18,6 @@
         </div>
     </header>
 
-    @if (session('status'))
-        <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)" class="mb-4 text-sm text-green-700 bg-green-50 border border-green-200 p-3 rounded-lg">
-            {{ session('status') }}
-        </div>
-    @endif
-
     <form 
         id="profileUpdateForm"
         method="POST" 
@@ -45,7 +39,6 @@
             },
             errors: {},
             clearedBackendErrors: {},
-            generalError: '',
             
             get isDirty() {
                 return this.form.username !== this.original.username ||
@@ -58,7 +51,6 @@
             validateAndProceed() {
                 this.errors = {};
                 this.clearedBackendErrors = {};
-                this.generalError = '';
                 let hasError = false;
 
                 if (!this.form.username?.trim()) { this.errors.username = 'Username is required.'; hasError = true; }
@@ -69,7 +61,11 @@
                 if (hasError) return;
 
                 if (!this.isDirty) {
-                    this.generalError = 'No changes detected. Please modify at least one field to save.';
+                    // Trigger the global toast instead of setting an inline error
+                    $dispatch('notify', { 
+                        type: 'error', 
+                        message: 'No changes detected. Please modify at least one field to save.' 
+                    });
                     return; 
                 }
 
@@ -81,10 +77,6 @@
     >
         @csrf
         @method('PUT')
-
-        <template x-if="generalError">
-            <div class="text-sm text-red-700 bg-red-50 border border-red-200 p-3 rounded-lg mb-4" x-text="generalError"></div>
-        </template>
 
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-12 md:col-span-6"> 

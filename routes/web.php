@@ -72,6 +72,9 @@ Route::put('/management/accounts/edit/put/{id}', [EditAccountController::class, 
     ->middleware(['auth', 'verified'])
     ->name('accounts.update');
 
+Route::post('/management/accounts/unit/assign/{id}', [EditAccountController::class, 'storeUnit'])
+    ->middleware(['auth', 'verified'])
+    ->name('accounts.assignment.store');
 
 
 use App\Http\Controllers\Documents\CreateDocumentController;

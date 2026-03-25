@@ -33,8 +33,8 @@ class Unit extends Model
     }
 
     public function activeUserAssignments()
-{
-    return $this->hasMany(UserAssignment::class, 'unit_id')
-                ->whereNull('end_date');
-}
+    {
+        return $this->hasMany(UserAssignment::class, 'unit_id')
+                    ->whereNull('end_date');
+    }
 }
