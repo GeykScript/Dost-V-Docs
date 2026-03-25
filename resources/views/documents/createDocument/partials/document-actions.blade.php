@@ -10,8 +10,8 @@
                 Action <span class="text-red-500">*</span>
             </label>
             <div x-data="{ selectedId: '', selectedName: 'Select Action' }">
+                <input type="hidden" name="action_id" x-model="selectedId">
                 <x-dropdown align="left" width="w-full">
-                    
                     <x-slot name="trigger">
                         <button type="button"
                             class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-500 text-sm rounded-lg p-2.5">
@@ -47,6 +47,7 @@
                     Deadline <span class="text-red-500">*</span>
                 </label>
                  <input 
+                 name="deadline"
                 type="date" 
                 placeholder="YYYY/MM/DD"
                 class="w-full text-sm p-2.5 shadow-none text-gray-700 placeholder:text-gray-300 
@@ -104,25 +105,26 @@
                     updatePersonnelList(unitId, unitText) {
                         this.selectedUnitId = unitId;
                         this.selectedUnitName = unitText;
-                        
+
+                        if (unitId === "all") {
+                            $dispatch("update-items", { name: "route_user_id", items: [] });
+                            // Automatically add the tag
+                            this.addTag("all", "All Units / All Personnel");
+                            return;
+                        }
+
                         if (!unitId) {
                             $dispatch("update-items", { name: "route_user_id", items: [] });
                             return;
                         }
-                        
-                        let filtered = [];
-                        if (unitId === "all") {
-                            filtered = this.rawUsers;
-                        } else {
-                            filtered = this.rawUsers.filter(user =>
-                                user.active_assignments && 
-                                user.active_assignments.some(assignment => String(assignment.unit_id) === String(unitId))
-                            );
-                        }
-                        
-                        // Dynamically inject "All Personnel" at the top of the filtered list
+
+                        // Standard filtering logic for specific units...
+                        let filtered = this.rawUsers.filter(user =>
+                            user.active_assignments && 
+                            user.active_assignments.some(assignment => String(assignment.unit_id) === String(unitId))
+                        );
+
                         let finalPersonnelList = [{ id: "all", full_name: "All Personnel" }, ...filtered];
-                        
                         $dispatch("update-items", { name: "route_user_id", items: finalPersonnelList });
                     },
                     
@@ -186,17 +188,18 @@
                         />
                     </div>
 
-                    <div>
+                    <div :class="selectedUnitId === 'all' ? 'opacity-50 pointer-events-none' : ''">
                         <x-native-searchable-select 
                             id="route_personnel"
                             name="route_user_id" 
                             label="Tag Personnel"
-                            :required="true"
+                        
+                            x-bind:required="selectedUnitId !== 'all'" 
                             :results="[]" 
                             valueField="id"
                             displayField="full_name"
                             placeholder="Select Personnel..."
-                            emptyMessage="Please select a Unit first."
+                            :emptyMessage="'Please select a Unit first.'"
                         />
                     </div>
                 </div>
@@ -234,6 +237,7 @@
                     Remarks:
                 </label>
                 <textarea rows="4" placeholder="Document Remarks" 
+                        name="remarks"
                         class="fbg-white border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-1 focus:border-brand-blue focus:ring-brand-blue focus:outlinle-brand-blue block w-full p-3 resize-none flex-grow min-h-[120px]"></textarea>
             </div>
         </div>

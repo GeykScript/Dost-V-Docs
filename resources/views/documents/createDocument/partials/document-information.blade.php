@@ -15,12 +15,16 @@
                 required/>
         </div>
 
-        <div x-data="{ selectedId: '{{ old('type_id') }}', selectedName: 'Select Type' }">
+        <div x-data="{ 
+            selectedId: '{{ old('type_id', '') }}', 
+            selectedName: '{{ $types->where('id', old('type_id'))->first()->type_name ?? 'Select Type' }}' 
+        }">
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Document Type <span class="text-red-500">*</span>
             </label>
+            
             <input type="hidden" name="type_id" x-model="selectedId" required>
-           
+        
             <x-dropdown align="left" width="w-full">
                 <x-slot name="trigger">
                     <button type="button" class="w-full flex justify-between items-center bg-white border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-1 focus:border-brand-blue p-2.5 hover:bg-gray-50 transition-colors">
@@ -28,11 +32,18 @@
                         <x-heroicon-o-chevron-down class="w-4 h-4 text-gray-400" />
                     </button>
                 </x-slot>
+                
                 <x-slot name="content">
-                    <button type="button" @click="selectedId = ''; selectedName = 'Select Type'" class="block w-full px-4 py-2 text-left text-sm text-gray-500 hover:bg-gray-100 transition-colors">Clear Selection</button>
+                    <button type="button" 
+                        @click="selectedId = ''; selectedName = 'Select Type'" 
+                        class="block w-full px-4 py-2 text-left text-sm text-gray-500 hover:bg-gray-100 transition-colors">
+                        Clear Selection
+                    </button>
+
                     @foreach($types as $type)
                         <button 
                             type="button" 
+                            {{-- On click, we update the ID for the backend and the Name for the UI --}}
                             @click="selectedId = '{{ $type->id }}'; selectedName = '{{ addslashes($type->type_name) }}'"
                             class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 transition-colors">
                             {{ $type->type_name }}
@@ -41,7 +52,6 @@
                 </x-slot>
             </x-dropdown>
         </div>
-
         <div x-data="{ selectedCategory: '{{ old('category') }}', displayCategory: 'Select Category' }">
             <label class="block mb-2 text-sm font-medium text-gray-600">
                 Category <span class="text-red-500">*</span>

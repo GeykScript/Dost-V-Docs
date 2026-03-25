@@ -12,11 +12,14 @@ class Document extends Model
         'reference_number',
         'owner_id',
         'document_name',
+        'document_type_id',
         'category',
         'is_confidential',
         'description',
         'source_type',
-        'deadline'
+        'deadline',
+        'status_id',
+        'priority_lvl_id'
     ];
 
     protected $casts = [

@@ -83,6 +83,10 @@ Route::get('/documents/create-document', [CreateDocumentController::class, 'inde
     ->middleware(['auth', 'verified'])
     ->name('create-document');
 
+Route::post('/documents/create-document/store', [CreateDocumentController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('create-document.store');
+
 // Document Types page
 Route::get('/document/setup/type', function () {
     return view('type.types');
