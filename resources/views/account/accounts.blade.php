@@ -1,5 +1,6 @@
 <x-app-layout>
 @section('title', 'Accounts')
+    <x-alert-message :successMessage="session('success')" :errorMessage="session('error')" />
 
 <!-- Accounts Page  -->
 <div class="min-h-screen w-full">

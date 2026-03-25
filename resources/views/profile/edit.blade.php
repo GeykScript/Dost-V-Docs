@@ -13,7 +13,7 @@
                         @include ('profile.partials.profile-upload')
                     
                             <!-- Profile Info -->
-                            <div class="w-full ml-0 md:ml-60 h-auto pb-12 mt-20 md:mt-5 flex flex-col justify-center items-center md:items-start ">
+                            <div class="w-full ml-0 md:ml-60 h-auto pb-12 mt-24 md:mt-5 flex flex-col justify-center items-center md:items-start ">
                                 <h2 class="text-xl md:text-2xl font-bold text-gray-700">{{ Auth::user()->full_name }}</h2>
                                 <div class="flex flex-col px-8 md:px-0">
                                     <div class="flex gap-1 ">

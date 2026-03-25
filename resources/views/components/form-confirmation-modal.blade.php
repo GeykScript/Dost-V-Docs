@@ -52,7 +52,7 @@
 
                         <h2 class="text-xl font-bold text-gray-800">{{ $title }}</h2>
                         
-                        <p class="mt-2 text-sm text-gray-500 leading-relaxed">
+                        <p class="mt-2 text-sm text-gray-500 lead   ing-relaxed">
                             {{ $message }}
                             <template x-if="name">
                                 <span class="block mt-1 font-bold text-gray-700" x-text="name"></span>

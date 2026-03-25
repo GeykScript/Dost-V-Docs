@@ -3,26 +3,20 @@
 import './bootstrap';
 import './datetime';
 import 'flowbite';
+
+import Cropper from 'cropperjs';
+import 'cropperjs/dist/cropper.css';
+
 import ApexCharts from 'apexcharts';
 
-window.ApexCharts = ApexCharts;
-
-document.addEventListener('alpine:init', () => {
-    Alpine.store('sidebar', {
-        open: false,
-
-        toggle() {
-            this.open = !this.open;
-        },
-
-        close() {
-            this.open = false;
-        },
-
-        openSidebar() {
-            this.open = true;
-        }
-    });
-});
 
 import './components/line-graph.js';
+import './components/sidebar.js';
+import './components/cropping.js';
+
+
+window.Cropper = Cropper;
+window.ApexCharts = ApexCharts;
+
+
+

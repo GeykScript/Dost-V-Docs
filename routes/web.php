@@ -59,6 +59,10 @@ Route::get('/management/accounts/add', [AddAccountController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('accounts.add');
 
+Route::post('/management/accounts/add/store', [AddAccountController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('accounts.store');
+
 // Account Edit page
 Route::get('/management/accounts/edit/{id}', [EditAccountController::class, 'index'])
     ->middleware(['auth', 'verified'])

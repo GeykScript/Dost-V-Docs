@@ -21,16 +21,17 @@ class PasswordController extends Controller
                 Password::min(8)      // Minimum 8 characters
                 ->letters()       // Must include letters
                 ->numbers()       // Must include numbers
+                ->mixedCase()   // Must include both uppercase and lowercase letters
                 ->symbols(), ],
         ]);
+
+        if (Hash::check($validated['password'], $request->user()->password)) {
+            return back()->with('status', 'no-changes-password');
+        }
 
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
-
-        if (! $request->user()->isDirty('password')) {
-            return back()->with('status', 'no-changes-password');
-        }
 
         return back()->with('status', 'password-updated');
     }

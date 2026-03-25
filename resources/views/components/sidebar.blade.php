@@ -1,4 +1,4 @@
-<div x-data class="relative">
+<div x-data x-cloak class="relative">
     <div 
         :class="$store.sidebar.open ? 'translate-x-0' : '-translate-x-full'"
         class="fixed xl:relative xl:translate-x-0 inset-y-0 left-0 z-50 xl:z-0 w-60 bg-sidebar-bg text-white flex flex-col pt-2 min-h-screen transform transition-transform duration-300 ease-in-out">

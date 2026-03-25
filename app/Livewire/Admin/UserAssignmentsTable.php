@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
 use App\Models\UserAssignment;
+use Illuminate\Support\Facades\Log;
 
 class UserAssignmentsTable extends Component
 {
@@ -76,7 +77,7 @@ class UserAssignmentsTable extends Component
                              ->orderBy('created_at', 'desc')
                              ->paginate($this->perPage);
         
-        \Log::info('User Assignments Debug', [
+        Log::info('User Assignments Debug', [
             'user_id' => $this->user->id,
             'total' => $assignments->total(),
             'assignments' => $assignments->map(function ($a) {

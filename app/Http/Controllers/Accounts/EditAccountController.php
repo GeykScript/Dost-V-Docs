@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule; 
-
+use Illuminate\Support\Facades\Log;
 class EditAccountController extends Controller
 {
     public function index($id){
@@ -18,7 +18,7 @@ class EditAccountController extends Controller
     {
         $user = User::findOrFail($id);
 
-        \Log::info("yes");
+        Log::info("yes");
         $validated = $request->validate([
             'username' => [
                 'required', 
