@@ -1,6 +1,8 @@
 <x-app-layout>
 @section('title', 'Edit Account')
 
+<x-flash-toast />
+
 <div class="min-h-screen w-full">
   
     <div class="p-4 sm:p-6">
@@ -44,7 +46,10 @@
                 
             </div>
             <div class="rounded-lg bg-white p-6">
-                <livewire:admin.user-assignments-table :user="$user" />
+                <livewire:admin.user-assignments-table 
+                    :user="$user" 
+                    :availableUnits="$availableUnits" 
+                />
             </div>
             
         </div>

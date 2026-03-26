@@ -19,7 +19,7 @@ class UserAccountRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-     public function rules(): array
+    public function rules(): array
     {
         return [
             'username'   => 'required|string|max:255|unique:users,username',
@@ -33,3 +33,4 @@ class UserAccountRequest extends FormRequest
         ];
     }
 }
+

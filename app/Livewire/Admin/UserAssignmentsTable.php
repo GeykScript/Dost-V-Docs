@@ -14,6 +14,7 @@ class UserAssignmentsTable extends Component
     use WithPagination; 
 
     public User $user;
+    public $availableUnits;
 
     // Bound to the entangle('perPage') and wire:model.live="statusFilter" in your Blade
     public $perPage = 10;
@@ -29,9 +30,10 @@ class UserAssignmentsTable extends Component
         'assignmentDeleted' => 'handleAssignmentDeleted'
     ];
 
-    public function mount(User $user)
+    public function mount(User $user, $availableUnits)
     {
         $this->user = $user;
+        $this->availableUnits = $availableUnits;
     }
 
     // Lifecycle hook: Runs automatically when $statusFilter changes

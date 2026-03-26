@@ -71,8 +71,14 @@ class User extends Authenticatable
         });
     }
 
-    public function userAssignments(){
+     public function userAssignments(){
         return $this->hasMany(UserAssignment::class, 'user_id');
+    }
+    
+    public function activeAssignments()
+    {
+        return $this->hasMany(UserAssignment::class, 'user_id')
+            ->where('is_current', 1);
     }
 
 

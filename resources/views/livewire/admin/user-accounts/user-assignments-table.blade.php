@@ -62,7 +62,7 @@
             </div>  
             
             <div class="w-full sm:w-auto">
-                <livewire:modal.unit.assign-unit :user-id="$user->id" />
+                @include('account.modals.assign-unit-modal', ['availableUnits' => $availableUnits])
             </div>
         </div>
     </div>
