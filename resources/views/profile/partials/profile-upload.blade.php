@@ -49,27 +49,9 @@
                 </div>
 
                 <!-- Loading Modal When Uploading -->
-                <div id="loadingModal" class="fixed inset-0  items-center justify-center bg-black bg-opacity-50 hidden z-50">
-                    <div class="bg-white rounded-lg p-6 flex flex-col items-center w-72 max-w-sm">
-                        <svg class="w-16 h-16 mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                            <circle fill="#00AEEF" stroke="#00AEEF" stroke-width="15" r="15" cx="40" cy="100">
-                                <animate attributeName="opacity" calcMode="spline" dur="2"
-                                    values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1"
-                                    repeatCount="indefinite" begin="-.4"></animate>
-                            </circle>
-                            <circle fill="#00AEEF" stroke="#00AEEF" stroke-width="15" r="15" cx="100" cy="100">
-                                <animate attributeName="opacity" calcMode="spline" dur="2"
-                                    values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1"
-                                    repeatCount="indefinite" begin="-.2"></animate>
-                            </circle>
-                            <circle fill="#00AEEF" stroke="#00AEEF" stroke-width="15" r="15" cx="160" cy="100">
-                                <animate attributeName="opacity" calcMode="spline" dur="2"
-                                    values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1"
-                                    repeatCount="indefinite" begin="0"></animate>
-                            </circle>
-                        </svg>
-                        <p class="text-md font-semibold text-brand-blue">Uploading...</p>
-                    </div>
+                <div x-data="{ loading: false }"
+                    x-on:show-loading.window="loading = true">
+                    <x-form.loading-modal open="loading" id="loadingUpdatePhoto" message="Processing..." />
                 </div>
 
 

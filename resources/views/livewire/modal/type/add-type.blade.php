@@ -73,7 +73,7 @@
                                 class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
                                 Cancel
                         </button>
-                        <x-loading-livewire-button wireTarget="addType" formId="AddTypeForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
+                        <x-loading-livewire-button wireTarget="addType" wire:loading.attr="disabled" formId="AddTypeForm" class="w-1/1 md:w-1/3 text-center flex justify-center  items-center bg-sky-500 hover:bg-sky-400">
                             <x-heroicon-s-plus class="w-4 h-4 mr-1" />
                                 {{ __('Add Type') }}
                         </x-loading-livewire-button>

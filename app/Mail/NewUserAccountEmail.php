@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewUserAccountEmail extends Mailable
+class NewUserAccountEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class NewUserAccountEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'DOST Bicol: Your Temporary Account Credentials – Please Login and Change Your Password'
+            subject: 'DOCS: Your Temporary Account Credentials – Please Login and Change Your Password'
         );
     }
     /**

@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password',
         'profile_path',
         'is_super_admin',
+        'deleted_at',
     ];
 
     /**

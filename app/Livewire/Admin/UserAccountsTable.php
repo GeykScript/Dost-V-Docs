@@ -27,7 +27,9 @@ class UserAccountsTable extends Component
 
     public function render()
     {
-        $query = User::search($this->search);
+        $query = User::search($this->search)
+                ->withTrashed();
+                
             return view('livewire.admin.user-accounts.user-accounts-table', [
             'users' => $query
                 ->paginate($this->perPage)

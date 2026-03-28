@@ -12,19 +12,23 @@
         </div>
 
         <div class="flex justify-center items-center my-4">
-<h1 class="font-bold text-md md:text-lg 
-    bg-gradient-to-r from-sky-600 to-sky-400 
-    bg-clip-text text-transparent">
-    Login Account
-</h1>        </div>
+            <h1 class="font-bold text-md md:text-lg 
+                bg-gradient-to-r from-sky-600 to-sky-400 
+                bg-clip-text text-transparent">
+                Login Account
+            </h1>        
+        </div>
 
-            <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        
 
         <!-- error message for failed login attempt -->
-        @if ($errors->any())
+        @if ($errors->any() || session('status'))
             <div class="bg-red-100 text-red-600 p-3 text-sm rounded mb-3">
-                {{ $errors->first() }}
+                @if (session('status'))
+                    {{ session('status') }}
+                @else
+                    {{ $errors->first() }}
+                @endif
             </div>
         @endif
 

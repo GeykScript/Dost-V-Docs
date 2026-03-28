@@ -51,7 +51,7 @@
             </div>  
             <!-- Add Unit Button -->
             <div class="col-span-2 md:col-span-2 flex items-center justify-center">
-                <a href="{{ route('accounts.add') }}" class="bg-brand-blue text-white  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add User</a>
+                <a href="{{ route('accounts.add') }}" class="bg-brand-blue hover:bg-sky-400 text-white shadow-md  text-sm md:text-md h-full w-full rounded-lg flex items-center justify-center gap-2 font-semibold"><span><x-heroicon-s-plus class="w-4 h-4" /></span>Add User</a>
             </div>     
         </div>
     </div>
@@ -77,8 +77,18 @@
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->first_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium">{{ $user->last_name }}</td>
                         <td class="px-6 py-4 text-gray-700 font-medium truncate max-w-md">{{ $user->email }}</td>
-                           <td class="px-6 py-4 text-gray-600 font-medium">
-                            {{ $user->created_at->format('F j, Y, g:i A') }}
+                        <td class="px-6 py-4 text-gray-600 font-medium">
+                            @if($user->trashed())
+                                <span class="text-red-500 text-xs font-semibold flex items-center gap-0.5">
+                                    Disabled
+                                    <x-heroicon-s-x-circle class="w-4 h-4  mr-1" />
+                                </span>
+                            @else
+                                <span class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                                    Active
+                                    <x-heroicon-s-check-circle class="w-4 h-4  mr-1" />
+                                </span>
+                            @endif
                         </td> 
                         <td class="px-6 py-4 text-gray-700 font-medium flex gap-2">
                             <a href="{{ route('accounts.edit', $user->id) }}" class=" text-sky-500 hover:text-sky-400 px-3 py-2 rounded-md text-sm flex items-center gap-1 cursor-pointer"><x-heroicon-s-pencil-square class="w-5 h-5" />Edit</a>
