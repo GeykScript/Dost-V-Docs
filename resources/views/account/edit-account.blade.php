@@ -34,12 +34,15 @@
                     </div>
 
                     <div class="bg-white shadow-sm rounded-lg p-4">
+                        <!-- It has the Password Reset, Disable Account, and Restore -->
+                        <!-- resources\views\account\partials\update-password-form.blade.php -->
                         @include('account.partials.update-password-form')
                     </div>
                 </div>
                 
                 <div class="col-span-1 md:col-span-2 bg-white shadow-sm rounded-lg flex flex-col">
                     <div>
+                        <!-- resources\views\account\partials\update-info-form.blade.php -->
                         @include('account.partials.update-info-form')
                     </div>
                 </div>

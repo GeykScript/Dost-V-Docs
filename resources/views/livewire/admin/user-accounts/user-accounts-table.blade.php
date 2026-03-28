@@ -65,7 +65,7 @@
                     <th class="px-6 py-3">First Name</th>
                     <th class="px-6 py-3">Last Name</th>
                     <th class="px-6 py-3">Email</th>
-                    <th class="px-6 py-3">Created At</th>
+                    <th class="px-6 py-3">Status</th>
                     <th class="px-6 py-3 rounded-r-md">Action</th>
                     
                 </tr>

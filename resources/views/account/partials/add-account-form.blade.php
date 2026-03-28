@@ -220,7 +220,7 @@
                                 <!-- Position Dropdown  -->
                                 <div class="flex flex-col">    
                                     <div class="flex items-center justify-between">
-                                        <label for="position" class="block font-medium text-sm text-gray-700">Position</label>
+                                        <label for="position" class="block font-medium text-sm text-gray-700">Position <span class="text-red-600"> *</span></label>
                                         <p x-show="errors.position" x-text="errors.position" class="text-xs font-medium text-red-500 "></p>
                                     </div>
                                     <!-- Dropdown -->

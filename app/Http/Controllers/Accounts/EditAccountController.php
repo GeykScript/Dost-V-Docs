@@ -10,19 +10,22 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 
 use App\Http\Requests\UserAccount\UserAccountEditRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EditAccountController extends Controller
 {
     public function index($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()->findOrFail($id);
 
         $availableUnits = Unit::whereDoesntHave('userAssignments', function ($query) use ($id) {
             $query->where('user_id', $id)
                 ->where('is_current', 1);
         })->get();
 
-        return view('account.edit-account', compact('user', 'availableUnits'));
+        $ownAdminAccount = Auth::id() === $user->id;
+
+        return view('account.edit-account', compact('user', 'availableUnits', 'ownAdminAccount'));
     }
 
     // The NEW method that saves the data
