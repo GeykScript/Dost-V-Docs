@@ -14,6 +14,7 @@ use App\Http\Requests\UserAccount\UserAccountAddRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use App\Services\DiscordWebhookService;
 
 
 class AddAccountController extends Controller
@@ -90,7 +91,10 @@ class AddAccountController extends Controller
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
                 'input' => $validatedData,
+                
             ]);
+            // Send to Discord
+            DiscordWebhookService::sendError($e);
 
             return redirect()->route('accounts')
                 ->with(['error' => 'Something went wrong. Please try again']);

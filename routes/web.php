@@ -112,6 +112,14 @@ require __DIR__.'/auth.php';
 
 
 
+
+
+// Discord Webhook Test Route (Tester)
+Route::get('/test-discord', function () {
+    throw new \Exception('DOCS - Discord Test Error!');
+});
+
+// EMAIL PREVIEW ROUTE TO CHECK DESIGN OF THE EMAILS (Tester)
 // use App\Models\User;
 // use Illuminate\Support\Str;
 // use App\Mail\NewUserAccountEmail;
