@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;    
 
 class LoginRequest extends FormRequest
 {
@@ -37,10 +38,32 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
-    {
-        $this->ensureIsNotRateLimited();
+        public function authenticate(): void
+        {
+            $this->ensureIsNotRateLimited();
 
+            $user = User::withTrashed()
+                ->where('username', $this->username)
+            ->first();
+
+        // Check if user exists
+        if (! $user) {
+            RateLimiter::hit($this->throttleKey());
+            throw ValidationException::withMessages([
+                'username' => trans('auth.failed'),
+            ]);
+        }
+
+        // Check if deactivated
+        if ($user->deleted_at !== null) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'username' => 'Your account has been deactivated. Please contact the administrator.',
+            ]);
+        }
+
+        // Now attempt login
         if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 

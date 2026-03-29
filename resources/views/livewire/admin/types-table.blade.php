@@ -57,7 +57,7 @@
     <!-- Type Table  -->
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-100 text-gray-500 uppercase text-xs font-semibold">
+            <thead class="bg-sidebar-bg text-white uppercase text-xs font-semibold">
                 <tr>
                     <th class="px-6 py-3" colspan="2">Type</th>
                     <th class="px-6 py-3">Status</th>

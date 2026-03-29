@@ -113,3 +113,32 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+
+
+// Discord Webhook Test Route (Tester)
+Route::get('/test-discord', function () {
+    throw new \Exception('DOCS - Discord Test Error!');
+});
+
+// EMAIL PREVIEW ROUTE TO CHECK DESIGN OF THE EMAILS (Tester)
+// use App\Models\User;
+// use Illuminate\Support\Str;
+// use App\Mail\NewUserAccountEmail;
+// use Illuminate\Support\Facades\Mail;
+
+// Route::get('/preview-new-user-email', function () {
+//     // Create a dummy user for preview
+//     $user = new User([
+//         'first_name' => 'John',
+//         'username' => 'john.doe',
+//     ]);
+
+//     // Generate a dummy password
+//     $generatedPassword = 'DostDOCS-' . Str::random(8);
+
+//     // Return the email view directly
+//     return new NewUserAccountEmail($user, $generatedPassword);
+// });

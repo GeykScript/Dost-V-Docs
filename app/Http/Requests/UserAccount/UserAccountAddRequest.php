@@ -4,7 +4,7 @@ namespace App\Http\Requests\UserAccount;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserAccountRequest extends FormRequest
+class UserAccountAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class UserAccountRequest extends FormRequest
             'username'   => 'required|string|max:255|unique:users,username',
             'first_name' => 'required|string|max:255',
             'last_name'  => 'required|string|max:255',
-            'suffix'     => 'nullable|string|max:255',
+            'suffix' => ['nullable', 'in:Jr.,Sr.,I,II,III,IV,V'],
             'email'      => 'required|email|unique:users,email',
             'unit_id'    => 'required|exists:units,id',
             'position'   => 'required|string|max:255',

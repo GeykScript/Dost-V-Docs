@@ -9,7 +9,7 @@
         const cropImage = document.getElementById('cropImage');
 
         const cropModal = document.getElementById('cropModal');
-        const loadingModal = document.getElementById('loadingModal');
+        const loadingModal = document.getElementById('loadingUpdatePhoto');
 
         const profileForm = document.getElementById('profileForm');
 
@@ -62,15 +62,15 @@
         });
     }
 
-        // Upload button
-        if (uploadBtn) {
+     // Upload button
+    if (uploadBtn) {
         uploadBtn.addEventListener('click', () => {
             if (!cropper) return;
 
             const canvas = cropper.getCroppedCanvas({ width: 300, height: 300 });
 
-            const originalType = selectedFile.type; // e.g. image/png or image/jpeg
-            const extension = originalType.split('/')[1]; // png, jpeg
+            const originalType = selectedFile.type;
+            const extension = originalType.split('/')[1];
 
             canvas.toBlob(function(blob) {
                 const file = new File([blob], `profile.${extension}`, { type: originalType });
@@ -78,14 +78,13 @@
                 const dataTransfer = new DataTransfer();
                 dataTransfer.items.add(file);
                 profileInput.files = dataTransfer.files;
-                
-                // Show loading modal
-                loadingModal.classList.remove('hidden');
-                loadingModal.classList.add('flex');
 
                 // Hide crop modal
                 cropModal.classList.add('hidden');
                 cropModal.classList.remove('flex');
+
+                // Show loading modal via Alpine event
+                window.dispatchEvent(new CustomEvent('show-loading'));
 
                 // Submit the form
                 profileForm.submit();

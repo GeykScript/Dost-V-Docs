@@ -51,7 +51,7 @@
                                 class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed">
                                 Cancel
                         </button>
-                        <x-loading-livewire-button wireTarget="deleteType" formId="DeleteTypeForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
+                        <x-loading-livewire-button wireTarget="deleteType" wire:loading.attr="disabled" formId="DeleteTypeForm" class="w-1/1  text-center flex justify-center  items-center bg-red-500 hover:bg-red-400">
                             <x-heroicon-s-trash class="w-4 h-4 mr-1" />
                                 {{ __('Delete Type') }}
                         </x-loading-livewire-button>

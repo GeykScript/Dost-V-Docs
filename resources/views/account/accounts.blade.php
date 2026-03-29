@@ -1,5 +1,7 @@
 <x-app-layout>
 @section('title', 'Accounts')
+
+    <!-- Success and Error Alert  -->
     <x-alert-message :successMessage="session('success')" :errorMessage="session('error')" />
 
 <!-- Accounts Page  -->

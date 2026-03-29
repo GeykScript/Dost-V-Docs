@@ -1,4 +1,4 @@
-<div x-data x-cloak class="relative">
+<div x-data class="relative">
     <div 
         :class="$store.sidebar.open ? 'translate-x-0' : '-translate-x-full'"
         class="fixed xl:relative xl:translate-x-0 inset-y-0 left-0 z-50 xl:z-0 w-60 bg-sidebar-bg text-white flex flex-col pt-2 min-h-screen transform transition-transform duration-300 ease-in-out">
@@ -35,13 +35,14 @@
                 <x-sidebar-item label="All Documents" icon="o-clipboard-document-list" route="all-documents"/>
             @endif
             <!-- Only show if super admin  -->
-           @if(auth()->user()->is_super_admin)
+            @if(auth()->user()->is_super_admin)
                 <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
                     Users & Groups
                 </p>
                 <x-sidebar-item label="Accounts" icon="s-user-group" route="accounts"/>
                 <x-sidebar-item label="Units" icon="s-building-office" route="units"/>
-
+    
+    
                 <p class="text-xs mt-4 mb-2 ml-4 font-semibold text-gray-500 uppercase tracking-wider">
                     Document Setup
                 </p>

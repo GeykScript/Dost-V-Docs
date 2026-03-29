@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class Unit extends Model
 {
@@ -37,4 +40,25 @@ class Unit extends Model
         return $this->hasMany(UserAssignment::class, 'unit_id')
                     ->whereNull('end_date');
     }
+
+
+
+    // When creating, updating, or deleting a unit, Unit Cache Cleared
+    protected static function booted()
+    {
+        static::created(fn()  => Cache::forget('units'));
+        static::updated(fn()  => Cache::forget('units'));
+        static::deleted(fn()  => Cache::forget('units'));
+    }
+
+
+    // Cache method to retrieve all units with caching
+    public static function allCached()
+    {
+        return Cache::remember('units', now()->addWeek(), function () {
+            Log::info('Cache Failed — querying DB. Should only appear once per week.');
+            return static::all();
+        });
+    }
+
 }

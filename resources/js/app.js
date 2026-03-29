@@ -19,4 +19,3 @@ window.Cropper = Cropper;
 window.ApexCharts = ApexCharts;
 
 
-
