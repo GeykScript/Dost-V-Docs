@@ -22,13 +22,9 @@
         
 
         <!-- error message for failed login attempt -->
-        @if ($errors->any() || session('status'))
+        @if ($errors->any())
             <div class="bg-red-100 text-red-600 p-3 text-sm rounded mb-3">
-                @if (session('status'))
-                    {{ session('status') }}
-                @else
                     {{ $errors->first() }}
-                @endif
             </div>
         @endif
 

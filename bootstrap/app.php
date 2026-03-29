@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // Send Error Notification to Discord in local environment
             // Change this when in production 
+            // Change to Local For Testing
             if (!app()->environment('local')) {
                 return;
             }

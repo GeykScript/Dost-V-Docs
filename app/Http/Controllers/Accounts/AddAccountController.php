@@ -82,8 +82,6 @@ class AddAccountController extends Controller
                     'position' => $validatedData['position'],
                 ]);
 
-                // Send the email with the generated password
-                Mail::to($user->email)->queue(new NewUserAccountEmail($user, $generatedPassword));
             });
         } catch (\Exception $e) {
                 // Log Error 
@@ -91,7 +89,6 @@ class AddAccountController extends Controller
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
                 'input' => $validatedData,
-                
             ]);
             // Send to Discord
             DiscordWebhookService::sendError($e);
@@ -100,6 +97,9 @@ class AddAccountController extends Controller
                 ->with(['error' => 'Something went wrong. Please try again']);
         }
 
+        // Send the email with the generated password
+        Mail::to($validatedData['email'])->queue(new NewUserAccountEmail($validatedData, $generatedPassword));
+        
         return redirect()->route('accounts')
             ->with('success', 'Account created successfully!');
     }
