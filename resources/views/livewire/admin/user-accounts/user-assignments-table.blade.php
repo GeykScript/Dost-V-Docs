@@ -109,7 +109,30 @@
                         </td>
                         <td class="px-6 py-1.5 md:py-4 text-gray-600 font-medium flex justify-center gap-2">
                             @if($assignment->is_current)
-                                <livewire:modal.unit.edit-assignment :assignment="$assignment" wire:key="edit-assignment-{{ $assignment->id }}" />
+                                <div class="flex items-center gap-2">
+                                    
+                                    
+                                    {{-- New Button: Dispatches the open event --}}
+                                    <button 
+                                        type="button"
+                                        @click="$dispatch('open-modal-set-inactive-{{ $assignment->id }}', { name: @js($assignment->unit->unit_name ?? 'this unit') })"
+                                        class="bg-white text-red-500 border border-red-500 hover:bg-red-50 px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1 transition-colors">
+                                        <x-heroicon-s-minus-circle class="w-4 h-4" /> Set Inactive
+                                    </button>
+                                </div>
+
+                                {{-- Render the Modal Component --}}
+                                <x-form-confirmation-modal 
+                                    id="set-inactive-{{ $assignment->id }}"
+                                    title="Set as Inactive?"
+                                    message="This will mark the user's assignment as inactive and set the end date to today. Assignment for:"
+                                    confirmText="Set Inactive"
+                                    type="danger"
+                                />
+
+                                {{-- Listener: Catches the submit event from the modal and triggers Livewire --}}
+                                <div x-data @submit-set-inactive-{{ $assignment->id }}.window="$wire.setInactive({{ $assignment->id }})"></div>
+
                             @else
                                 <button 
                                     type="button"

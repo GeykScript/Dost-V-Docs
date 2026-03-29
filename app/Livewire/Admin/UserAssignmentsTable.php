@@ -79,21 +79,34 @@ class UserAssignmentsTable extends Component
                              ->orderBy('created_at', 'desc')
                              ->paginate($this->perPage);
         
-        Log::info('User Assignments Debug', [
-            'user_id' => $this->user->id,
-            'total' => $assignments->total(),
-            'assignments' => $assignments->map(function ($a) {
-                return [
-                    'id' => $a->id,
-                    'unit_id' => $a->unit_id,
-                    'unit' => $a->unit ? $a->unit->toArray() : null,
-                    'is_current' => $a->is_current,
-                ];
-            })->toArray(),
-        ]);
-        
         return view('livewire.admin.user-accounts.user-assignments-table', [
             'assignments' => $assignments
         ]);
+    }
+    public function setInactive($assignmentId)
+    {
+        try {
+            // 1. Find the assignment, ensuring it belongs to the current user (security check)
+            $assignment = UserAssignment::where('id', $assignmentId)
+                ->where('user_id', $this->user->id)
+                ->firstOrFail();
+
+            // 2. Update it to be inactive and set the end date to today
+            $assignment->update([
+                'is_current' => false,
+                'end_date' => now(),
+            ]);
+
+            // 3. Set the success message to show in your Blade UI
+            $this->successMessage = 'Assignment successfully marked as inactive.';
+            $this->errorMessage = null; // Clear any old errors
+
+        } catch (\Exception $e) {
+            // Log the error for debugging and show a friendly error message to the user
+            Log::error('Failed to set assignment inactive: ' . $e->getMessage());
+            
+            $this->errorMessage = 'Failed to update the assignment. Please try again.';
+            $this->successMessage = null;
+        }
     }
 }
